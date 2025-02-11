@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sign up Page</title>
 </head>
 <body>
-Hello world
+<form action="saveuser" method="post">
+First name <input type="text" name="first name"/><br><br>
+Last name <input type="text" name="last name"/><br><br>
+Email <input type="text" name="email"/><br><br>
+Password <input type="password" name="password"/><br><br>
+Confirm Password <input type="password" name="confirm password"/><br><br>
+Contact No.<input type="tel" name="contact no."/><br><br>
+<input type="submit" value="Sign Up" name="submit"/><br><br>
+</form>
+<a href="login">Login</a> <br><br>  
+ <a href="forgetpassword">Forget Password</a>
 </body>
 </html>
