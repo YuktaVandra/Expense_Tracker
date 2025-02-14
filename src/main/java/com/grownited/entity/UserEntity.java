@@ -1,5 +1,6 @@
 package com.grownited.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,30 +13,26 @@ public class UserEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userid;
-	private String FirstName;
-	private String LastName;
+	private Long userId;
+	private String Name;
+	@Column(unique = true)
 	private String Email;
 	private String Password;
-	private long ContactNo ;
+	private String ContactNo ;
 	
-	public Integer getUserid() {
-		return userid;
+	
+	public Long getUserid() {
+		return userId;
 	}
-	public void setUserid(Integer userid) {
-		this.userid = userid;
+	public void setUserid(Long userid) {
+		this.userId = userid;
 	}
-	public String getFristName() {
-		return FirstName;
+	
+	public String getName() {
+		return Name;
 	}
-	public void setFristName(String firstName) {
-		FirstName = firstName;
-	}
-	public String getLastName() {
-		return LastName;
-	}
-	public void setLastName(String lastName) {
-		LastName = lastName;
+	public void setName(String name) {
+		Name = name;
 	}
 	public String getEmail() {
 		return Email;
@@ -49,12 +46,14 @@ public class UserEntity {
 	public void setPassword(String password) {
 		Password = password;
 	}
-	public long getContactNo() {
+	public String getContactNo() {
 		return ContactNo;
 	}
-	public void setContactNo(long contactNo) {
+	public void setContactNo(String contactNo) {
 		ContactNo = contactNo;
 	}
+	
+	
 	
 	
 	

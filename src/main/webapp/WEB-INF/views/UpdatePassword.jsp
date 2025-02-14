@@ -14,5 +14,6 @@
      Confirm Password:<input type="text"><br><br>
      <input type="submit" value="Update Password">
      </form>
+<a href="login">Login</a>
 </body>
 </html>
