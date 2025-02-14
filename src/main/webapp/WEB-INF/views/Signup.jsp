@@ -8,12 +8,12 @@
 </head>
 <body>
 <form action="saveuser" method="post">
-First name <input type="text" name="first name"/><br><br>
-Last name <input type="text" name="last name"/><br><br>
-Email <input type="text" name="email"/><br><br>
-Password <input type="password" name="password"/><br><br>
-Confirm Password <input type="password" name="confirm password"/><br><br>
-Contact No.<input type="tel" name="contact no."/><br><br>
+First name <input type="text" name="FirstName"/><br><br>
+Last name <input type="text" name="LastName"/><br><br>
+Email <input type="text" name="Email"/><br><br>
+Password <input type="password" name="Password"/><br><br>
+Confirm Password <input type="password" name="Confirm Password"/><br><br>
+Contact No.<input type="tel" name="ContactNo."/><br><br>
 <input type="submit" value="Sign Up" name="submit"/><br><br>
 </form>
 <a href="login">Login</a> <br><br>  

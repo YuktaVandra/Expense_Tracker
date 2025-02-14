@@ -1,30 +1,35 @@
 package com.grownited.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table()
+@Table(name = "users")
 public class UserEntity {
+	
 	@Id
-	private int userId;
-	private String FristName;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer userid;
+	private String FirstName;
 	private String LastName;
 	private String Email;
 	private String Password;
 	private long ContactNo ;
-	public int getUserId() {
-		return userId;
+	
+	public Integer getUserid() {
+		return userid;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserid(Integer userid) {
+		this.userid = userid;
 	}
 	public String getFristName() {
-		return FristName;
+		return FirstName;
 	}
-	public void setFristName(String fristName) {
-		FristName = fristName;
+	public void setFristName(String firstName) {
+		FirstName = firstName;
 	}
 	public String getLastName() {
 		return LastName;
@@ -50,6 +55,9 @@ public class UserEntity {
 	public void setContactNo(long contactNo) {
 		ContactNo = contactNo;
 	}
+	
+	
+	
 	
 	
 

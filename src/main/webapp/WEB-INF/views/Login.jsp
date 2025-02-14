@@ -8,10 +8,9 @@
 </head>
 <body>
 <form action="saveuser" method="post">
-First name <input type="text" name="frist name"/><br><br>
-Last name <input type="text" name="last name"/><br><br>
-Email <input type="text" name="text"/><br><br>
-Password <input type="password" name="password"/><br><br>
+
+Email <input type="text" name="Email"/><br><br>
+Password <input type="password" name="Password"/><br><br>
 <input type="submit" value="Login" name="submit"/><br><br>
 </form>
 
