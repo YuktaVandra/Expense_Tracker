@@ -17,6 +17,6 @@ Contact No.<input type="tel" name="contact no."/><br><br>
 <input type="submit" value="Sign Up" name="submit"/><br><br>
 </form>
 <a href="login">Login</a> <br><br>  
- <a href="forgetpassword">Forget Password</a>
+ 
 </body>
 </html>

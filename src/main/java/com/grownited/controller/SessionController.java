@@ -29,5 +29,15 @@ public class SessionController {
 		return("Forgetpassword");
 	}
 	
+	@PostMapping("sendotp")
+	public String sendotp() {
+		return ("UpdatePassword");
+	}
+	
+	@PostMapping("updatepassword")
+	public String updatepassword() {
+		return("Login");
+	}
+	
 
 }

@@ -7,9 +7,10 @@
 <title>Forget Password</title>
 </head>
 <body>
-<form action="">
-Email <input type="text"/>
-<a href="signup">Sign Up</a>
+<form action="sendotp" method="post">
+Email <input type="text" name="email"/><br><br>
+<input type="submit" value="Reset password">
 </form>
+<a href="login">Login</a>
 </body>
 </html>
