@@ -1,5 +1,8 @@
 package com.grownited.entity;
 
+
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,25 +17,33 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
-	private String Name;
+	private String firstname;
+	private String lastname;
 	@Column(unique = true)
 	private String Email;
 	private String Password;
 	private String ContactNo ;
-	
-	
-	public Long getUserid() {
+	private String role;
+	private Boolean status;
+	private Date createdAt;
+	private String otp;
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserid(Long userid) {
-		this.userId = userid;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
-	
-	public String getName() {
-		return Name;
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setName(String name) {
-		Name = name;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	public String getEmail() {
 		return Email;
@@ -52,6 +63,33 @@ public class UserEntity {
 	public void setContactNo(String contactNo) {
 		ContactNo = contactNo;
 	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public Boolean getStatus() {
+		return status;
+	}
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public String getOtp() {
+		return otp;
+	}
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+	
+	
+	
 	
 	
 	
