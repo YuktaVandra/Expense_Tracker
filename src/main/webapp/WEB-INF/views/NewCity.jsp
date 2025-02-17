@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="savecity" method="post">
-City Name <input type="text" name="cityname"><br><br>
+City Name <input type="text" name="cityName"><br><br>
 <input type="submit">
 </form>
 </body>

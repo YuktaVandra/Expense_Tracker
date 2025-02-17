@@ -9,24 +9,24 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "city")
 public class CityEntity {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cityId;
-	private String cityname;
+	private String cityName;
 	public Integer getCityId() {
 		return cityId;
 	}
 	public void setCityId(Integer cityId) {
 		this.cityId = cityId;
 	}
-	public String getCityname() {
-		return cityname;
+	public String getCityName() {
+		return cityName;
 	}
-	public void setCityname(String cityname) {
-		this.cityname = cityname;
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
+}
 	
 	
 
-}
+

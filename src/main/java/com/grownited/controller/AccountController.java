@@ -1,7 +1,10 @@
 package com.grownited.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -23,11 +26,15 @@ public class AccountController {
 	
 	@PostMapping("saveaccount")
 	public String saveaccount(AccountEntity accountEntity) {
-		System.out.println(accountEntity.getTitle());
-		System.out.println(accountEntity.getAmount());
-		System.out.println(accountEntity.getDescription());
 		accountRepository.save(accountEntity);
 		return ("Account");
+	}
+	
+	@GetMapping("/listaccount")
+	public String listaccount(Model model) {
+		List<AccountEntity> accountList = accountRepository.findAll();
+		model.addAttribute("accountList", accountList);
+		return("ListAccount");
 	}
 
 }

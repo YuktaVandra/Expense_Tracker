@@ -1,9 +1,11 @@
 package com.grownited.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -25,16 +27,18 @@ public class IncomeController {
 	
 	@PostMapping("saveincome")
 	public String saveexpense(IncomeEntity incomeEntity) {
-		System.out.println(incomeEntity.getTitle());
-		System.out.println(incomeEntity.getDescription());
-		System.out.println(incomeEntity.getAmount());
 		incomeEntity.setStatus(true);
-		incomeEntity.setTransaction_date(new Date());
+		incomeEntity.setTransactionDate(new Date());
 		incomeRepository.save(incomeEntity);
 		return("Income");
 	}
 	
-	
+	@GetMapping("/listincome")
+	public String listincome(Model model) {
+		 List<IncomeEntity> incomeList = incomeRepository.findAll();
+		 model.addAttribute("incomeList", incomeList);
+		 return "ListIncome";
+	}
 	
 
 }

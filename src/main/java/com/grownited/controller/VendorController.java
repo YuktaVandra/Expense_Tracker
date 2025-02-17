@@ -1,7 +1,10 @@
 package com.grownited.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -23,9 +26,14 @@ public class VendorController {
 	
 	@PostMapping("savevendor")
 	public String savevendor(VendorEntity vendorEntity) {
-		System.out.println(vendorEntity.getTitle());
 		vendorRepository.save(vendorEntity);
 		return ("Vendor");
 	}
 
+	@GetMapping("/listvendor")
+	public String listvendor(Model model) {
+		 List<VendorEntity> vendorList = vendorRepository.findAll();
+		 model.addAttribute("vendorList", vendorList);
+		 return "ListVendor";
+	}
 }

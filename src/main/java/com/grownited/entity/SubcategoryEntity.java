@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "subcategory")
-public class Sub_CategoryEntity {
+public class SubcategoryEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer subcategoryId;

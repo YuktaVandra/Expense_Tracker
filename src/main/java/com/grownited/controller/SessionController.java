@@ -1,9 +1,11 @@
 package com.grownited.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -33,18 +35,19 @@ public class SessionController {
 	@PostMapping("saveuser")
 		
 		public String saveuser(UserEntity userEntity) {
-		System.out.println(userEntity.getFirstname());
-		System.out.println(userEntity.getLastname());
-		System.out.println(userEntity.getEmail());
-	    System.out.println(userEntity.getPassword());
-		System.out.println(userEntity.getContactNo());
-		System.out.println(userEntity.getOtp());
 		userEntity.setCreatedAt(new Date());
 		userEntity.setStatus(true);
 		userEntity.setRole("USER");
 		userRepository.save(userEntity);
 			return("Login");
 		}
+	
+	@GetMapping("/listuser")
+	public String listuser(Model model) {
+		 List<UserEntity> userList = userRepository.findAll();
+		 model.addAttribute("userList", userList);
+		 return "ListUser";
+	}
 	
 
 @GetMapping("forgetpassword")

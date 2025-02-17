@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="savestate" method="post">
-State Name <input type="text" name="statename"><br><br>
+State Name <input type="text" name="stateName"><br><br>
 <input type="submit">
 </form>
 </body>

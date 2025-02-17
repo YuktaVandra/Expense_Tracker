@@ -3,7 +3,7 @@ package com.grownited.entity;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,12 +17,11 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
-	private String firstname;
-	private String lastname;
-	@Column(unique = true)
-	private String Email;
-	private String Password;
-	private String ContactNo ;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String password;
+	private String contactNo ;
 	private String role;
 	private Boolean status;
 	private Date createdAt;
@@ -33,35 +32,35 @@ public class UserEntity {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 	public String getContactNo() {
-		return ContactNo;
+		return contactNo;  
 	}
 	public void setContactNo(String contactNo) {
-		ContactNo = contactNo;
+		this.contactNo = contactNo;
 	}
 	public String getRole() {
 		return role;
@@ -87,6 +86,8 @@ public class UserEntity {
 	public void setOtp(String otp) {
 		this.otp = otp;
 	}
+
+	
 	
 	
 	

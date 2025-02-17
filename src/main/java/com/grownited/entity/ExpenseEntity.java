@@ -35,7 +35,7 @@ public class ExpenseEntity {
 	@Column(nullable = false)
 	private String description;
 	private Boolean status;
-	private Date transaction_date;
+	private Date transactionDate;
 	public Integer getExpenseId() {
 		return expenseId;
 	}
@@ -96,12 +96,13 @@ public class ExpenseEntity {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-	public Date getTransaction_date() {
-		return transaction_date;
+	public Date getTransactionDate() {
+		return transactionDate;
 	}
-	public void setTransaction_date(Date transaction_date) {
-		this.transaction_date = transaction_date;
+	public void setTransactionDate(Date transactionDate) {
+		this.transactionDate = transactionDate;
 	}
+	
 	
 	
 	
