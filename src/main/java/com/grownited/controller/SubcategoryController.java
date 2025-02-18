@@ -26,7 +26,7 @@ public class SubcategoryController {
 	@PostMapping("savesubcategory")
 	public String savecategory(SubcategoryEntity subcategoryEntity) {
 		subcategoryRepository.save(subcategoryEntity);
-		return ("Subcategory");
+		return "redirect:/listsubcategory";
 	}
 	
 	@GetMapping("/listsubcategory")

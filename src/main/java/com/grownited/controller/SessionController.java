@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.UserRepository;
+import com.grownited.service.MailService;
 
 @Controller
 public class SessionController {
 
+	@Autowired
+	MailService serviceMail;
 	
     @Autowired
     private UserRepository userRepository;
@@ -39,7 +42,8 @@ public class SessionController {
 		userEntity.setStatus(true);
 		userEntity.setRole("USER");
 		userRepository.save(userEntity);
-			return("Login");
+		serviceMail.sendWelcomeMail(userEntity.getEmail(), userEntity.getFirstName());
+		return "Login";
 		}
 	
 	@GetMapping("/listuser")

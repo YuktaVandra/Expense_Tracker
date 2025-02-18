@@ -24,7 +24,7 @@ public class CityController {
 	@PostMapping("savecity")
 	public String savecity(CityEntity cityEntity) {
 		cityRepository.save(cityEntity);
-		return ("NewCity");
+		return "redirect:/listcity";
 	}
 	
 	@GetMapping("/listcity")

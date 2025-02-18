@@ -27,7 +27,7 @@ public class VendorController {
 	@PostMapping("savevendor")
 	public String savevendor(VendorEntity vendorEntity) {
 		vendorRepository.save(vendorEntity);
-		return ("Vendor");
+		return "redirect:/listvendor";
 	}
 
 	@GetMapping("/listvendor")

@@ -17,7 +17,6 @@
 <th>email</th>
 <th>password</th>
 <th>contactNo</th>
-<th>otp</th>
 <th>status</th>
 <th>role</th>
 <th>createdAt</th>
@@ -30,7 +29,6 @@
 <td>${m.email}</td>
 <td>${m.password}</td>
 <td>${m.contactNo}</td>
-<td>${m.otp}</td>
 <td>${m.status}</td>
 <td>${m.role}</td>
 <td>${m.createdAt}</td>

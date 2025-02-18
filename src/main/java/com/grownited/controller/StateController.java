@@ -26,7 +26,7 @@ public class StateController {
 	@PostMapping("savestate")
 		public String savestate(StateEntity entityState) {
 		stateRepository.save(entityState);
-		return("NewState");
+		return "redirect:/liststate";
 	}
 	
 	@GetMapping("/liststate")

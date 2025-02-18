@@ -27,7 +27,7 @@ public class AccountController {
 	@PostMapping("saveaccount")
 	public String saveaccount(AccountEntity accountEntity) {
 		accountRepository.save(accountEntity);
-		return ("Account");
+		return "redirect:/listaccount";
 	}
 	
 	@GetMapping("/listaccount")

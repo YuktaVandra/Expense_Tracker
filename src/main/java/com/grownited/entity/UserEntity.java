@@ -25,7 +25,6 @@ public class UserEntity {
 	private String role;
 	private Boolean status;
 	private Date createdAt;
-	private String otp;
 	public Long getUserId() {
 		return userId;
 	}
@@ -57,7 +56,7 @@ public class UserEntity {
 		this.password = password;
 	}
 	public String getContactNo() {
-		return contactNo;  
+		return contactNo;
 	}
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
@@ -80,12 +79,10 @@ public class UserEntity {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	public String getOtp() {
-		return otp;
-	}
-	public void setOtp(String otp) {
-		this.otp = otp;
-	}
+	
+	
+	
+	
 
 	
 	

@@ -30,7 +30,7 @@ public class IncomeController {
 		incomeEntity.setStatus(true);
 		incomeEntity.setTransactionDate(new Date());
 		incomeRepository.save(incomeEntity);
-		return("Income");
+		return "redirect:/listincome";
 	}
 	
 	@GetMapping("/listincome")

@@ -14,7 +14,6 @@ Email <input type="text" name="email"/><br><br>
 Password <input type="password" name="password"/><br><br>
 Confirm Password <input type="password" name="confirmpassword"/><br><br>
 Contact No.<input type="tel" name="contactNo"/><br><br>
-OTP <input type="text" name="otp"/><br><br>
 <input type="submit" value="Sign Up" name="submit"/><br><br>
 </form>
 <a href="login">Login</a> <br><br>  

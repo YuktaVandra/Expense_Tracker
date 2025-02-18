@@ -29,7 +29,7 @@ public class ExpenseController {
 		expenseEntity.setStatus(true);
 		expenseEntity.setTransactionDate(new Date());
 		expenseRepository.save(expenseEntity);
-		return("Expense");
+		return "redirect:/listexpense";
 	}
 	
 	@GetMapping("/listexpense")
