@@ -12,7 +12,7 @@ public class MailService {
 	JavaMailSender mailSender;
 	public void sendWelcomeMail(String email, String firstName) {
 		String subject = "Welcome to BudgetBuddy";
-		String body = "Hey"  +firstName+ ",We're excited to have you on board. If you have any questions, feel free to reach out – we’re here to help!";
+		String body = "Hey "  +firstName+ ",We're excited to have you on board. If you have any questions, feel free to reach out – we’re here to help!";
 		String from = "vandrayukta220125@gmail.com";	
 		
 		SimpleMailMessage message = new SimpleMailMessage();

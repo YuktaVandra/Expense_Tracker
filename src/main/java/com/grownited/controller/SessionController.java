@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,12 @@ public class SessionController {
 
 	@Autowired
 	MailService serviceMail;
+	
+	@Autowired
+	UserRepository repositoryUser;
+	
+	@Autowired
+	PasswordEncoder encoder;
 	
     @Autowired
     private UserRepository userRepository;
@@ -41,8 +48,14 @@ public class SessionController {
 		userEntity.setCreatedAt(new Date());
 		userEntity.setStatus(true);
 		userEntity.setRole("USER");
-		userRepository.save(userEntity);
+		
 		serviceMail.sendWelcomeMail(userEntity.getEmail(), userEntity.getFirstName());
+		
+		String encPassword = encoder.encode(userEntity.getPassword());
+		userEntity.setPassword(encPassword);
+		
+		userRepository.save(userEntity);
+		
 		return "Login";
 		}
 	
