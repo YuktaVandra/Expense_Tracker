@@ -2,6 +2,7 @@ package com.grownited.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -64,6 +65,47 @@ public class SessionController {
 		 List<UserEntity> userList = userRepository.findAll();
 		 model.addAttribute("userList", userList);
 		 return "ListUser";
+	}
+	
+	@GetMapping("/viewuser")
+	public String viewuser(Integer userId, Model model) {
+		
+		System.out.println("id ===> " + userId);
+		
+		Optional<UserEntity> op = userRepository.findById(userId);
+		
+		if(op.isEmpty()) {
+			//Data not found
+		}else {
+			UserEntity user = op.get();
+			model.addAttribute("user", user);
+		}
+		
+		return "ViewUser";
+	}
+	
+	@PostMapping("/authenticate")
+	public String authenticate(String email, String password,Model model) {
+		System.out.println(email);
+		System.out.println(password);
+		
+		Optional<UserEntity> op = userRepository.findByEmail(email);
+		
+		if(op.isPresent()) {
+			UserEntity dbUser = op.get();
+			if (encoder.matches(password, dbUser.getPassword())) {
+				return "redirect:/home";
+		}	
+		}
+		model.addAttribute("error","Invalid Credentials");
+		return "Login";
+		
+	}
+	
+	@GetMapping("/deleteuser")
+	public String deleteMember(Integer userId) {
+		userRepository.deleteById(userId);//delete from members where memberID = :memberId
+		return "redirect:/listuser";
 	}
 	
 

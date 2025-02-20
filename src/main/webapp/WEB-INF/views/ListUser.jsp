@@ -11,27 +11,21 @@
 <h2>List of Users</h2>
 <table border="1">
 <tr>
-<th>userId</th>
 <th>firstName</th>
 <th>lastName</th>
 <th>email</th>
 <th>password</th>
 <th>contactNo</th>
-<th>status</th>
-<th>role</th>
-<th>createdAt</th>
+<th>Action</th>
 </tr>
 <c:forEach items="${userList}" var="m">
 <tr>
-<td>${m.userId}</td>
 <td>${m.firstName}</td>
 <td>${m.lastName}</td>
 <td>${m.email}</td>
 <td>${m.password}</td>
 <td>${m.contactNo}</td>
-<td>${m.status}</td>
-<td>${m.role}</td>
-<td>${m.createdAt}</td>
+<td> <a href="viewuser?userId=${m.userId }">View</a> | <a href="deleteuser?userId=${m.userId }">Delete</a> | Edit</td>
 </tr>
 </c:forEach>
 </table>
