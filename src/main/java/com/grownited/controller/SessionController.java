@@ -84,6 +84,13 @@ public class SessionController {
 		return "ViewUser";
 	}
 	
+	@GetMapping("/deleteuser")
+	public String deleteMember(Integer userId) {
+		userRepository.deleteById(userId);//delete from members where memberID = :memberId
+		return "redirect:/listuser";
+	}
+	
+	
 	@PostMapping("/authenticate")
 	public String authenticate(String email, String password,Model model) {
 		System.out.println(email);
@@ -102,11 +109,7 @@ public class SessionController {
 		
 	}
 	
-	@GetMapping("/deleteuser")
-	public String deleteMember(Integer userId) {
-		userRepository.deleteById(userId);//delete from members where memberID = :memberId
-		return "redirect:/listuser";
-	}
+	
 	
 
 @GetMapping("forgetpassword")
