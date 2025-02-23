@@ -11,13 +11,13 @@
 <h2>List of State</h2>
 <table border="1">
 <tr>
-<th>stateId</th>
-<th>stateName</th>
+<th>StateName</th>
+<th>Action</th>
 </tr>
 <c:forEach items="${stateList}" var="m">
 <tr>
-<td>${m.stateId}</td>
 <td>${m.stateName}</td>
+<td><a href="viewstate?stateId=${m.stateId }">View</a>| <a href="deletestate?stateId=${m.stateId }">Delete</a> | Edit</td>
 </tr>
 </c:forEach>
 </table>

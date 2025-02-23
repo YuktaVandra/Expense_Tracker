@@ -11,29 +11,17 @@
 <h2>List of Expense</h2>
 <table border="1">
 <tr>
-<th>expenseId</th>
-<th>accountId</th>
-<th>categoryId</th>
-<th>subcategoryId</th>
-<th>userId</th>
-<th>vendorId</th>
-<th>title</th>
-<th>amount</th>
-<th>description</th>
-<th>transactionDate</th>
+<th>Title</th>
+<th>Amount</th>
+<th>Description</th>
+<th>Action</th>
 </tr>
 <c:forEach items="${expenseList}" var="m">
 <tr>
-<td>${m.expenseId}</td>
-<td>${m.accountId}</td>
-<td>${m.categoryId}</td>
-<td>${m.subcategoryId}</td>
-<td>${m.userId}</td>
-<td>${m.vendorId}</td>
 <td>${m.title}</td>
 <td>${m.amount}</td>
 <td>${m.description}</td>
-<td>${m.transactionDate}</td>
+<td><a href="viewexpense?expenseId=${m.expenseId }">View</a>| <a href="deleteexpense?expenseId=${m.expenseId }">Delete</a> | Edit</td>
 </tr>
 </c:forEach>
 </table>

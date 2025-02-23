@@ -1,6 +1,7 @@
 package com.grownited.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,24 @@ public class AccountController {
 		List<AccountEntity> accountList = accountRepository.findAll();
 		model.addAttribute("accountList", accountList);
 		return("ListAccount");
+	}
+	
+	@GetMapping("/viewaccount")
+	public String viewaccount(Integer accountId, Model model) {
+		Optional<AccountEntity> op = accountRepository.findById(accountId);
+		if(op.isEmpty()) {
+			//Data not Found
+		}else {
+			AccountEntity account = op.get();
+			model.addAttribute("account", account);
+		}
+		return "ViewAccount";
+	}
+	
+	@GetMapping("/deleteaccount")
+	public String deleteaccount(Integer accountId) {
+		accountRepository.deleteById(accountId);
+		return "redirect:/listaccount";
 	}
 
 }

@@ -11,25 +11,20 @@
 <h2>List of Income</h2>
 <table border="1">
 <tr>
-<th>incomeId</th>
-<th>accountId</th>
-<th>userId</th>
-<th>title</th>
-<th>amount</th>
-<th>description</th>
-<th>status</th>
-<th>transactionDate</th>
+
+<th>Title</th>
+<th>Amount</th>
+<th>Description</th>
+<th>Action</th>
+
 </tr>
 <c:forEach items="${incomeList}" var="m">
 <tr>
-<td>${m.incomeId}</td>
-<td>${m.accountId}</td>
-<td>${m.userId}</td>
+
 <td>${m.title}</td>
 <td>${m.amount}</td>
 <td>${m.description}</td>
-<td>${m.status}</td>
-<td>${m.transactionDate}</td>
+<td><a href="viewincome?incomeId=${m.incomeId }">View</a>| <a href="deleteincome?incomeId=${m.incomeId }">Delete</a> | Edit</td>
 </tr>
 </c:forEach>
 </table>

@@ -11,19 +11,19 @@
 <h2>List of Account</h2>
 <table border="1">
 <tr>
-<th>accountId</th>
-<th>userId</th>
-<th>title</th>
-<th>amount</th>
-<th>description</th>
+
+<th>Title</th>
+<th>Amount</th>
+<th>Description</th>
+<th>Action</th>
 </tr>
 <c:forEach items="${accountList}" var="m">
 <tr>
-<td>${m.accountId}</td>
-<td>${m.userId}</td>
+
 <td>${m.title}</td>
 <td>${m.amount}</td>
 <td>${m.description}</td>
+<td><a href="viewaccount?accountId=${m.accountId }">View</a>| <a href="deleteaccount?accountId=${m.accountId }">Delete</a> | Edit</td>
 </tr>
 </c:forEach>
 

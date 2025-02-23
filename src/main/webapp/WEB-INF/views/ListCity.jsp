@@ -11,13 +11,15 @@
 <h2>List of City</h2>
 <table border="1">
 <tr>
-<th>cityId</th>
-<th>cityName</th>
+
+<th>CityName</th>
+<th>Action</th>
 </tr>
 <c:forEach items="${cityList}" var="m">
 <tr>
-<td>${m.cityId}</td>
+
 <td>${m.cityName}</td>
+<td><a href="viewcity?cityId=${m.cityId }">View</a>| <a href="deletecity?cityId=${m.cityId }">Delete</a> | Edit</td>
 </tr>
 </c:forEach>
 </table>

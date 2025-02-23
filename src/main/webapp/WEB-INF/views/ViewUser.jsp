@@ -8,14 +8,14 @@
 </head>
 <body>
 <h2>View Users</h2>
-     userId : ${user.userId } <br><br>
-	 firstName : ${user.firstName}<br><br>
-	 lastName : ${user.lastName}<br><br>
-	 email : ${user.email}<br><br>
-	 password : ${user.password}<br><br>
-	 contactNo : ${user.contactNo}<br><br>
-	 role : ${user.role}<br><br>
-	 status : ${user.status}<br><br>
-	 createdAt : ${user.createdAt}<br><br>
+     UserId : ${user.userId } <br><br>
+	 FirstName : ${user.firstName}<br><br>
+	 LastName : ${user.lastName}<br><br>
+	 Email : ${user.email}<br><br>
+	 Password : ${user.password}<br><br>
+	 ContactNo : ${user.contactNo}<br><br>
+	 Role : ${user.role}<br><br>
+	 Status : ${user.status}<br><br>
+	 CreatedAt : ${user.createdAt}<br><br>
 </body>
 </html>

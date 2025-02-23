@@ -2,6 +2,7 @@ package com.grownited.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,24 @@ public class ExpenseController {
 		 List<ExpenseEntity> expenseList = expenseRepository.findAll();
 		 model.addAttribute("expenseList", expenseList);
 		 return "ListExpense";
+	}
+	
+	@GetMapping("/viewexpense")
+	public String viewexpense(Integer expenseId, Model model) {
+		Optional<ExpenseEntity> op = expenseRepository.findById(expenseId);
+		if(op.isEmpty()) {
+			//Data not Found
+		}else {
+			ExpenseEntity expense = op.get();
+			model.addAttribute("expense", expense);
+		}
+		return "ViewExpense";
+	}
+	
+	@GetMapping("/deleteexpense")
+	public String deleteexpense(Integer expenseId) {
+		expenseRepository.deleteById(expenseId);
+		return "redirect:/listexpense";
 	}
 	
 

@@ -11,15 +11,15 @@
 <h2>List of Vendor</h2>
 <table border="1">
 <tr>
-<th>vendorId</th>
-<th>userId</th>
-<th>title</th>
+
+<th>Title</th>
+<th>Action</th>
 </tr>
 <c:forEach items="${vendorList}" var="m">
 <tr>
-<td>${m.vendorId}</td>
-<td>${m.userId}</td>
+
 <td>${m.title}</td>
+<td><a href="viewvendor?vendorId=${m.vendorId }">View</a>| <a href="deletevendor?vendorId=${m.vendorId }">Delete</a> | Edit</td>
 </tr>
 </c:forEach>
 </table>

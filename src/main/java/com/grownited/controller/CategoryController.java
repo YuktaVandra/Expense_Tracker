@@ -2,6 +2,7 @@ package com.grownited.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,24 @@ public class CategoryController {
 		List<CategoryEntity> categoryList = categoryRepository.findAll();
 		model.addAttribute("categoryList", categoryList);
 		return "ListCategory";
+	}
+	
+	@GetMapping("/viewcategory")
+	public String viewcategory(Integer categoryId, Model model) {
+		Optional<CategoryEntity> op = categoryRepository.findById(categoryId);
+		if(op.isEmpty()) {
+			//Data not Found
+		}else {
+			CategoryEntity category = op.get();
+			model.addAttribute("category", category);
+		}
+		return "ViewCategory";
+	}
+	
+	@GetMapping("/deletecategory")
+	public String deletecategory(Integer categoryId) {
+		categoryRepository.deleteById(categoryId);
+		return "redirect:/listcategory";
 	}
 	
 }
