@@ -52,7 +52,7 @@
               </div>
               
               <div class="card-body">
-                <form role="form text-left" action="saveuser" method=>
+                <form role="form text-left" action="saveuser" method="post">
                 
                   <div class="mb-3">
                     <input type="text" class="form-control" name="firstName" placeholder="FirstName" aria-label="Name" aria-describedby="email-addon">
