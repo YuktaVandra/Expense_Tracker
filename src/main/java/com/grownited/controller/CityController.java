@@ -10,22 +10,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.entity.CityEntity;
+import com.grownited.entity.StateEntity;
 import com.grownited.repository.CityRepository;
+import com.grownited.repository.StateRepository;
+
+
 
 @Controller
 public class CityController {
 	
+	
+	@Autowired
+	StateRepository stateRepository;
+	
 	@Autowired
 	private CityRepository cityRepository;
+	
 	@GetMapping("newcity")
-	public String city() {
+	public String city(Model model) {
+     
+	List<StateEntity> allState = stateRepository.findAll();// all state
+		
+		model.addAttribute("allState",allState);
 		return("NewCity");
 	}
 	
 	@PostMapping("savecity")
 	public String savecity(CityEntity cityEntity) {
 		cityRepository.save(cityEntity);
-		return "redirect:/listcity";
+		return "redirect:/newcity";
 	}
 	
 	@GetMapping("/listcity")
