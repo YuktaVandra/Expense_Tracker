@@ -237,7 +237,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fa-solid fa-handshake"></i>
+              <i class="fa-solid fa-user-tie"></i>
               <p>
                 Vendor
                 <i class="fas fa-angle-left right"></i>
