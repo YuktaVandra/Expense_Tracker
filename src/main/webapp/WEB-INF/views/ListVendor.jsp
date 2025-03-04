@@ -102,7 +102,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managaccount" class="nav-link">
+                <a href="manageaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Account</p>
                 </a>
@@ -346,7 +346,7 @@
                   <tbody>
                   <c:forEach items="${vendorList}" var="m">
                   <tr>
-                  <td>${m.title}</td>
+                  <td>${m.vendorTitle}</td>
                   <td><a href="viewvendor?vendorId=${m.vendorId }"><i class="fas fa-eye"></i></a> | <a href="deletevendor?vendorId=${m.vendorId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
                   </tr> 
                   </c:forEach>  

@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="savesubcategory" method="post">
-Title :- <select name="title">
+Title :- <select name="subcategoryTitle">
 <option value="fuel">Fuel</option>
   <option value="service">Service</option>
   <option value="grocery">Grocery</option>

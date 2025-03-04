@@ -16,7 +16,7 @@ public class UserEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
+	private Integer userId;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -25,10 +25,12 @@ public class UserEntity {
 	private String role;
 	private Boolean status;
 	private Date createdAt;
-	public Long getUserId() {
+	private String otp;
+	
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	public String getFirstName() {
@@ -79,21 +81,12 @@ public class UserEntity {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public String getOtp() {
+		return otp;
+	}
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
 	
 
 }

@@ -10,6 +10,6 @@
 <h2>View Category</h2>
 Category Id :${category.categoryId } <br><br>
 User Id :${category.userId } <br><br>
-Title :${category.title } <br><br>
+Title :${category.categoryTitle } <br><br>
 </body>
 </html>

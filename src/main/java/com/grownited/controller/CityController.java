@@ -43,8 +43,7 @@ public class CityController {
 	
 	@GetMapping("/listcity")
 	public String listcity(Model model) {
-		 List<CityEntity> cityList = cityRepository.findAll();
-		 model.addAttribute("cityList", cityList);
+		 model.addAttribute("cityList", cityRepository.getAll());
 		 return "ListCity";
 	}
 	

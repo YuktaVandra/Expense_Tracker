@@ -10,31 +10,41 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.Dto.CategoryDto;
 import com.grownited.entity.CategoryEntity;
+import com.grownited.entity.UserEntity;
 import com.grownited.repository.CategoryRepository;
+import com.grownited.repository.UserRepository;
 
 
 
 @Controller
 public class CategoryController {
 
-    @Autowired
+    
+	@Autowired
+	UserRepository userRepository;
+	@Autowired
     private CategoryRepository categoryRepository;
+	
 	@GetMapping("/managecategory")
-	public String category() {
-		return("Category");
+	public String category(Model model) {
+		List<UserEntity> allUser = userRepository.findAll();
+		model.addAttribute("allUser", allUser);
+		return "Category";
 	}
 	
 	@PostMapping("savecategory")
-	public String savecategory(CategoryEntity categoryEntity) {
+	public String savecategory(CategoryEntity categoryEntity) {	
 		categoryRepository.save(categoryEntity);
 		return "redirect:/listcategory";
 	}
 	
 	@GetMapping("/listcategory")
 	public String listcategory(Model model) {
-		List<CategoryEntity> categoryList = categoryRepository.findAll();
-		model.addAttribute("categoryList", categoryList);
+		
+		//List<CategoryDto> categoryList = categoryRepository.getAll();
+		model.addAttribute("categoryList",categoryRepository.getAll());
 		return "ListCategory";
 	}
 	

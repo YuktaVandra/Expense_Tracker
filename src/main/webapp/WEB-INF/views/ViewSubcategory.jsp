@@ -11,7 +11,7 @@
 Sub-Category Id : ${subcategory.subcategoryId} <br><br>
 Category Id : ${subcategory.categoryId} <br><br>
 User Id : ${subcategory.userId} <br><br>
-Title : ${subcategory.title} <br><br>
+Title : ${subcategory.subcategoryTitle} <br><br>
 
 
 </html>

@@ -10,8 +10,8 @@
 <h2>View Account</h2>
 Account Id :${account.accountId } <br><br>
 User Id :${account.userId } <br><br>
-Title :${account.title } <br><br>
-Amount :${account.amount } <br><br>
+Title :${account.accountTitle } <br><br>
+Amount :${account.accountAmount } <br><br>
 Description :${account.description } <br><br>
 </body>
 </html>

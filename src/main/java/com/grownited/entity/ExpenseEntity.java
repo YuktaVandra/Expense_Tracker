@@ -3,12 +3,10 @@ package com.grownited.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,24 +16,27 @@ public class ExpenseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer expenseId;
-	@JoinColumn(nullable = false)
+	
 	private Integer categoryId;
-	@JoinColumn(nullable = false)
+	
 	private Integer subcategoryId;
-	@JoinColumn(nullable = false)
+	
 	private Integer accountId;
-	@JoinColumn(nullable = false)
+	
 	private Integer vendorId;
-	@JoinColumn(nullable = false)
+	
 	private Integer userId;
-	@Column(unique = true)
-	private String title;
-	@Column(nullable = false)
-	private BigDecimal amount;
-	@Column(nullable = false)
+	
+	private String expenseTitle;
+	
+	private BigDecimal expenseAmount;
+	
 	private String description;
+	
 	private Boolean status;
+	
 	private Date transactionDate;
+	
 	public Integer getExpenseId() {
 		return expenseId;
 	}
@@ -72,17 +73,19 @@ public class ExpenseEntity {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public String getTitle() {
-		return title;
+	
+	public String getExpenseTitle() {
+		return expenseTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setExpenseTitle(String expenseTitle) {
+		this.expenseTitle = expenseTitle;
 	}
-	public BigDecimal getAmount() {
-		return amount;
+	
+	public BigDecimal getExpenseAmount() {
+		return expenseAmount;
 	}
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
+	public void setExpenseAmount(BigDecimal expenseAmount) {
+		this.expenseAmount = expenseAmount;
 	}
 	public String getDescription() {
 		return description;

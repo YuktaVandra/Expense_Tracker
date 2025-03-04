@@ -10,6 +10,6 @@
 <h2>View Vendor</h2>
 Vendor Id : ${vendor.vendorId } <br><br>
 User Id : ${vendor.userId } <br><br>
-Title : ${vendor.title } <br><br>
+Title : ${vendor.vendorTitle } <br><br>
 </body>
 </html>

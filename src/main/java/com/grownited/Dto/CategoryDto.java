@@ -1,24 +1,22 @@
-package com.grownited.entity;
+package com.grownited.Dto;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "category")
-public class CategoryEntity {
+public class CategoryDto {
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer categoryId;
-	
+	private Integer categoryId;
 	private Integer userId;
-	
 	private String categoryTitle;
+	private String firstName;
 	
+	
+	
+	
+	public CategoryDto(Integer categoryId, Integer userId, String categoryTitle, String firstName) {
+		super();
+		this.categoryId = categoryId;
+		this.userId = userId;
+		this.categoryTitle = categoryTitle;
+		this.firstName = firstName;
+	}
 	public Integer getCategoryId() {
 		return categoryId;
 	}
@@ -31,11 +29,18 @@ public class CategoryEntity {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	
 	public String getCategoryTitle() {
 		return categoryTitle;
 	}
 	public void setCategoryTitle(String categoryTitle) {
 		this.categoryTitle = categoryTitle;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	
 	

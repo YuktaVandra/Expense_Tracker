@@ -102,7 +102,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managaccount" class="nav-link">
+                <a href="manageaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Account</p>
                 </a>
@@ -342,6 +342,12 @@
                     <th>Title</th>
 <th>Amount</th>
 <th>Description</th>
+<th>User</th>
+<th>Category</th>
+<th>SubCategory</th>
+<th>Account</th>
+<th>Account Amount</th>
+<th>Vendor</th>
 <th>Action</th>
                     
                   </tr>
@@ -349,9 +355,15 @@
                   <tbody>
                   <c:forEach items="${expenseList}" var="m">
                   <tr>
-                  <td>${m.title}</td>
-<td>${m.amount}</td>
+                  <td>${m.expenseTitle}</td>
+<td>${m.expenseAmount}</td>
 <td>${m.description}</td>
+<td>${m.firstName}</td>
+<td>${m.categoryTitle}</td>
+<td>${m.subcategoryTitle}</td>
+<td>${m.accountTitle}</td>
+<td>${m.accountAmount}</td>
+<td>${m.vendorTitle}</td>
 <td><a href="viewexpense?expenseId=${m.expenseId }"><i class="fas fa-eye"></i></a>| <a href="deleteexpense?expenseId=${m.expenseId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
                   
                   </tr> 
@@ -359,10 +371,16 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Title</th>
-<th>Amount</th>
-<th>Description</th>
-<th>Action</th>
+					<th>Title</th>
+					<th>Amount</th>
+					<th>Description</th>
+					<th>User</th>
+					<th>Category</th>
+					<th>SubCategory</th>
+					<th>Account</th>
+					<th>Account Amount</th>
+					<th>Vendor</th>
+					<th>Action</th>
                     
                   </tr>
                   </tfoot>

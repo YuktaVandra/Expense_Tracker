@@ -14,8 +14,8 @@ CategoryId : ${expense.categoryId}<br><br>
 SubCategoryId : ${expense.subcategoryId}<br><br>
 UserId : ${expense.userId}<br><br>
 VendorId : ${expense.vendorId}<br><br>
-Title : ${expense.title}<br><br>
-Amount : ${expense.amount}<br><br>
+Title : ${expense.expenseTitle}<br><br>
+Amount : ${expense.expenseAmount}<br><br>
 Description : ${expense.description}<br><br>
 TransactionDate : ${expense.transactionDate}<br><br>
 </body>

@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,11 +12,13 @@ public class SubcategoryEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer subcategoryId;
-	@JoinColumn(nullable = false)
+	
     private Integer categoryId;
-	@JoinColumn(nullable = false)
+	
 	private Integer userId;
-	private String title;
+	
+	private String subcategoryTitle;
+	
 	public Integer getSubcategoryId() {
 		return subcategoryId;
 	}
@@ -36,12 +37,13 @@ public class SubcategoryEntity {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public String getTitle() {
-		return title;
+	public String getSubcategoryTitle() {
+		return subcategoryTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setSubcategoryTitle(String subcategoryTitle) {
+		this.subcategoryTitle = subcategoryTitle;
 	}
+	
 	
 	
 

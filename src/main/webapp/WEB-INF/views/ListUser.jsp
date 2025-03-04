@@ -102,7 +102,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managaccount" class="nav-link">
+                <a href="manageaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Account</p>
                 </a>

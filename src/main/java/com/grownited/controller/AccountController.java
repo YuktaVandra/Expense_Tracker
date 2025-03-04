@@ -9,19 +9,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.Dto.AccountDto;
 import com.grownited.entity.AccountEntity;
+import com.grownited.entity.UserEntity;
 import com.grownited.repository.AccountRepository;
-
-
-
+import com.grownited.repository.UserRepository;
 
 @Controller
 public class AccountController {
 	
 	@Autowired
+	UserRepository userRepository;
+	@Autowired
 	private AccountRepository accountRepository;
 	@GetMapping("/manageaccount")
-	public String account() {
+	public String account(Model model) {
+		List<UserEntity> allUser = userRepository.findAll();// all state
+
+		model.addAttribute("allUser", allUser);
+		
 		return("Account");
 	}
 	
@@ -33,8 +39,8 @@ public class AccountController {
 	
 	@GetMapping("/listaccount")
 	public String listaccount(Model model) {
-		List<AccountEntity> accountList = accountRepository.findAll();
-		model.addAttribute("accountList", accountList);
+		
+		model.addAttribute("accountList", accountRepository.getAll());
 		return("ListAccount");
 	}
 	

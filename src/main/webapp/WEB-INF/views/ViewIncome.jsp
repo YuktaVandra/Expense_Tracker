@@ -12,8 +12,8 @@
 Income Id : ${income.incomeId } <br><br>
 Account Id : ${income.accountId } <br><br>
 User Id : ${income.userId } <br><br>
-Title : ${income.title } <br><br>
-Amount : ${income.amount } <br><br>
+Title : ${income.incomeTitle } <br><br>
+Amount : ${income.incomeAmount } <br><br>
 Description : ${income.description } <br><br>
 TransactionDate : ${income.transactionDate } <br><br>
 Status : ${income.status }

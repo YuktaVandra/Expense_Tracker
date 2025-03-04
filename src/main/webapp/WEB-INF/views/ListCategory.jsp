@@ -102,7 +102,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managaccount" class="nav-link">
+                <a href="manageaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Account</p>
                 </a>
@@ -340,15 +340,15 @@
                   <thead>
                   <tr>
                     <th>Title</th>
-                    
+                    <th>name</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                   <c:forEach items="${categoryList}" var="m">
                   <tr>
-                  <td>${m.title}</td>
-                  
+                  <td>${m.categoryTitle}</td>
+                 	<td>${m.firstName}</td>
                   <td><a href="viewcategory?categoryId=${m.categoryId }"><i class="fas fa-eye"></i> </a> | <a href="deletecategory?categoryId=${m.categoryId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
                   </tr> 
                   </c:forEach>  
@@ -356,7 +356,7 @@
                   <tfoot>
                   <tr>
                     <th>Title</th>
-                    
+					<th>name</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

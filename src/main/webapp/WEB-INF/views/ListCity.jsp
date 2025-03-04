@@ -102,7 +102,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managaccount" class="nav-link">
+                <a href="manageaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Account</p>
                 </a>
@@ -340,6 +340,7 @@
                   <thead>
                   <tr>
                      <th>CityName</th>
+                     <th>StateName</th>
 <th>Action</th>
                   </tr>
                   </thead>
@@ -348,6 +349,7 @@
                   <tr>
                  
                   <td>${m.cityName}</td>
+                  <td>${m.stateName}</td>
                   
                   <td><a href="viewcity?cityId=${m.cityId }"><i class="fas fa-eye"></i> </a> | <a href="deletecity?cityId=${m.cityId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
                   </tr> 
@@ -356,6 +358,7 @@
                   <tfoot>
                   <tr>
                     <th>CityName</th>
+                    <th>StateName</th>
 <th>Action</th>
                   </tr>
                   </tfoot>

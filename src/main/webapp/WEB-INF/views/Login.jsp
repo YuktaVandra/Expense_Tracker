@@ -59,6 +59,7 @@
         
 <div style="color: red;">
 ${error }
+
 </div>
         
       </form>
