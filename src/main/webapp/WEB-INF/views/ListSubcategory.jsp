@@ -340,6 +340,9 @@
                   <thead>
                   <tr>
                     <th>Title</th>
+					<th>User</th>
+					<th>DateTime</th>
+					<th>Category</th>
 <th>Action</th>
                   </tr>
                   </thead>
@@ -347,6 +350,9 @@
                   <c:forEach items="${subcategoryList}" var="m">
                   <tr>
                  <td>${m.subcategoryTitle}</td>
+				 <td>${m.firstName}</td>
+				 <td>${m.createdAt}</td>
+				 <td>${m.categoryTitle}</td>
                   <td><a href="viewsubcategory?subcategoryId=${m.subcategoryId }"><i class="fas fa-eye"></i> </a> | <a href="deletesubcategory?subcategoryId=${m.subcategoryId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
                   </tr> 
                   </c:forEach>  
@@ -354,6 +360,9 @@
                   <tfoot>
                   <tr>
                     <th>Title</th>
+					<th>User</th>
+					<th>DateTime</th>
+					<th>Category</th>
 <th>Action</th>
                   </tr>
                   </tfoot>

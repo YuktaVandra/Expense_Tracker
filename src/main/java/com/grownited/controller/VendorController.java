@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.entity.UserEntity;
 import com.grownited.entity.VendorEntity;
+import com.grownited.repository.UserRepository;
 import com.grownited.repository.VendorRepository;
 
 
@@ -18,10 +20,17 @@ import com.grownited.repository.VendorRepository;
 @Controller
 public class VendorController {
 	
+	
+	@Autowired
+	UserRepository userRepository;
+	
 	@Autowired
 	private VendorRepository vendorRepository;
+	
 	@GetMapping("/vendor")
-	public String vendor() {
+	public String vendor(Model model) {
+		List<UserEntity> allUser = userRepository.findAll();
+		model.addAttribute("allUser", allUser);
 		return("Vendor");
 	}
 	
@@ -33,8 +42,8 @@ public class VendorController {
 
 	@GetMapping("/listvendor")
 	public String listvendor(Model model) {
-		 List<VendorEntity> vendorList = vendorRepository.findAll();
-		 model.addAttribute("vendorList", vendorList);
+		 
+		 model.addAttribute("vendorList", vendorRepository.getAll());
 		 return "ListVendor";
 	}
 	

@@ -26,6 +26,7 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Welcome back! Sign in now</p>
+	  ${msg}
 
       <form action="authenticate" method="post">
         <div class="input-group mb-3">

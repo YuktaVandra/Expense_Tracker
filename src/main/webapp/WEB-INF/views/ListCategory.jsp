@@ -340,7 +340,7 @@
                   <thead>
                   <tr>
                     <th>Title</th>
-                    <th>name</th>
+                    <th>User</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -356,7 +356,7 @@
                   <tfoot>
                   <tr>
                     <th>Title</th>
-					<th>name</th>
+					<th>User</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

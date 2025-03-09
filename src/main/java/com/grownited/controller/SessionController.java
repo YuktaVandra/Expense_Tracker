@@ -31,7 +31,8 @@ public class SessionController {
 	PasswordEncoder encoder;
 	
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
+    
 	@GetMapping(value = {"/","signup"})
 	public String signup() {
 		return("Signup");

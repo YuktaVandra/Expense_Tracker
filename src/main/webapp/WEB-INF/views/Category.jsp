@@ -13,8 +13,8 @@ Title :- <select name="categoryTitle">
 <option value="automobile">AUTOMOBILE</option>
   <option value="household">HOUSEHOLD</option>
 </select><br><br>
-User Name <select name="userId">
-	<option>Select Name </option>
+User  <select name="userId">
+	<option>Select User </option>
 	<c:forEach items="${allUser}" var="c">
 
 						<option value="${c.userId}">${c.firstName}</option>

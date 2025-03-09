@@ -340,6 +340,8 @@
                   <thead>
                   <tr>
                     <th>Title</th>
+					<th>User</th>
+					<th>User Email</th>
 <th>Action</th>
                   </tr>
                   </thead>
@@ -347,6 +349,8 @@
                   <c:forEach items="${vendorList}" var="m">
                   <tr>
                   <td>${m.vendorTitle}</td>
+				  <td>${m.firstName}</td>
+				  <td>${m.email}</td>
                   <td><a href="viewvendor?vendorId=${m.vendorId }"><i class="fas fa-eye"></i></a> | <a href="deletevendor?vendorId=${m.vendorId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
                   </tr> 
                   </c:forEach>  
@@ -354,6 +358,8 @@
                   <tfoot>
                   <tr>
                     <th>Title</th>
+					<th>User</th>
+					<th>User Email</th>
 <th>Action</th>
                   </tr>
                   </tfoot>

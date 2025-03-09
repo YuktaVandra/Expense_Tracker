@@ -24,6 +24,7 @@ public class AccountController {
 	private AccountRepository accountRepository;
 	@GetMapping("/manageaccount")
 	public String account(Model model) {
+		
 		List<UserEntity> allUser = userRepository.findAll();// all state
 
 		model.addAttribute("allUser", allUser);

@@ -12,7 +12,8 @@ import com.grownited.entity.AccountEntity;
 @Repository
 public interface AccountRepository extends JpaRepository<AccountEntity, Integer> {
 	
-	@Query(value = "select a.*,u.first_name from users u,account a where u.user_id = a.user_id", nativeQuery = true)
+	@Query(value = "select a.account_id, a.user_id, a.account_title, a.account_amount, a.description,"
+			+ "u.first_name from users u,account a where u.user_id = a.user_id", nativeQuery = true)
 	List<AccountDto> getAll();
 	
 

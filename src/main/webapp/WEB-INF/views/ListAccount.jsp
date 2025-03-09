@@ -342,7 +342,7 @@
                     <th>Title</th>
                     <th>Amount</th>
                     <th>Description</th>
-					<th>First Name</th>
+					<th>User</th>
 					<!--<th>Last Name </th>-->
                     <th>Action</th>
                   </tr>
@@ -354,7 +354,6 @@
                   <td>${m.accountAmount}</td>
                   <td>${m.description}</td>
 				  <td>${m.firstName}</td>
-				  <!--<td>${m.LastName}</td>-->
                   <td><a href="viewaccount?accountId=${m.accountId }"><i class="fas fa-eye"></i> </a> | <a href="deleteaccount?accountId=${m.accountId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
                   </tr> 
                   </c:forEach>  
@@ -364,8 +363,8 @@
                     <th>Title</th>
                     <th>Amount</th>
                     <th>Description</th>
-					<th>First Name</th>
-				    <!--<th>Last Name </th>-->
+					<th>User</th>
+				    
                     <th>Action</th>
                   </tr>
                   </tfoot>

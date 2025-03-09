@@ -24,27 +24,18 @@
                 <textarea name="description" class="form-control" required></textarea>
             </div><br><br>
 			
-			First Name : <select name="firstName">
-						<option>Select FirstName</option>
+			User : <select name="userId">
+						<option>User</option>
 						
-						<c:forEach items="${allUser}" var="a">
+						<c:forEach items="${allUser}" var="u">
 
-								<option value="${a.userId}">${a.firstName }</option>
+								<option value="${u.userId}">${u.firstName }</option>
 						
 						</c:forEach>
 
 					</select> <br><br>
 					
-					<!--Last Name : <select name="firstName">
-											<option>Select LastName</option>
-											
-											<c:forEach items="${allUser}" var="a">
-
-													<option value="${a.userId}">${a.lastName }</option>
-											
-											</c:forEach>
-
-										</select> <br><br>-->
+					
 					
 			
             <button type="submit" class="btn btn-primary">Add Account</button>

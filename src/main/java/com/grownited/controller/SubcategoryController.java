@@ -9,17 +9,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.entity.CategoryEntity;
 import com.grownited.entity.SubcategoryEntity;
-
+import com.grownited.entity.UserEntity;
+import com.grownited.repository.CategoryRepository;
 import com.grownited.repository.SubcategoryRepository;
+import com.grownited.repository.UserRepository;
 
 @Controller
 public class SubcategoryController {
 	
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
+	CategoryRepository categoryRepository;
+	
 	@Autowired
     private SubcategoryRepository subcategoryRepository;
 	@GetMapping("/managesubcategory")
-	public String category() {
+	public String category(Model model) {
+		
+		List<UserEntity> allUser = userRepository.findAll();
+		model.addAttribute("allUser", allUser);
+		
+		List<CategoryEntity> allCategory = categoryRepository.findAll();
+		model.addAttribute("allCategory", allCategory);
+
 		return("Subcategory");
 	}
 	
@@ -31,8 +48,8 @@ public class SubcategoryController {
 	
 	@GetMapping("/listsubcategory")
 	public String listsubcategory(Model model) {
-		 List<SubcategoryEntity> subcategoryList = subcategoryRepository.findAll();
-		 model.addAttribute("subcategoryList", subcategoryList);
+		 
+		 model.addAttribute("subcategoryList", subcategoryRepository.getAll());
 		 return "ListSubcategory";
 	}
 	

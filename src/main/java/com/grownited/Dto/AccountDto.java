@@ -5,19 +5,19 @@ import java.math.BigDecimal;
 public class AccountDto {
 	
 	private Integer accountId;
-	private BigDecimal amount;
-	private String accountTitle;
-	private String description;
 	private Integer userId;
+	private String accountTitle;
+	private BigDecimal accountAmount;
+	private String description;
 	private String firstName;
-	public AccountDto(Integer accountId, BigDecimal amount, String accountTitle, String description, Integer userId,
-			String firstName) {
+	public AccountDto(Integer accountId, Integer userId, String accountTitle, BigDecimal accountAmount,
+			String description, String firstName) {
 		super();
 		this.accountId = accountId;
-		this.amount = amount;
-		this.accountTitle = accountTitle;
-		this.description = description;
 		this.userId = userId;
+		this.accountTitle = accountTitle;
+		this.accountAmount = accountAmount;
+		this.description = description;
 		this.firstName = firstName;
 	}
 	public Integer getAccountId() {
@@ -26,11 +26,11 @@ public class AccountDto {
 	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
 	}
-	public BigDecimal getAmount() {
-		return amount;
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	public String getAccountTitle() {
 		return accountTitle;
@@ -38,17 +38,17 @@ public class AccountDto {
 	public void setAccountTitle(String accountTitle) {
 		this.accountTitle = accountTitle;
 	}
+	public BigDecimal getAccountAmount() {
+		return accountAmount;
+	}
+	public void setAccountAmount(BigDecimal accountAmount) {
+		this.accountAmount = accountAmount;
+	}
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -59,4 +59,6 @@ public class AccountDto {
 	
 	
 	
+	
+
 }
