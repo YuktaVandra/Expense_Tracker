@@ -15,6 +15,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">${user.firstName}</a>
+          <a href="logout" style="background-color: blue; color: white;font-size: smaller;border-radius: 5px">Logout</a>
         </div>
       </div>
 
