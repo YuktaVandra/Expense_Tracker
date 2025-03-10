@@ -231,7 +231,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listcity" class="nav-link">
+                <a href="listcity" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of City</p>
                 </a>

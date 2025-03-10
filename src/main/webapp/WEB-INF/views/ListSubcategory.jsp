@@ -116,7 +116,7 @@
               </ul>
           </li>
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link ">
               <i class="fa-solid fa-layer-group"></i>
               <p>
                 Category
@@ -154,7 +154,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listsubcategory" class="nav-link">
+                <a href="listsubcategory" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Sub-Category</p>
                 </a>

@@ -207,7 +207,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listincome" class="nav-link">
+                <a href="listincome" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Income</p>
                 </a>

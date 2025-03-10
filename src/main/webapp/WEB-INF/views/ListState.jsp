@@ -255,7 +255,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="liststate" class="nav-link">
+                <a href="liststate" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of State</p>
                 </a>

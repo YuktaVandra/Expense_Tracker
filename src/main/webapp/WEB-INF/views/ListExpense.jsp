@@ -183,7 +183,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listexpense" class="nav-link">
+                <a href="listexpense" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Expenses</p>
                 </a>

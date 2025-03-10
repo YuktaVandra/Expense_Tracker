@@ -84,7 +84,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="listuser" class="nav-link">
+                <a href="listuser" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Users</p>
                 </a>

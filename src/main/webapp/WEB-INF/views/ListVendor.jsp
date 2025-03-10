@@ -279,7 +279,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listvendor" class="nav-link">
+                <a href="listvendor" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Vendor</p>
                 </a>
