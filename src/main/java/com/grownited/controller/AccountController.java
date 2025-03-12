@@ -1,7 +1,7 @@
 package com.grownited.controller;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.grownited.Dto.AccountDto;
+
 import com.grownited.entity.AccountEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.AccountRepository;
@@ -47,13 +47,9 @@ public class AccountController {
 	
 	@GetMapping("/viewaccount")
 	public String viewaccount(Integer accountId, Model model) {
-		Optional<AccountEntity> op = accountRepository.findById(accountId);
-		if(op.isEmpty()) {
-			//Data not Found
-		}else {
-			AccountEntity account = op.get();
-			model.addAttribute("account", account);
-		}
+		
+		
+		model.addAttribute("account", accountRepository.getbyAccountId(accountId));
 		return "ViewAccount";
 	}
 	

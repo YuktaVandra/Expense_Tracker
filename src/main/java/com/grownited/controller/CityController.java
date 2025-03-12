@@ -1,7 +1,7 @@
 package com.grownited.controller;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,13 +49,9 @@ public class CityController {
 	
 	@GetMapping("/viewcity")
 	public String viewcity(Integer cityId, Model model) {
-		Optional<CityEntity> op = cityRepository.findById(cityId);
-		if(op.isEmpty()) {
-			//Data not Found
-		}else {
-			CityEntity city = op.get();
-			model.addAttribute("city", city);
-		}
+		
+			model.addAttribute("city", cityRepository.getCityId(cityId));
+		
 		return "ViewCity";
 	}
 	

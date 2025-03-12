@@ -82,13 +82,9 @@ public class ExpenseController {
 	
 	@GetMapping("/viewexpense")
 	public String viewexpense(Integer expenseId, Model model) {
-		Optional<ExpenseEntity> op = expenseRepository.findById(expenseId);
-		if(op.isEmpty()) {
-			//Data not Found
-		}else {
-			ExpenseEntity expense = op.get();
-			model.addAttribute("expense", expense);
-		}
+		
+			model.addAttribute("expense", expenseRepository.getExpenseId(expenseId));
+		
 		return "ViewExpense";
 	}
 	

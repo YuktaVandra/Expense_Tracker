@@ -11,11 +11,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">${user.firstName}</a>
-          <a href="logout" style="background-color: blue; color: white;font-size: smaller;border-radius: 5px">Logout</a>
+          
         </div>
       </div>
 
@@ -276,7 +276,9 @@
                  </p>
             </a>
             </li>
-       
+            
+            <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
+       </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

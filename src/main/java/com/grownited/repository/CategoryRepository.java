@@ -15,4 +15,7 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity,Integer
 	@Query(value = "select c.*,u.first_name from users u,category c where u.user_id = c.user_id",nativeQuery = true)
 	List<CategoryDto> getAll();
 	
+	@Query(value = "select c.*,u.first_name from users u,category c where u.user_id = c.user_id and c.category_id = :categoryId",nativeQuery = true)
+	List<CategoryDto> getCategoryId(Integer categoryId);
+	
 }

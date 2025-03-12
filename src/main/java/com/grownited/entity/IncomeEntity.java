@@ -35,6 +35,8 @@ public class IncomeEntity {
 	
 	private Date transactionDate;
 	
+	
+	
 	public Integer getIncomeId() {
 		return incomeId;
 	}
@@ -85,6 +87,9 @@ public class IncomeEntity {
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}
+	
+	
+	
 	
 }
 	

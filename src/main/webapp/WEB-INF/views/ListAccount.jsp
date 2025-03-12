@@ -302,7 +302,8 @@
                  </p>
             </a>
             </li>
-       
+       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
+       </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -354,7 +355,7 @@
                   <td>${m.accountAmount}</td>
                   <td>${m.description}</td>
 				  <td>${m.firstName}</td>
-                  <td><a href="viewaccount?accountId=${m.accountId }"><i class="fas fa-eye"></i> </a> | <a href="deleteaccount?accountId=${m.accountId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
+                  <td><a href="viewaccount?accountId=${m.accountId }"><i class="fas fa-eye"></i> </a> | <a href="editaccount?accountId=${m.accountId }"><i class="fa-solid fa-trash"></i></a> |<a href="deleteaccount?accountId=${m.accountId }"> <i class="fas fa-edit"></i></td>
                   </tr> 
                   </c:forEach>  
                   </tbody>

@@ -1,7 +1,7 @@
 package com.grownited.controller;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,13 +55,9 @@ public class SubcategoryController {
 	
 	@GetMapping("/viewsubcategory")
 	public String viewsubcategory(Integer subcategoryId, Model model) {
-		Optional<SubcategoryEntity> op = subcategoryRepository.findById(subcategoryId);
-		if(op.isEmpty()) {
-			//Data not Found
-		}else {
-			SubcategoryEntity subcategory = op.get();
-			model.addAttribute("subcategory", subcategory);
-		}
+		
+			model.addAttribute("subcategory", subcategoryRepository.getBySubcategoryId(subcategoryId));
+		
 		return "ViewSubcategory";
 	}
 	

@@ -302,7 +302,8 @@
                  </p>
             </a>
             </li>
-       
+       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
+       </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -316,12 +317,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Category DataTable</h1>
+            <h1>City DataTable</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
-              <li class="breadcrumb-item active">Category DataTable</li>
+              <li class="breadcrumb-item active">City DataTable</li>
             </ol>
           </div>
         </div>

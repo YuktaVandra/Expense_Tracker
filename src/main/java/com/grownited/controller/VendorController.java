@@ -1,7 +1,7 @@
 package com.grownited.controller;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,13 +49,9 @@ public class VendorController {
 	
 	@GetMapping("/viewvendor")
 	public String viewvendor(Integer vendorId, Model model) {
-		Optional<VendorEntity> op = vendorRepository.findById(vendorId);
-		if(op.isEmpty()) {
-			//Data not Found
-		}else {
-			VendorEntity vendor = op.get();
-			model.addAttribute("vendor", vendor);
-		}
+		
+			model.addAttribute("vendor", vendorRepository.getByVendorId(vendorId));
+		
 		return "ViewVendor";
 	}
 	

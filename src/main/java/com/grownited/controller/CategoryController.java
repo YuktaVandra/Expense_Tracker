@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.grownited.Dto.CategoryDto;
+
 import com.grownited.entity.CategoryEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.CategoryRepository;
@@ -50,13 +50,9 @@ public class CategoryController {
 	
 	@GetMapping("/viewcategory")
 	public String viewcategory(Integer categoryId, Model model) {
-		Optional<CategoryEntity> op = categoryRepository.findById(categoryId);
-		if(op.isEmpty()) {
-			//Data not Found
-		}else {
-			CategoryEntity category = op.get();
-			model.addAttribute("category", category);
-		}
+		
+			model.addAttribute("category", categoryRepository.getCategoryId(categoryId) );
+		
 		return "ViewCategory";
 	}
 	

@@ -23,7 +23,20 @@
     <div class="card-body">
       <p class="login-box-msg">Create New Account</p>
 
-      <form action="saveuser" method="post">
+      <form action="saveuser" method="post" enctype="multipart/form-data">
+      
+      <p style="color: red;">${error }</p>
+      
+      <div class="input-group mb-3">
+          <input type="file" name="profilePic" class="form-control" placeholder="Upload Profile Picture">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-upload"></span>
+            </div>
+          </div>
+        </div>
+        
+      
         <div class="input-group mb-3">
           <input type="text" name="firstName" class="form-control" placeholder="First Name">
           <div class="input-group-append">

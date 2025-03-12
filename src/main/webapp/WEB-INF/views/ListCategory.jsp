@@ -126,13 +126,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managecategory" class="nav-link active">
+                <a href="managecategory" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listcategory" class="nav-link">
+                <a href="listcategory" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Category</p>
                 </a>
@@ -302,7 +302,8 @@
                  </p>
             </a>
             </li>
-       
+       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
+       </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

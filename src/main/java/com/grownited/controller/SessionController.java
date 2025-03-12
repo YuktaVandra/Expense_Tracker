@@ -1,7 +1,9 @@
 package com.grownited.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
-
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.UserRepository;
 import com.grownited.service.MailService;
@@ -33,6 +37,9 @@ public class SessionController {
     @Autowired
     UserRepository userRepository;
     
+    @Autowired
+    Cloudinary cloudinary;
+    
 	@GetMapping(value = {"/","signup"})
 	public String signup() {
 		return("Signup");
@@ -48,7 +55,7 @@ public class SessionController {
 	
 	@PostMapping("saveuser")
 		
-		public String saveuser(UserEntity userEntity) {
+		public String saveuser(UserEntity userEntity, MultipartFile profilePic, Model model) {
 		userEntity.setCreatedAt(new Date());
 		userEntity.setStatus(true);
 		userEntity.setRole("USER");
@@ -57,6 +64,26 @@ public class SessionController {
 		
 		String encPassword = encoder.encode(userEntity.getPassword());
 		userEntity.setPassword(encPassword);
+		
+		if(profilePic.getOriginalFilename().endsWith(".jpg") || profilePic.getOriginalFilename().endsWith(".png") || profilePic.getOriginalFilename().endsWith(".jpeg")  ) {
+			
+			try {
+				Map result = cloudinary.uploader().upload(profilePic.getBytes(), ObjectUtils.emptyMap());
+				//System.out.println(result);
+				//System.out.println(result.get("url"));
+				userEntity.setProfilePicPath(result.get("url").toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else {
+			//
+			model.addAttribute("error", "Invalid file format! Please upload a JPG, JPEG, or PNG file");
+			return "Signup";
+		}
+		
+		
 		
 		userRepository.save(userEntity);
 		

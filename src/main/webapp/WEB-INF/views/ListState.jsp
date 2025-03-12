@@ -302,7 +302,8 @@
                  </p>
             </a>
             </li>
-       
+       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
+       </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
