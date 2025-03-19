@@ -13,12 +13,14 @@ import com.grownited.entity.AccountEntity;
 public interface AccountRepository extends JpaRepository<AccountEntity, Integer> {
 	
 	@Query(value = "select a.account_id, a.user_id, a.account_title, a.account_amount, a.description,"
-			+ "u.first_name from users u,account a where u.user_id = a.user_id", nativeQuery = true)
+			+ "u.first_name,u.last_name,u.email,u.password,u.contact_no,u.status from users u,account a where u.user_id = a.user_id", nativeQuery = true)
 	List<AccountDto> getAll();
 	
 	@Query(value = "select a.account_id, a.user_id, a.account_title, a.account_amount, a.description,"
-			+ "u.first_name from users u,account a where u.user_id = a.user_id and a.account_id = :accountId", nativeQuery = true)
+			+ "u.first_name,u.last_name,u.email,u.password,u.contact_no,u.status from users u,account a where u.user_id = a.user_id and a.account_id = :accountId", nativeQuery = true)
 	List<AccountDto> getbyAccountId(Integer accountId);
+
+	
 	
 
 }

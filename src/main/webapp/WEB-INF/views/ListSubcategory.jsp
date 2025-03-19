@@ -38,10 +38,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -341,9 +341,9 @@
                   <thead>
                   <tr>
                     <th>Title</th>
-					<th>User</th>
-					<th>DateTime</th>
-					<th>Category</th>
+					<th>User First Name</th>
+					<th>User Last Name</th>
+					<th>Email</th>
 <th>Action</th>
                   </tr>
                   </thead>
@@ -352,18 +352,18 @@
                   <tr>
                  <td>${m.subcategoryTitle}</td>
 				 <td>${m.firstName}</td>
-				 <td>${m.createdAt}</td>
-				 <td>${m.categoryTitle}</td>
-                  <td><a href="viewsubcategory?subcategoryId=${m.subcategoryId }"><i class="fas fa-eye"></i> </a> | <a href="deletesubcategory?subcategoryId=${m.subcategoryId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
+				 <td>${m.lastName}</td>
+				 <td>${m.email}</td>
+                  <td><a href="viewsubcategory?subcategoryId=${m.subcategoryId }"><i class="fas fa-eye"></i> </a> | <a href="deletesubcategory?subcategoryId=${m.subcategoryId }"><i class="fa-solid fa-trash"></i></a> | <a href="editsubcategory?subcategoryId=${m.subcategoryId }"><i class="fas fa-edit"></i></a></td>
                   </tr> 
                   </c:forEach>  
                   </tbody>
                   <tfoot>
                   <tr>
                     <th>Title</th>
-					<th>User</th>
-					<th>DateTime</th>
-					<th>Category</th>
+					<th>User First Name</th>
+					<th>User Last Name</th>
+					<th>Email</th>
 <th>Action</th>
                   </tr>
                   </tfoot>

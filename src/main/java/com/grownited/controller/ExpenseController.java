@@ -1,6 +1,6 @@
 package com.grownited.controller;
 
-import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -23,67 +23,70 @@ import com.grownited.repository.SubcategoryRepository;
 import com.grownited.repository.UserRepository;
 import com.grownited.repository.VendorRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class ExpenseController {
 	
+	
+	
 	@Autowired
 	UserRepository userRepository;
-	
-	@Autowired
-	CategoryRepository categoryRepository;
-	
-	@Autowired
-	SubcategoryRepository subcategoryRepository;
-	
 	@Autowired
 	AccountRepository accountRepository;
-	
-	
+	@Autowired
+	CategoryRepository categoryRepository;
+	@Autowired
+	SubcategoryRepository subcategoryRepository;
 	@Autowired
 	VendorRepository vendorRepository;
-	
 	@Autowired
-	private ExpenseRepository expenseRepository;
+	ExpenseRepository expenseRepository;
+	
 	@GetMapping("/manageexpense")
 	public String expense(Model model) {
 		
-		List<UserEntity> allUser = userRepository.findAll();
-		model.addAttribute("allUser", allUser);
 		
-		List<CategoryEntity> allCategory = categoryRepository.findAll();
-		model.addAttribute("allCategory", allCategory);
+		List<AccountEntity> accountList =  accountRepository.findAll();
+		model.addAttribute("accountList", accountList);
 		
-		List<SubcategoryEntity> allSubcategory = subcategoryRepository.findAll();
-		model.addAttribute("allSubcategory", allSubcategory);
+		List<CategoryEntity> categoryList =  categoryRepository.findAll();
+		model.addAttribute("categoryList", categoryList);
 		
-		List<AccountEntity> allAccount = accountRepository.findAll();
-		model.addAttribute("allAccount", allAccount);
+		List<SubcategoryEntity> subcategoryList =  subcategoryRepository.findAll();
+		model.addAttribute("subcategoryList", subcategoryList);
 		
-		List<VendorEntity> allVendor = vendorRepository.findAll();
-		model.addAttribute("allVendor", allVendor);
+		List<VendorEntity> vendorList =  vendorRepository.findAll();
+		model.addAttribute("vendorList", vendorList);
+		
 		return("Expense");
 	}
 	
 	@PostMapping("saveexpense")
-	public String saveexpense(ExpenseEntity expenseEntity) {
-		expenseEntity.setStatus(true);
-		expenseEntity.setTransactionDate(new Date());
+	public String saveexpense(ExpenseEntity expenseEntity,HttpSession session) {
+		
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		Integer userId = user.getUserId();
+		expenseEntity.setUserId(userId);
+	
 		expenseRepository.save(expenseEntity);
+		
 		return "redirect:/listexpense";
 	}
 	
 	@GetMapping("/listexpense")
 	public String listexpense(Model model) {
-		 
-		 model.addAttribute("expenseList", expenseRepository.getAll());
+		List<Object[]> expenseList = expenseRepository.getAll();
+		 model.addAttribute("expenseList", expenseList);
 		 return "ListExpense";
 	}
 	
 	@GetMapping("/viewexpense")
 	public String viewexpense(Integer expenseId, Model model) {
 		
-			model.addAttribute("expense", expenseRepository.getExpenseId(expenseId));
+		List<Object[]> op = expenseRepository.getExpenseId(expenseId);
+			model.addAttribute("expense", op);
 		
 		return "ViewExpense";
 	}
@@ -93,6 +96,38 @@ public class ExpenseController {
 		expenseRepository.deleteById(expenseId);
 		return "redirect:/listexpense";
 	}
+	
+	@GetMapping("editexpense")
+	public String editExpense(Integer expenseId,Model model) {
+		Optional<ExpenseEntity> op = expenseRepository.findById(expenseId);
+		if (op.isEmpty()) {
+			return "redirect:/listexpense";
+		} else {
+			model.addAttribute("expense",op.get());
+			return "EditExpense";
+
+		}
+	}
+	
+	@PostMapping("updateexpense")
+	public String updateExpense(ExpenseEntity expenseEntity) { 
+		
+		System.out.println(expenseEntity.getExpenseId()); 
+
+		Optional<ExpenseEntity> op = expenseRepository.findById(expenseEntity.getExpenseId());
+		
+		if(op.isPresent())
+		{
+			ExpenseEntity dbExpense = op.get();  
+			dbExpense.setExpenseAmount(expenseEntity.getExpenseAmount()); 
+			dbExpense.setStatus(expenseEntity.getStatus());
+			dbExpense.setTransactionDate(expenseEntity.getTransactionDate());
+			dbExpense.setDescription(expenseEntity.getDescription());
+			expenseRepository.save(dbExpense);
+		}
+		return "redirect:/listexpense";
+	}
+	
 	
 
 }

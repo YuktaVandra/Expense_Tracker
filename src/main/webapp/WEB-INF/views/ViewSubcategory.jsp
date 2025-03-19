@@ -38,10 +38,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -340,12 +340,13 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                  <th>Sub-CategoryId</th>
+                  <th>Sub-Category Id</th>
                     <th>Title</th>
-                    <th>UserId</th>
-					<th>User</th>
-					<th>DateTime</th>
-					<th>CategoryId</th>
+                    <th>User Id</th>
+					<th>User First Name</th>
+					<th>User Last Name</th>
+					<th>Email</th>
+					<th>Category Id</th>
 					<th>Category</th>
 
                   </tr>
@@ -357,23 +358,14 @@
                  <td>${m.subcategoryTitle}</td>
                   <td>${m.userId}</td>
 				 <td>${m.firstName}</td>
-				 <td>${m.createdAt}</td>
+				 <td>${m.lastName}</td>
+				 <td>${m.email}</td>
 				  <td>${m.categoryId}</td>
 				 <td>${m.categoryTitle}</td>
                   </tr> 
                   </c:forEach>  
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Sub-CategoryId</th>
-                    <th>Title</th>
-                    <th>UserId</th>
-					<th>User</th>
-					<th>DateTime</th>
-					<th>CategoryId</th>
-					<th>Category</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->

@@ -1,7 +1,7 @@
 package com.grownited.controller;
 
-import java.util.List;
 
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,9 @@ import com.grownited.entity.UserEntity;
 import com.grownited.repository.AccountRepository;
 import com.grownited.repository.UserRepository;
 
+
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class AccountController {
 	
@@ -22,19 +25,25 @@ public class AccountController {
 	UserRepository userRepository;
 	@Autowired
 	private AccountRepository accountRepository;
+	
 	@GetMapping("/manageaccount")
-	public String account(Model model) {
-		
-		List<UserEntity> allUser = userRepository.findAll();// all state
-
-		model.addAttribute("allUser", allUser);
+	public String account() {
 		
 		return("Account");
 	}
 	
 	@PostMapping("saveaccount")
-	public String saveaccount(AccountEntity accountEntity) {
+	public String saveaccount(AccountEntity accountEntity,HttpSession session) {
+		
+		
+		
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		Integer userId = user.getUserId();
+		accountEntity.setUserId(userId);
+		
 		accountRepository.save(accountEntity);
+		
+		
 		return "redirect:/listaccount";
 	}
 	
@@ -48,8 +57,8 @@ public class AccountController {
 	@GetMapping("/viewaccount")
 	public String viewaccount(Integer accountId, Model model) {
 		
-		
-		model.addAttribute("account", accountRepository.getbyAccountId(accountId));
+	    model.addAttribute("account", accountRepository.getbyAccountId(accountId));
+	    
 		return "ViewAccount";
 	}
 	
@@ -58,5 +67,40 @@ public class AccountController {
 		accountRepository.deleteById(accountId);
 		return "redirect:/listaccount";
 	}
+	
+	@GetMapping("/editaccount")
+		public String editaccount(Integer accountId, Model model) {
+		Optional<AccountEntity> op = accountRepository.findById(accountId);
+		if(op.isEmpty()) {
+			return "redirect:/listaccount";
+		}else {
+			AccountEntity dbAccount = op.get();
+			model.addAttribute("account", dbAccount);
+			
+			return "EditAccount";
+		}
+		}
+	
+	@PostMapping("/updateaccount")
+	public String updateaccount(AccountEntity accountEntity) {
+		System.out.println(accountEntity.getAccountId()); 
+
+		Optional<AccountEntity> op = accountRepository.findById(accountEntity.getAccountId());
+		
+		if(op.isPresent()) {
+		
+			AccountEntity dbAccount = op.get(); 
+			dbAccount.setAccountAmount(accountEntity.getAccountAmount()) ;
+			dbAccount.setDescription(accountEntity.getDescription());
+			accountRepository.save(dbAccount);
+		}
+		return "redirect:/listaccount";
+	}
+	
+		
+	
+	
+	
+	
 
 }

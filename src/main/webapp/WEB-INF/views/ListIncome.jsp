@@ -38,10 +38,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -343,36 +343,37 @@
                     <th>Title</th>
 <th>Amount</th>
 <th>Description</th>
-<th>User</th>
-<th>Account</th>
-<th>Account Amount</th>
-<th>Action</th>
-                    
+<th>Status</th>
+<th>Transaction Date</th>
+<th>User First Name</th>
+<th>User Last Name</th>
+                  <th>Action</th>  
                   </tr>
                   </thead>
                   <tbody>
                   <c:forEach items="${incomeList}" var="m">
                   <tr>
-                  <td>${m.incomeTitle}</td>
-                  <td>${m.incomeAmount}</td>
-                  <td>${m.description}</td>
-				  <td>${m.firstName}</td>
-				  <td>${m.accountTitle}</td>
-				  <td>${m.accountAmount}</td>
+                  <td>${m[3]}</td>
+                  <td>${m[4]}</td>
+                  <td>${m[5]}</td>
+				  <td>${m[6]}</td>
+				  <td>${m[7]}</td>
+				  <td>${m[8]}</td>
+                  <td>${m[9]}</td>
                   
-                  
-                  <td><a href="viewincome?incomeId=${m.incomeId }"><i class="fas fa-eye"></i> </a> | <a href="deleteincome?incomeId=${m.incomeId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
+                  <td><a href="viewincome?incomeId=${m[0] }"><i class="fas fa-eye"></i> </a> | <a href="deleteincome?incomeId=${m[0] }"><i class="fa-solid fa-trash"></i></a> | <a href="editincome?incomeId=${m[0] }"><i class="fas fa-edit"></i></a></td>
                   </tr> 
                   </c:forEach>  
                   </tbody>
                   <tfoot>
                   <tr>
                     <th>Title</th>
-                    <th>Amount</th>
+<th>Amount</th>
 <th>Description</th>
-<th>User</th>
-<th>Account</th>
-<th>Account Amount</th>
+<th>Status</th>
+<th>Transaction Date</th>
+<th>User First Name</th>
+<th>User Last Name</th>
 <th>Action</th>
                   </tr>
                   </tfoot>

@@ -38,10 +38,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -344,8 +344,13 @@
                     <th>Title</th>
                     <th>Amount</th>
                     <th>Description</th>
-                    <th>UserId</th>
-					<th>User</th>
+                    <th>User Id</th>
+					<th>User First Name</th>
+					<th>User Last Name</th>
+					<th>User Email</th>
+					<th>User ContactNo</th>
+					<th>User Status</th>
+					<th>User Password</th>
 					<!--<th>Last Name </th>-->
                     
                   </tr>
@@ -359,20 +364,15 @@
                   <td>${a.description}</td>
                   <td>${a.userId }</td>
 				  <td>${a.firstName}</td>
-                  
+                  <td>${a.lastName}</td>
+                  <td>${a.email}</td>
+                  <td>${a.contactNo}</td>
+                  <td>${a.status}</td>
+                  <td>${a.password}</td>
                   </tr> 
                   </c:forEach>  
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>AccountId</th>
-                    <th>Title</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                    <th>UserId</th>
-					<th>User</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->

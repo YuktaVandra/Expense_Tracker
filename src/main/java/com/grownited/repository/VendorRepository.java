@@ -13,12 +13,12 @@ import com.grownited.entity.VendorEntity;
 public interface VendorRepository extends JpaRepository<VendorEntity, Integer> {
 	
 	@Query(value = "SELECT v.vendor_id,  v.user_id, v.vendor_title,"
-			+ "u.first_name, u.email   FROM  vendor v, users u WHERE v.user_id = u.user_id ",nativeQuery = true)
+			+ "u.first_name,u.last_name, u.email   FROM  vendor v, users u WHERE v.user_id = u.user_id ",nativeQuery = true)
 	
 	List<VendorDto> getAll();
 	
 	@Query(value = "SELECT v.vendor_id,  v.user_id, v.vendor_title,"
-			+ "u.first_name, u.email   FROM  vendor v, users u WHERE v.user_id = u.user_id and v.vendor_id = :vendorId",nativeQuery = true)
+			+ "u.first_name,u.last_name, u.email   FROM  vendor v, users u WHERE v.user_id = u.user_id and v.vendor_id = :vendorId",nativeQuery = true)
 	
 	List<VendorDto> getByVendorId(Integer vendorId);
 

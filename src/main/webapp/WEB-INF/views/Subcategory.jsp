@@ -53,10 +53,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -351,7 +351,7 @@
         <div class="card card-default">
           
           <div class="card-body">
-          <form action="saveaccount" method="post" class="mb-4">
+          <form action="savesubcategory" method="post" class="mb-4">
           
           <div class="row">
     <!-- Left Side: Title and Amount -->
@@ -368,44 +368,20 @@
         </div>
         
         <div class="form-group mb-3">
-            <label>User:</label>
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="userId">
-                <option selected="selected">Select User</option>
-                <c:forEach items="${allUser}" var="s">
-                    <option value="${s.userId}">${s.firstName}</option>
-                </c:forEach>
-            </select>
-            
-        </div>
+             <label>Category:</label>
+             <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="categoryId">
+                 <option selected="selected">Select Category</option>
+                 <c:forEach items="${categoryList}" var="c">
+                     <option value="${c.categoryId}">${c.categoryTitle}</option>
+                 </c:forEach>
+             </select>
+         </div>
         
+        </div>
         
     </div>
 
-    <!-- Right Side: Description and User -->
-    <div class="col-md-6">
-        <div class="form-group mb-3">
-            <label>Date Time:</label>
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="userId">
-                <option selected="selected">Select DteTime</option>
-                <c:forEach items="${allUser}" var="s">
-                    <option value="${s.userId}">${s.createdAt}</option>
-                </c:forEach>
-            </select>
-            
-        </div>
-
-        <div class="form-group mb-3">
-            <label>Category:</label>
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="categoryId">
-                <option selected="selected">Select Category</option>
-                <c:forEach items="${allCategory}" var="s">
-                    <option value="${s.categoryId}">${s.categoryTitle}</option>
-                </c:forEach>
-            </select>
-        </div>
-    </div>
-</div>
-
+    
 <button type="submit" class="btn btn-primary">Add Sub-Category</button>
 </form>
           

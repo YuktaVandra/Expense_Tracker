@@ -53,10 +53,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -360,19 +360,11 @@
             <label class="form-label">City Name</label>
             <input class="form-control " style="width: 100%;" type="text" name="cityName">
         </div>
-        <div class="form-group mb-3">
-            <label>State:</label>
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="stateId">
-			<option>Select State</option>
-			
-			<c:forEach items="${allState}" var="s">
+        <c:forEach items="${allState}" var="s">
 
 					<option value="${s.stateId}">${s.stateName }</option>
 			
 			</c:forEach>
-
-		</select> 
-        </div>
     </div>
 </div>
 

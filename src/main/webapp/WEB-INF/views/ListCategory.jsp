@@ -38,10 +38,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -350,7 +350,7 @@
                   <tr>
                   <td>${m.categoryTitle}</td>
                  	<td>${m.firstName}</td>
-                  <td><a href="viewcategory?categoryId=${m.categoryId }"><i class="fas fa-eye"></i> </a> | <a href="deletecategory?categoryId=${m.categoryId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
+                  <td><a href="viewcategory?categoryId=${m.categoryId }"><i class="fas fa-eye"></i> </a> | <a href="deletecategory?categoryId=${m.categoryId }"><i class="fa-solid fa-trash"></i></a> |<a href="editcategory?categoryId=${m.categoryId }"> <i class="fas fa-edit"></i></a></td>
                   </tr> 
                   </c:forEach>  
                   </tbody>

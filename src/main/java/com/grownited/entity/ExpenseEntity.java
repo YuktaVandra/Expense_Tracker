@@ -1,7 +1,8 @@
 package com.grownited.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,9 +34,9 @@ public class ExpenseEntity {
 	
 	private String description;
 	
-	private Boolean status;
+	private String status;
 	
-	private Date transactionDate;
+	private LocalDate transactionDate;
 	
 	public Integer getExpenseId() {
 		return expenseId;
@@ -93,16 +94,17 @@ public class ExpenseEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Boolean getStatus() {
+	
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getTransactionDate() {
+	public LocalDate getTransactionDate() {
 		return transactionDate;
 	}
-	public void setTransactionDate(Date transactionDate) {
+	public void setTransactionDate(LocalDate transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 	

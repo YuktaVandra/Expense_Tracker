@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 import com.grownited.entity.StateEntity;
 import com.grownited.repository.StateRepository;
 
@@ -54,6 +53,27 @@ public class StateController {
 	public String deletestate(Integer stateId) {
 		stateRepository.deleteById(stateId);
 		return "redirect:/liststate";
+	}
+	
+	@GetMapping("editstate")
+	public String editstate(Integer stateId,Model model) {
+		Optional<StateEntity>op=stateRepository.findById(stateId);
+		if(op.isEmpty()) {
+			return"redirect:/liststate";
+		}else {
+			model.addAttribute("state", op.get());
+			return"EditState";
+		}
+	}
+	
+	@PostMapping("updatestate")
+	public String updateState(StateEntity stateEntity) {
+		Optional<StateEntity>op=stateRepository.findById(stateEntity.getStateId());
+		if(op.isPresent()) {
+			StateEntity dbstate=op.get();
+			dbstate.setStateName(stateEntity.getStateName());
+			stateRepository.save(dbstate);
+		}return"redirect:/liststate";
 	}
 
 }

@@ -1,7 +1,8 @@
 package com.grownited.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 
 import jakarta.persistence.Entity;
@@ -31,9 +32,9 @@ public class IncomeEntity {
 	private String description;
 	
 	
-	private Boolean status;
+	private String status;
 	
-	private Date transactionDate;
+	private LocalDate transactionDate;
 	
 	
 	
@@ -75,21 +76,18 @@ public class IncomeEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Boolean getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getTransactionDate() {
+	public LocalDate getTransactionDate() {
 		return transactionDate;
 	}
-	public void setTransactionDate(Date transactionDate) {
+	public void setTransactionDate(LocalDate transactionDate) {
 		this.transactionDate = transactionDate;
 	}
-	
-	
-	
 	
 }
 	

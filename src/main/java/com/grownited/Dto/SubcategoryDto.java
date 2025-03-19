@@ -1,6 +1,5 @@
 package com.grownited.Dto;
 
-import java.util.Date;
 
 public class SubcategoryDto {
 	
@@ -14,19 +13,22 @@ private Integer subcategoryId;
 	
 	private String firstName;
 	
-	private Date createdAt;
+	private String lastName;
+	
+	private String email;
 	
 	private String categoryTitle;
 
 	public SubcategoryDto(Integer subcategoryId, Integer categoryId, Integer userId, String subcategoryTitle,
-			String firstName, Date createdAt, String categoryTitle) {
+			String firstName, String lastName, String email, String categoryTitle) {
 		super();
 		this.subcategoryId = subcategoryId;
 		this.categoryId = categoryId;
 		this.userId = userId;
 		this.subcategoryTitle = subcategoryTitle;
 		this.firstName = firstName;
-		this.createdAt = createdAt;
+		this.lastName = lastName;
+		this.email = email;
 		this.categoryTitle = categoryTitle;
 	}
 
@@ -70,12 +72,20 @@ private Integer subcategoryId;
 		this.firstName = firstName;
 	}
 
-	public Date getCreatedAt() {
-		return createdAt;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getCategoryTitle() {
@@ -85,7 +95,6 @@ private Integer subcategoryId;
 	public void setCategoryTitle(String categoryTitle) {
 		this.categoryTitle = categoryTitle;
 	}
-	
-	
 
+	
 }

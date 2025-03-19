@@ -38,10 +38,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -343,12 +343,9 @@
                     <th>Title</th>
 <th>Amount</th>
 <th>Description</th>
-<th>User</th>
-<th>Category</th>
-<th>SubCategory</th>
-<th>Account</th>
-<th>Account Amount</th>
-<th>Vendor</th>
+<th>User First Name</th>
+<th>User Last Name</th>
+
 <th>Action</th>
                     
                   </tr>
@@ -356,16 +353,12 @@
                   <tbody>
                   <c:forEach items="${expenseList}" var="m">
                   <tr>
-                  <td>${m.expenseTitle}</td>
-<td>${m.expenseAmount}</td>
-<td>${m.description}</td>
-<td>${m.firstName}</td>
-<td>${m.categoryTitle}</td>
-<td>${m.subcategoryTitle}</td>
-<td>${m.accountTitle}</td>
-<td>${m.accountAmount}</td>
-<td>${m.vendorTitle}</td>
-<td><a href="viewexpense?expenseId=${m.expenseId }"><i class="fas fa-eye"></i></a>| <a href="deleteexpense?expenseId=${m.expenseId }"><i class="fa-solid fa-trash"></i></a> | <i class="fas fa-edit"></i></td>
+                  <td>${m[6]}</td>
+<td>${m[7]}</td>
+<td>${m[8]}</td>
+<td>${m[11]}</td>
+<td>${m[12]}</td>
+<td><a href="viewexpense?expenseId=${m[0] }"><i class="fas fa-eye"></i></a>| <a href="deleteexpense?expenseId=${m[0] }"><i class="fa-solid fa-trash"></i></a> | <a href="editexpense?expenseId=${m[0] }"><i class="fas fa-edit"></i></a></td>
                   
                   </tr> 
                   </c:forEach>  
@@ -375,12 +368,9 @@
 					<th>Title</th>
 					<th>Amount</th>
 					<th>Description</th>
-					<th>User</th>
-					<th>Category</th>
-					<th>SubCategory</th>
-					<th>Account</th>
-					<th>Account Amount</th>
-					<th>Vendor</th>
+					<th>User First Name</th>
+<th>User Last Name</th>
+					
 					<th>Action</th>
                     
                   </tr>

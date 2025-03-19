@@ -53,10 +53,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath} " class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">${user.firstName}</a>
+          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -361,36 +361,43 @@
         </div>
         
         <div class="form-group mb-3">
-            <label>User:</label>
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="userId">
-                <option selected="selected">Select User</option>
-                <c:forEach items="${allUser}" var="u">
-                    <option value="${u.userId}">${u.firstName}</option>
-                </c:forEach>
-            </select>
+        <label class="form-label">Status:</label>
+        <select name="status" class="form-control" required >
+            <option value="PENDING">Pending</option>
+            <option value="APPROVED">Approved</option>
+            <option value="REJECTED">Rejected</option>
+            <option value="PAID">Paid</option>
+            <option value="UNPAID">Unpaid</option>
+            <option value="REIMBURSED">Reimbursed</option>
+            <option value="CANCELLED">Cancelled</option>
+        </select>
         </div>
         
         <div class="form-group mb-3">
-            <label>Sub-Category:</label> <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="subcategoryId">
-		<option>Select Sub-Category</option>
-              <c:forEach items="${allSubcategory}" var="s">
-
-	<option value="${s.subcategoryId}">${s.subcategoryTitle }</option>
-																					
-	</c:forEach>
+            <label class="form-label">Category:</label>
+            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="categoryId">
+            <option selected="selected">Select Category</option>
+            <c:forEach items="${categoryList}" var="c">
+ 
+ 	<option value="${c.categoryId}">${c.categoryTitle }</option>
+ 																					
+ 	</c:forEach>
 </select>
-</div>
-
-<div class="form-group mb-3">
-            <label>Account Amount:</label> 
- <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="accountId">
-<option>Select Account Amount</option>
-		<c:forEach items="${allAccount}" var="a">
-<option value="${a.accountId}">${a.accountAmount }</option>
-</c:forEach>
-</select>
-</div>
-
+        </div>
+       
+        
+       <div class="form-group mb-3">
+    <label>Vendor:</label>
+     <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="vendorId">
+ <option selected="selected" >Select Vendor</option>
+ <c:forEach items="${vendorList}" var="v">
+ 
+ <option value="${v.vendorId}">${v.vendorTitle }</option>
+ </c:forEach>
+ 
+ </select> 
+    </div>    
+        
 <div class="form-group mb-3">
             <label class="form-label">Description:</label>
             <textarea name="description" class="form-control" required></textarea>
@@ -406,50 +413,41 @@
         </div>
         
         <div class="form-group mb-3">
-            <label>Category:</label>
-         <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="categoryId">
-		<option>Select Category</option>
-											
-		<c:forEach items="${allCategory}" var="c">
-
-	        <option value="${c.categoryId}">${c.categoryTitle }</option>
-											
-		</c:forEach>
-
-	       </select>
-	       </div>
-	       
-	       <div class="form-group mb-3">
-            <label>Account:</label>
-	        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="accountId">
-<option>Select Account</option>
-		<c:forEach items="${allAccount}" var="a">
-			<option value="${a.accountId}">${a.accountTitle }</option>
-</c:forEach>	
+        <label>Transaction Date:</label>
+        <input type="date" name="transactionDate" class="form-control"  required>
+	     </div>  
+	     
+	 <div class="form-group mb-3">      
+    
+             <label>Sub-Category:</label> 
+             <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="subcategoryId">
+            <option selected="selected">Select Sub-Category</option>
+<c:forEach items="${subcategoryList}" var="s">
+ 
+ 	<option value="${s.subcategoryId}">${s.subcategoryTitle }</option>
+ 																					
+ 	</c:forEach>
 </select>
-
         
-    </div>
-    
+      </div>  
+      
+      
     <div class="form-group mb-3">
-   <label>Vendor:</label>
-    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="vendorId">
-<option>Select Vendor</option>
-<c:forEach items="${allVendor}" var="v">
-
-<option value="${v.vendorId}">${v.vendorTitle }</option>
-</c:forEach>
-
-</select>
-</div>
-    
+             <label>Account:</label>
+ 	        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="accountId">
+ <option>Select Account</option>
+ 		<c:forEach items="${accountList}" var="a">
+ 			<option value="${a.accountId}">${a.accountTitle }</option>
+ </c:forEach>	
+ </select>
+    </div>
    
 </div>
 
 
 
 
-<button type="submit" class="btn btn-primary">Add Account</button>
+<button type="submit" class="btn btn-primary">Add Expense</button>
 </form>
           
           

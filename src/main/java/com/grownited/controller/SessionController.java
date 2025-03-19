@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.grownited.entity.AccountEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.UserRepository;
 import com.grownited.service.MailService;
@@ -57,7 +58,7 @@ public class SessionController {
 		
 		public String saveuser(UserEntity userEntity, MultipartFile profilePic, Model model) {
 		userEntity.setCreatedAt(new Date());
-		userEntity.setStatus(true);
+		userEntity.setStatus("ACTIVE");
 		userEntity.setRole("USER");
 		
 		serviceMail.sendWelcomeMail(userEntity.getEmail(), userEntity.getFirstName());
@@ -144,7 +145,7 @@ public class SessionController {
 					return "redirect:/admindashboard";
 				} else if (dbUser.getRole().equals("USER")) {
 
-					return "redirect:/home";
+					return "redirect:/admindashboard";
 				} else {
 					model.addAttribute("error", "Please contact Admin with Error Code #0991");
 					return "Login";
@@ -218,6 +219,38 @@ public String updatepassword(String email, String password, String otp, Model mo
 	model.addAttribute("msg","Password updated");
 	return "Login";
 }
+
+@GetMapping("/edituser")
+public String editUser(Integer userId, Model model) {
+Optional<UserEntity> op = userRepository.findById(userId);
+if(op.isEmpty()) {
+	return "redirect:/listuser";
+}else {
+	UserEntity dbUser = op.get();
+	model.addAttribute("user", dbUser);
+	
+	return "EditUsers";
+}
+}
+
+@PostMapping("/updateuser")
+public String updateUser(UserEntity userEntity) {
+System.out.println(userEntity.getUserId()); 
+
+Optional<UserEntity> op = userRepository.findById(userEntity.getUserId());
+
+if(op.isPresent()) {
+
+	UserEntity dbUser = op.get(); 
+	dbUser.setFirstName(userEntity.getFirstName());
+	dbUser.setLastName(userEntity.getLastName());
+	dbUser.setContactNo(userEntity.getContactNo());
+	dbUser.setProfilePicPath(userEntity.getProfilePicPath());
+	userRepository.save(dbUser);
+}
+return "redirect:/listuser";
+}
+
 
 }
 

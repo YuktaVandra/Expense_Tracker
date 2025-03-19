@@ -10,14 +10,18 @@ public class VendorDto {
 	
 	private String firstName;
 	
+	private String lastName;
+	
 	private String email;
 
-	public VendorDto(Integer vendorId, Integer userId, String vendorTitle, String firstName, String email) {
+	public VendorDto(Integer vendorId, Integer userId, String vendorTitle, String firstName, String lastName,
+			String email) {
 		super();
 		this.vendorId = vendorId;
 		this.userId = userId;
 		this.vendorTitle = vendorTitle;
 		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 	}
 
@@ -53,6 +57,14 @@ public class VendorDto {
 		this.firstName = firstName;
 	}
 
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -60,7 +72,6 @@ public class VendorDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 
+	
 }

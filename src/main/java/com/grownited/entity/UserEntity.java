@@ -23,7 +23,7 @@ public class UserEntity {
 	private String password;
 	private String contactNo ;
 	private String role;
-	private Boolean status;
+	private String status;
 	private Date createdAt;
 	private String otp;
 	private String profilePicPath;
@@ -70,10 +70,11 @@ public class UserEntity {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public Boolean getStatus() {
+	
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public Date getCreatedAt() {
