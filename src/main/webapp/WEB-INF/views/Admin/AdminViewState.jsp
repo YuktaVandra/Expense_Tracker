@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Of User</title>
+  <title>View State</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,7 +38,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
@@ -73,8 +73,8 @@
             
           </li>
           
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fa-solid fa-user"></i>
               <p>
                 Users
@@ -84,7 +84,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="listuser" class="nav-link active">
+                <a href="listuser" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Users</p>
                 </a>
@@ -101,14 +101,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageaccount" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Account</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listaccount" class="nav-link">
+                <a href="adminlistaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Account</p>
                 </a>
@@ -125,14 +120,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="managecategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcategory" class="nav-link">
+                <a href="adminlistcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Category</p>
                 </a>
@@ -147,12 +137,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="managesubcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Sub-Category</p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="listsubcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -176,14 +161,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageexpense" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Expenses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listexpense" class="nav-link">
+                <a href="adminlistexpense" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Expenses</p>
                 </a>
@@ -200,14 +180,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageincome" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Income</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listincome" class="nav-link">
+                <a href="adminlistincome" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Income</p>
                 </a>
@@ -224,22 +199,17 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
+                <a href="adminlistcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of City</p>
                 </a>
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="fa-solid fa-map-location-dot"></i>
               <p>
                 State
@@ -255,7 +225,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="liststate" class="nav-link">
+                <a href="adminliststate" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of State</p>
                 </a>
@@ -272,12 +242,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="vendor" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Vendor</p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="listvendor" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -317,12 +282,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>User DataTable</h1>
+            <h1> View State </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
-              <li class="breadcrumb-item active">User DataTable</li>
+              <li class="breadcrumb-item active"> View State </li>
             </ol>
           </div>
         </div>
@@ -340,36 +305,25 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    
-                    <th>Contact No</th>
-                    <th>Action</th>
+                  <th>StateId</th>
+                    <th>StateName</th>
+
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach items="${userList}" var="m">
+                  
                   <tr>
-                  <td>${m.firstName}</td>
-                  <td>${m.lastName}</td>
-                  <td>${m.email}</td>
+                  <td>${state.stateId }</td>
+                  <td>${state.stateName}</td>
                   
-                  <td>${m.contactNo}</td>
-                  <td> <a href="viewuser?userId=${m.userId }"><i class="fas fa-eye"></i></a> | <a href="deleteuser?userId=${m.userId }"><i class="fa-solid fa-trash"></i></a> | <a href="edituser?userId=${m.userId }"><i class="fas fa-edit"></i></a></td>
-                  
-                  </tr> 
-                  </c:forEach>  
+                   </tr> 
+                   
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>first Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    
-                    <th>Contact No</th>
-                    <th>Action</th>
-                    
+                  <th>StateId</th>
+                    <th>StateName</th>
+
                   </tr>
                   </tfoot>
                 </table>

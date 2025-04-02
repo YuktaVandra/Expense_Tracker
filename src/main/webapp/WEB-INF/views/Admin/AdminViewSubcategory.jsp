@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>View State</title>
+  <title>View Sub-Category</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -22,7 +22,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   
-  <jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
+  <jsp:include page="AdminHeader.jsp"></jsp:include>
   
   
   <!-- Main Sidebar Container -->
@@ -38,7 +38,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
@@ -110,7 +110,7 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link ">
               <i class="fa-solid fa-layer-group"></i>
               <p>
@@ -127,8 +127,8 @@
                   <p>List of Category</p>
                 </a>
               </li>
-              <li class="nav-item">
-            <a href="#" class="nav-link">
+              <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="fa-solid fa-rectangle-list"></i>
               <p>
                 Sub-Category
@@ -137,9 +137,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-             
+              
               <li class="nav-item">
-                <a href="adminlistsubcategory" class="nav-link">
+                <a href="adminlistsubcategory" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Sub-Category</p>
                 </a>
@@ -208,8 +208,8 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fa-solid fa-map-location-dot"></i>
               <p>
                 State
@@ -218,14 +218,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item ">
+              <li class="nav-item">
                 <a href="newstate" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add State</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="adminliststate" class="nav-link active">
+                <a href="adminliststate" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of State</p>
                 </a>
@@ -282,12 +282,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1> View State </h1>
+            <h1>View Sub-Category </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
-              <li class="breadcrumb-item active"> View State </li>
+              <li class="breadcrumb-item active">View Sub-Category </li>
             </ol>
           </div>
         </div>
@@ -305,27 +305,32 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                  <th>StateId</th>
-                    <th>StateName</th>
+                  <th>Sub-Category Id</th>
+                    <th>Title</th>
+                    <th>User Id</th>
+					<th>User First Name</th>
+					<th>User Last Name</th>
+					<th>Email</th>
+					<th>Category Id</th>
+					<th>Category</th>
 
                   </tr>
                   </thead>
                   <tbody>
-                  
+                  <c:forEach items="${subcategory}" var="m">
                   <tr>
-                  <td>${state.stateId }</td>
-                  <td>${state.stateName}</td>
-                  
-                   </tr> 
-                   
+                  <td>${m.subcategoryId}</td> 
+                 <td>${m.subcategoryTitle}</td>
+                  <td>${m.userId}</td>
+				 <td>${m.firstName}</td>
+				 <td>${m.lastName}</td>
+				 <td>${m.email}</td>
+				  <td>${m.categoryId}</td>
+				 <td>${m.categoryTitle}</td>
+                  </tr> 
+                  </c:forEach>  
                   </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>StateId</th>
-                    <th>StateName</th>
-
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->
@@ -343,7 +348,7 @@
   </div>
   <!-- /.content-wrapper -->
   
- <jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
+ <jsp:include page="AdminFooter.jsp"></jsp:include>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

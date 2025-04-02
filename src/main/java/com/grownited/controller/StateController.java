@@ -27,18 +27,18 @@ public class StateController {
 	@PostMapping("savestate")
 		public String savestate(StateEntity entityState) {
 		stateRepository.save(entityState);
-		return "redirect:/liststate";
+		return "redirect:/adminliststate";
 	}
 	
-	@GetMapping("/liststate")
-	public String liststate(Model model) {
+	@GetMapping("/adminliststate")
+	public String adminliststate(Model model) {
 		 List<StateEntity> stateList = stateRepository.findAll();
 		 model.addAttribute("stateList", stateList);
-		 return "ListState";
+		 return "Admin/AdminListState";
 	}
 	
-	@GetMapping("/viewstate")
-	public String viewstate(Integer stateId, Model model) {
+	@GetMapping("/adminviewstate")
+	public String adminviewstate(Integer stateId, Model model) {
 		Optional<StateEntity> op = stateRepository.findById(stateId);
 		if(op.isEmpty()) {
 			//Data not Found
@@ -46,34 +46,34 @@ public class StateController {
 			StateEntity state = op.get();
 			model.addAttribute("state", state);
 		}
-		return "ViewState";
+		return "Admin/AdminViewState";
 	}
 	
-	@GetMapping("/deletestate")
-	public String deletestate(Integer stateId) {
+	@GetMapping("/admindeletestate")
+	public String admindeletestate(Integer stateId) {
 		stateRepository.deleteById(stateId);
-		return "redirect:/liststate";
+		return "redirect:/adminliststate";
 	}
 	
-	@GetMapping("editstate")
-	public String editstate(Integer stateId,Model model) {
-		Optional<StateEntity>op=stateRepository.findById(stateId);
-		if(op.isEmpty()) {
-			return"redirect:/liststate";
-		}else {
-			model.addAttribute("state", op.get());
-			return"EditState";
-		}
-	}
-	
-	@PostMapping("updatestate")
-	public String updateState(StateEntity stateEntity) {
-		Optional<StateEntity>op=stateRepository.findById(stateEntity.getStateId());
-		if(op.isPresent()) {
-			StateEntity dbstate=op.get();
-			dbstate.setStateName(stateEntity.getStateName());
-			stateRepository.save(dbstate);
-		}return"redirect:/liststate";
-	}
+//	@GetMapping("editstate")
+//	public String editstate(Integer stateId,Model model) {
+//		Optional<StateEntity>op=stateRepository.findById(stateId);
+//		if(op.isEmpty()) {
+//			return"redirect:/liststate";
+//		}else {
+//			model.addAttribute("state", op.get());
+//			return"EditState";
+//		}
+//	}
+//	
+//	@PostMapping("updatestate")
+//	public String updateState(StateEntity stateEntity) {
+//		Optional<StateEntity>op=stateRepository.findById(stateEntity.getStateId());
+//		if(op.isPresent()) {
+//			StateEntity dbstate=op.get();
+//			dbstate.setStateName(stateEntity.getStateName());
+//			stateRepository.save(dbstate);
+//		}return"redirect:/liststate";
+//	}
 
 }

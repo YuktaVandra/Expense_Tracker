@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import com.grownited.entity.AccountEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.UserRepository;
 import com.grownited.service.MailService;
@@ -70,11 +69,10 @@ public class SessionController {
 			
 			try {
 				Map result = cloudinary.uploader().upload(profilePic.getBytes(), ObjectUtils.emptyMap());
-				//System.out.println(result);
-				//System.out.println(result.get("url"));
+				
 				userEntity.setProfilePicPath(result.get("url").toString());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			
@@ -117,35 +115,34 @@ public class SessionController {
 	
 	@GetMapping("/deleteuser")
 	public String deleteMember(Integer userId) {
-		userRepository.deleteById(userId);//delete from members where memberID = :memberId
+		userRepository.deleteById(userId);
 		return "redirect:/listuser";
 	}
 	
 	
 	@PostMapping("authenticate")
-	public String authenticate(String email, String password, Model model, HttpSession session) {// sakira@yopmail.com
-																									// sakira
+	public String authenticate(String email, String password, Model model, HttpSession session) {
+																									
 		System.out.println(email);
 		System.out.println(password);
 
-		// users -> email,password
+		
 		Optional<UserEntity> op = repositoryUser.findByEmail(email);
-		// select * from users where email = :email and password = :password
+		
 		if (op.isPresent()) {
-			// true
-			// email
+			
 			UserEntity dbUser = op.get();
 
 			boolean ans = encoder.matches(password, dbUser.getPassword());
 
 			if (ans == true) {
-				session.setAttribute("user", dbUser); // session -> user set
+				session.setAttribute("user", dbUser); 
 				if (dbUser.getRole().equals("ADMIN")) {
 
 					return "redirect:/admindashboard";
 				} else if (dbUser.getRole().equals("USER")) {
 
-					return "redirect:/admindashboard";
+					return "redirect:/home";
 				} else {
 					model.addAttribute("error", "Please contact Admin with Error Code #0991");
 					return "Login";
@@ -160,7 +157,7 @@ public class SessionController {
 		@GetMapping("logout")
 		public String logout(HttpSession session) {
 			session.invalidate();
-			return "redirect:/login";// login url
+			return "redirect:/login";
 		
 	}
 	
@@ -181,10 +178,7 @@ public String sendotp(String email,Model model) {
 		model.addAttribute("error", "Email not found");
 		return "ForgetPassword";
 	} else {
-		// email valid
-		// send mail otp
-		// opt generate
-		// send mail otp
+		
 		String otp = "";
 		otp = (int) (Math.random() * 1000000) + "";// 0.25875621458541
 

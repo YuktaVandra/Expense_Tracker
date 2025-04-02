@@ -34,34 +34,33 @@ public class LoginCheckFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		HttpServletRequest requestHttp = (HttpServletRequest) request;
+		String url = requestHttp.getRequestURI().toString();
+		String uri = requestHttp.getRequestURI();
+ 
 		
-		HttpServletRequest req = (HttpServletRequest) request;
+		System.out.println("Filter Call...." + uri);
 
-		String url = req.getRequestURL().toString();
-		String uri = req.getRequestURI();
-
-		System.out.println("Filter Call....." + uri);
-
-		
-		if (publicURL.contains(uri) || uri.contains(".css") || uri.contains(".js") || uri.contains("dist") || uri.contains("images")) {
-			chain.doFilter(request, response);//go ahead 
+		if (publicURL.contains(uri) || uri.contains(".css") || uri.contains(".js") || uri.contains("dist")
+				|| uri.contains("images")) {
+			chain.doFilter(requestHttp, response);
 		} else {
-			HttpSession session = req.getSession();
+			HttpSession session = requestHttp.getSession();
 			UserEntity user = (UserEntity) session.getAttribute("user");
 
 			if (user == null) {
-					req.getRequestDispatcher("login").forward(request, response);			
-			}else {
-				
-				chain.doFilter(request, response);//go ahead 
+				requestHttp.getRequestDispatcher("login").forward(request, response);
+			} else {
+				if (uri.startsWith("/admin")) {
+					if (user.getRole().equals("ADMIN")) {
+						chain.doFilter(request, response);
+					}else {
+						requestHttp.getRequestDispatcher("login").forward(request, response);
+					}
+				} else {
+					chain.doFilter(request, response);
+				}
 			}
 		}
-
-		// go ahead
-		
-		
 	}
-	
-	
-
 }

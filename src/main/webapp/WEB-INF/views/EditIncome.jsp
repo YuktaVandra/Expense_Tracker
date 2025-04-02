@@ -36,7 +36,7 @@
 	<body class="hold-transition sidebar-mini">
      <div class="wrapper">
   
-     <jsp:include page="AdminHeader.jsp"></jsp:include>
+     <jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
   
   
   <!-- Main Sidebar Container -->
@@ -81,31 +81,14 @@
             <a href="admindashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Home Page
                 
               </p>
             </a>
             
           </li>
           
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-user"></i>
-              <p>
-                Users
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="listuser" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Users</p>
-                </a>
-              </li>
-              </ul>
-          </li>
+          
           <li class="nav-item ">
             <a href="#" class="nav-link ">
               <i class="fa-solid fa-users"></i>
@@ -253,30 +236,7 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-map-location-dot"></i>
-              <p>
-                State
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newstate" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add State</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="liststate" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of State</p>
-                </a>
-              </li>
-              </ul>
-          </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-user-tie"></i>
@@ -336,7 +296,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
+              <li class="breadcrumb-item"><a href="home">Home</a></li>
               <li class="breadcrumb-item active">Update Income</li>
             </ol>
           </div>
@@ -426,7 +386,7 @@
 </div>
 </div>        
 
-<jsp:include page="AdminFooter.jsp"></jsp:include>
+<jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
 
 <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

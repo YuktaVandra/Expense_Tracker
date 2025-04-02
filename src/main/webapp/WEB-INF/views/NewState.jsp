@@ -36,7 +36,7 @@
 	<body class="hold-transition sidebar-mini">
 <div class="wrapper">
   
-  <jsp:include page="AdminHeader.jsp"></jsp:include>
+  <jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
   
   
   <!-- Main Sidebar Container -->
@@ -116,14 +116,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageaccount" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Account</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listaccount" class="nav-link">
+                <a href="adminlistaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Account</p>
                 </a>
@@ -140,14 +135,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="managecategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcategory" class="nav-link">
+                <a href="adminlistcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Category</p>
                 </a>
@@ -162,14 +152,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="managesubcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Sub-Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listsubcategory" class="nav-link">
+                <a href="adminlistsubcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Sub-Category</p>
                 </a>
@@ -191,14 +176,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageexpense" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Expenses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listexpense" class="nav-link">
+                <a href="adminlistexpense" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Expenses</p>
                 </a>
@@ -215,14 +195,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageincome" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Income</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listincome" class="nav-link">
+                <a href="adminlistincome" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Income</p>
                 </a>
@@ -239,14 +214,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
+                <a href="adminlistcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of City</p>
                 </a>
@@ -270,7 +240,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="liststate" class="nav-link">
+                <a href="adminliststate" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of State</p>
                 </a>
@@ -287,14 +257,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="vendor" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Vendor</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listvendor" class="nav-link">
+                <a href="adminlistvendor" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Vendor</p>
                 </a>
@@ -375,7 +340,7 @@
 </div>
 </div>        
 
-<jsp:include page="AdminFooter.jsp"></jsp:include>
+<jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
 
 <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

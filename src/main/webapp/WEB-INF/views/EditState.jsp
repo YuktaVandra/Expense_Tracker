@@ -36,7 +36,7 @@
 	<body class="hold-transition sidebar-mini">
 <div class="wrapper">
   
-  <jsp:include page="AdminHeader.jsp"></jsp:include>
+  <jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
   
   
   <!-- Main Sidebar Container -->
@@ -375,7 +375,7 @@
 </div>
 </div>        
 
-<jsp:include page="AdminFooter.jsp"></jsp:include>
+<jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
 
 <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

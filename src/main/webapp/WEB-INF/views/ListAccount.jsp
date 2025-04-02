@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +23,8 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  
-  <jsp:include page="AdminHeader.jsp"></jsp:include>
-  
+
+  <jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
   
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -66,31 +67,14 @@
             <a href="admindashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Home Page
                 
               </p>
             </a>
             
           </li>
           
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-user"></i>
-              <p>
-                Users
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="listuser" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Users</p>
-                </a>
-              </li>
-              </ul>
-          </li>
+          
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="fa-solid fa-users"></i>
@@ -238,30 +222,7 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-map-location-dot"></i>
-              <p>
-                State
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newstate" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add State</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="liststate" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of State</p>
-                </a>
-              </li>
-              </ul>
-          </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-user-tie"></i>
@@ -310,6 +271,7 @@
     <!-- /.sidebar -->
   </aside>
   
+  
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -321,7 +283,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
+              <li class="breadcrumb-item"><a href="home">Home</a></li>
               <li class="breadcrumb-item active">Account DataTable</li>
             </ol>
           </div>
@@ -335,9 +297,10 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
+              
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Title</th>
@@ -369,12 +332,12 @@
                     <th>Action</th>
                   </tr>
                   </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
           </div>
           <!-- /.col -->
         </div>
@@ -384,9 +347,9 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
   
-  <jsp:include page="AdminFooter.jsp"></jsp:include>
+  <!-- /.content-wrapper -->
+  <jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Of State</title>
+  <title>List Of User</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -73,8 +73,8 @@
             
           </li>
           
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="fa-solid fa-user"></i>
               <p>
                 Users
@@ -84,7 +84,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="listuser" class="nav-link">
+                <a href="adminlistuser" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Users</p>
                 </a>
@@ -101,14 +101,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageaccount" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Account</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listaccount" class="nav-link">
+                <a href="adminlistaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Account</p>
                 </a>
@@ -125,14 +120,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="managecategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcategory" class="nav-link">
+                <a href="adminlistcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Category</p>
                 </a>
@@ -147,14 +137,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="managesubcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Sub-Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listsubcategory" class="nav-link">
+                <a href="adminlistsubcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Sub-Category</p>
                 </a>
@@ -176,14 +161,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageexpense" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Expenses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listexpense" class="nav-link">
+                <a href="adminlistexpense" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Expenses</p>
                 </a>
@@ -200,14 +180,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageincome" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Income</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listincome" class="nav-link">
+                <a href="adminlistincome" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Income</p>
                 </a>
@@ -224,22 +199,17 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
+                <a href="adminlistcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of City</p>
                 </a>
               </li>
               </ul>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fa-solid fa-map-location-dot"></i>
               <p>
                 State
@@ -248,14 +218,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item ">
+              <li class="nav-item">
                 <a href="newstate" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add State</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="liststate" class="nav-link active">
+                <a href="adminliststate" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of State</p>
                 </a>
@@ -272,14 +242,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="vendor" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Vendor</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listvendor" class="nav-link">
+                <a href="adminlistvendor" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Vendor</p>
                 </a>
@@ -317,12 +282,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>State DataTable</h1>
+            <h1>User DataTable</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
-              <li class="breadcrumb-item active">State DataTable</li>
+              <li class="breadcrumb-item active">User DataTable</li>
             </ol>
           </div>
         </div>
@@ -337,28 +302,42 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>StateName</th>
-<th>Action</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    
+                    <th>Contact No</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach items="${stateList}" var="m">
+                  <c:forEach items="${userList}" var="m">
                   <tr>
-                  <td>${m.stateName}</td>
+                  <td>${m.firstName}</td>
+                  <td>${m.lastName}</td>
+                  <td>${m.email}</td>
                   
-                  <td><a href="viewstate?stateId=${m.stateId }"><i class="fas fa-eye"></i> </a> | <a href="deletestate?stateId=${m.stateId }"><i class="fa-solid fa-trash"></i></a> |<a href="editstate?stateId=${m.stateId }"> <i class="fas fa-edit"></i></a></td>
+                  <td>${m.contactNo}</td>
+                  <td> <a href="adminviewuser?userId=${m.userId }"><i class="fas fa-eye"></i></a> | <a href="admindeleteuser?userId=${m.userId }"><i class="fa-solid fa-trash"></i></a> </td>
+                  
                   </tr> 
                   </c:forEach>  
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>StateName</th>
-<th>Action</th>
+                    <th>first Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    
+                    <th>Contact No</th>
+                    <th>Action</th>
+                    
                   </tr>
                   </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->
