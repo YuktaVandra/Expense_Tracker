@@ -39,7 +39,7 @@
 
 
 
-<jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
+<jsp:include page="UserHeader.jsp"></jsp:include>
 
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -80,10 +80,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="admindashboard" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="home" class="nav-link active">
+              <i class="fa-solid fa-house"></i>
               <p>
-                Home Page
+                Home 
                 
               </p>
             </a>
@@ -132,56 +132,6 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-layer-group"></i>
-              <p>
-                Category
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="managecategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-rectangle-list"></i>
-              <p>
-                Sub-Category
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="managesubcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Sub-Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listsubcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Sub-Category</p>
-                </a>
-              </li>
-              </ul>
-          </li>
-              </ul>
-              
-          </li>
-          
           
            <li class="nav-item">
             <a href="#" class="nav-link">
@@ -279,46 +229,7 @@
               </li>
               </ul>
           </li>--%>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-user-tie"></i>
-              <p>
-                Vendor
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="vendor" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Vendor</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listvendor" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Vendor</p>
-                </a>
-              </li>
-              </ul>
-          </li>
-          <li class="nav-item">
-            <a href="signup" class="nav-link">
-              <i class="fa-solid fa-user-plus"></i>
-              <p>
-                Sign-Up
-              </p>
-            </a>
-            </li>
-            <li class="nav-item">
-            <a href="login" class="nav-link">
-              <i class="fa-solid fa-circle-user"></i>
-              <p>
-                Sign-In
-                 </p>
-            </a>
-            </li>
+          
             
             <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
        </ul>

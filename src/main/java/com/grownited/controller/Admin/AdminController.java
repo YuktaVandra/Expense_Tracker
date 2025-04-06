@@ -1,5 +1,9 @@
 package com.grownited.controller.Admin;
 
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +23,6 @@ import com.grownited.repository.SubcategoryRepository;
 import com.grownited.repository.UserRepository;
 import com.grownited.repository.VendorRepository;
 
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminController {
@@ -52,11 +55,50 @@ public class AdminController {
 	VendorRepository vendorRepository;
 	
 	@GetMapping("admindashboard")
-	public String adminDashboard() {
+	public String adminDashboard(Model model) {
+		
+		Integer totalUsers = userRepository.findByRole("USER").size();
+		
+		LocalDate today = LocalDate.now();
+		int month = today.getMonthValue();
+
+		Integer thisMonthUsersCount = userRepository.countThisMonthUsers(month); 
+		
+		BigDecimal totalExpenses = expenseRepository.getTotalExpenses();
+		
+		BigDecimal totalJanExpense = expenseRepository.getTotalJanExpense();
+		
+		BigDecimal totalFebExpense = expenseRepository.getTotalFebExpense();
+		
+		BigDecimal totalMarchExpense = expenseRepository.getTotalMarchExpense();
+		
+		BigDecimal thisMonthExpense = expenseRepository.getMonthlyExpenses(month);
+		
+		if (totalExpenses == null) totalExpenses = BigDecimal.ZERO;
+	    if (thisMonthExpense == null) thisMonthExpense = BigDecimal.ZERO;
+
+	    // Calculate percentage (avoid division by zero)
+	    BigDecimal expensePercentage = BigDecimal.ZERO;
+	    if (totalExpenses.compareTo(BigDecimal.ZERO) > 0) {
+	        expensePercentage = thisMonthExpense
+	                .multiply(BigDecimal.valueOf(100)) // Convert to percentage
+	                .divide(totalExpenses, 2, RoundingMode.HALF_UP); // Keep 2 decimal places
+	    }
+	    
+	    BigDecimal thisMonthDuePayments = expenseRepository.getMonthlyDuePayments(month);;
+		
+		model.addAttribute("totalUsers", totalUsers);
+		model.addAttribute("thisMonthUsersCount", thisMonthUsersCount);
+		model.addAttribute("thisMonthExpense", thisMonthExpense);
+		model.addAttribute("expensePercentage", expensePercentage);
+		model.addAttribute("thisMonthDuePayments", thisMonthDuePayments);
+		model.addAttribute("totalJanExpense",totalJanExpense);
+		model.addAttribute("totalFebExpense",totalFebExpense);
+		model.addAttribute("totalMarchExpense",totalMarchExpense);
 		return "Admin/AdminDashboard";
+		
+		
 	}
-
-
 
 @GetMapping("/adminlistaccount")
 public String adminlistaccount(Model model) {
@@ -65,20 +107,6 @@ public String adminlistaccount(Model model) {
 	return("Admin/AdminListAccount");
 }
 
-@GetMapping("/adminlistcategory")
-public String adminlistcategory(Model model) {
-	
-	//List<CategoryDto> categoryList = categoryRepository.getAll();
-	model.addAttribute("categoryList",categoryRepository.getAll());
-	return "Admin/AdminListCategory";
-}
-
-@GetMapping("/adminlistsubcategory")
-public String adminlistsubcategory(Model model) {
-	
-	model.addAttribute("subcategoryList", subcategoryRepository.getAll());
-	return("Admin/AdminListSubcategory");
-}
 @GetMapping("/adminlistexpense")
 public String adminlistexpense(Model model) {
 	
@@ -107,12 +135,7 @@ public String adminlistuser(Model model) {
 	return("Admin/AdminListUser");
 }
 
-@GetMapping("/adminlistvendor")
-public String adminlistvendor(Model model) {
-	
-	model.addAttribute("vendorList", vendorRepository.getAll());
-	return("Admin/AdminListVendor");
-}
+
 
 @GetMapping("/adminviewaccount")
 public String adminviewaccount(Integer accountId, Model model) {
@@ -128,17 +151,6 @@ public String admindeleteaccount(Integer accountId) {
 	return "redirect:/adminlistaccount";
 }
 
-@GetMapping("/adminviewcategory")
-public String adminviewcategory(Integer categoryId, Model model,HttpSession session) {
-    model.addAttribute("category", categoryRepository.getCategoryId(categoryId));
-	return "Admin/AdminViewCategory";
-}
-
-@GetMapping("/admindeletecategory")
-public String admindeletecategory(Integer categoryId) {
-	categoryRepository.deleteById(categoryId);
-	return "redirect:/adminlistcategory";
-}
 
 
 @GetMapping("/adminviewcity")
@@ -177,7 +189,7 @@ public String adminviewincome(Integer incomeId, Model model) {
 	
 		model.addAttribute("income",op);
 	
-	return "AdminViewIncome";
+	return "Admin/AdminViewIncome";
 }
 
 @GetMapping("/admindeletincome")
@@ -186,23 +198,6 @@ public String admindeleteincome(Integer incomeId) {
 	return "redirect:/adminlistincome";
 }
 
-
-
-@GetMapping("/adminviewsubcategory")
-public String adminviewsubcategory(Integer subcategoryId, Model model) {
-	
-	
-    model.addAttribute("subcategory", subcategoryRepository.getBySubcategoryId(subcategoryId));
-    	
-		
-	return "Admin/AdminViewSubcategory";
-}
-
-@GetMapping("/admindeletesubcategory")
-public String admindeletesubcategory(Integer subcategoryId) {
-	subcategoryRepository.deleteById(subcategoryId);
-	return "redirect:/adminlistsubcategory";
-}
 
 @GetMapping("/adminviewuser")
 public String adminviewuser(Integer userId, Model model) {
@@ -227,21 +222,5 @@ public String admindeleteMember(Integer userId) {
 	return "redirect:/adminlistuser";
 }
 
-@GetMapping("/adminviewvendor")
-public String adminviewvendor(Integer vendorId, Model model ) {
-	
-	//List<VendorDto> vendor =  vendorRepository.getByVendorId(vendorId);
-	
-		model.addAttribute("vendor", vendorRepository.getByVendorId(vendorId));
-		
-		//session.setAttribute("vendor", vendor);
-	
-	return "Admin/AdminViewVendor";
-}
 
-@GetMapping("/admindeletevendor")
-public String admindeletevendor(Integer vendorId) {
-	vendorRepository.deleteById(vendorId);
-	return "redirect:/adminlistvendor";
-}
 }

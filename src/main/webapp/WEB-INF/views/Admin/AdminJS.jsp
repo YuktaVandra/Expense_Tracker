@@ -32,3 +32,57 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
+<!-- ✅ Place the corrected bar chart script here -->
+<script>
+$(document).ready(function () {
+    var barChartCanvas = document.getElementById('barChart');
+
+    if (!barChartCanvas) {
+        console.error("Error: barChart canvas not found.");
+        return;
+    }
+
+    var totalJanExpense = ${totalJanExpense};
+    var totalFebExpense = ${totalFebExpense};
+    var totalMarchExpense = ${totalMarchExpense};
+    var thisMonthExpense = ${thisMonthExpense};
+
+    var barChartData = {
+        labels: ['January', 'February', 'March', 'April'],
+        datasets: [
+            {
+                label: 'Expenses',
+                backgroundColor: ['#3498DB', '#3498DB', '#3498DB', '#3498DB'],
+                borderColor: '#FFFFFF',
+                borderWidth: 1,
+                data: [totalJanExpense, totalFebExpense, totalMarchExpense, thisMonthExpense]
+            }
+        ]
+    };
+
+    var barChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    usePointStyle: true,
+                    boxWidth: 0
+                }
+            }
+        }
+    };
+
+    new Chart(barChartCanvas.getContext('2d'), {
+        type: 'bar',
+        data: barChartData,
+        options: barChartOptions
+    });
+});
+</script>

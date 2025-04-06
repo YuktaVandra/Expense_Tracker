@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 	<html lang="en">
 	<head>
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <title>Edit State</title>
+	  <title>Manage Sub-Category</title>
 
 	  <!-- Google Font: Source Sans Pro -->
 	  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -36,7 +36,7 @@
 	<body class="hold-transition sidebar-mini">
 <div class="wrapper">
   
-  <jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
+  <jsp:include page="AdminHeader.jsp"></jsp:include>
   
   
   <!-- Main Sidebar Container -->
@@ -81,31 +81,14 @@
             <a href="admindashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+               Dashboard
                 
               </p>
             </a>
             
           </li>
           
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-user"></i>
-              <p>
-                Users
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="listuser" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Users</p>
-                </a>
-              </li>
-              </ul>
-          </li>
+          
           <li class="nav-item ">
             <a href="#" class="nav-link ">
               <i class="fa-solid fa-users"></i>
@@ -116,12 +99,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="manageaccount" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Account</p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="listaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -130,7 +108,7 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link ">
               <i class="fa-solid fa-layer-group"></i>
               <p>
@@ -141,19 +119,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managecategory" class="nav-link">
+                <a href="adminmanagecategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listcategory" class="nav-link">
+                <a href="adminlistcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Category</p>
                 </a>
               </li>
-              <li class="nav-item">
-            <a href="#" class="nav-link">
+              <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="fa-solid fa-rectangle-list"></i>
               <p>
                 Sub-Category
@@ -163,13 +141,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managesubcategory" class="nav-link">
+                <a href="adminmanagesubcategory" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Sub-Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listsubcategory" class="nav-link">
+                <a href="adminlistsubcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Sub-Category</p>
                 </a>
@@ -191,14 +169,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageexpense" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Expenses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listexpense" class="nav-link">
+                <a href="adminlistexpense" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Expenses</p>
                 </a>
@@ -215,14 +188,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageincome" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Income</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listincome" class="nav-link">
+                <a href="adminlistincome" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Income</p>
                 </a>
@@ -239,22 +207,17 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
+                <a href="adminlistcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of City</p>
                 </a>
               </li>
               </ul>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fa-solid fa-map-location-dot"></i>
               <p>
                 State
@@ -263,14 +226,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item ">
-                <a href="newstate" class="nav-link active">
+              <li class="nav-item">
+                <a href="adminnewstate" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add State</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="liststate" class="nav-link">
+                <a href="adminliststate" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of State</p>
                 </a>
@@ -294,29 +257,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listvendor" class="nav-link">
+                <a href="adminlistvendor" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Vendor</p>
                 </a>
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="signup" class="nav-link">
-              <i class="fa-solid fa-user-plus"></i>
-              <p>
-                Sign-Up
-              </p>
-            </a>
-            </li>
-            <li class="nav-item">
-            <a href="login" class="nav-link">
-              <i class="fa-solid fa-circle-user"></i>
-              <p>
-                Sign-In
-                 </p>
-            </a>
-            </li>
+          
        <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
        </ul>
       </nav>
@@ -332,12 +280,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Update State</h1>
+            <h1>Add Sub-Category</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
-              <li class="breadcrumb-item active">Update State</li>
+              <li class="breadcrumb-item"><a href="home">Home</a></li>
+              <li class="breadcrumb-item active">Add Sub-Category</li>
             </ol>
           </div>
         </div>
@@ -351,20 +299,33 @@
         <div class="card card-default">
           
           <div class="card-body">
-          <form action="updatestate" method="post" class="mb-4">
+          <form action="adminsavesubcategory" method="post" class="mb-4">
           
           <div class="row">
     <!-- Left Side: Title and Amount -->
     <div class="col-md-6">
         <div class="form-group mb-3">
-            <label class="form-label">State Name</label>
-            <input class="form-control " value="${state.stateName }" style="width: 100%;" type="text" name="stateName">
+            <label class="form-label">Title:</label>
+            <input type="text" name="subcategoryTitle" class="form-control" required/>
+            
+        </div>
+        
+        <div class="form-group mb-3">
+             <label>Category:</label>
+             <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="categoryId">
+                 <option selected="selected">Select Category</option>
+                 <c:forEach items="${categoryList}" var="c">
+                     <option value="${c.categoryId}">${c.categoryTitle}</option>
+                 </c:forEach>
+             </select>
+         </div>
+        
         </div>
         
     </div>
-</div>
-<input type="hidden" name="stateId" value="${state.stateId }"/>
-<button type="submit" class="btn btn-primary">Update State</button>
+
+    
+<button type="submit" class="btn btn-primary">Add Sub-Category</button>
 </form>
           
             
@@ -374,8 +335,8 @@
 </section>
 </div>
 </div>        
-
-<jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
+    
+<jsp:include page="AdminFooter.jsp"></jsp:include>
 
 <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

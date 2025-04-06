@@ -120,7 +120,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+              <li class="nav-item">
+                <a href="adminmanagecategory" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Category</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="adminlistcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -137,7 +142,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+              <li class="nav-item">
+                <a href="adminmanagesubcategory" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Sub-Category</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="listsubcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -219,7 +229,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="newstate" class="nav-link">
+                <a href="adminnewstate" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add State</p>
                 </a>
@@ -242,7 +252,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+              <li class="nav-item">
+                <a href="adminvendor" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Vendor</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="adminlistvendor" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -251,22 +266,7 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="signup" class="nav-link">
-              <i class="fa-solid fa-user-plus"></i>
-              <p>
-                Sign-Up
-              </p>
-            </a>
-            </li>
-            <li class="nav-item">
-            <a href="login" class="nav-link">
-              <i class="fa-solid fa-circle-user"></i>
-              <p>
-                Sign-In
-                 </p>
-            </a>
-            </li>
+          
        <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
        </ul>
       </nav>

@@ -1,5 +1,6 @@
 package com.grownited.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,4 +21,21 @@ public interface ExpenseRepository extends JpaRepository<ExpenseEntity, Integer>
 			+ " u.first_name,u.last_name, c.category_title, s.subcategory_title , a.account_title, v.vendor_title, a.account_amount FROM expense e, users u, category c, subcategory s, account a, vendor v WHERE e.user_id = u.user_id AND e.category_id = c.category_id AND e.subcategory_id = s.subcategory_id AND e.account_id = a.account_id AND e.vendor_id = v.vendor_id and e.expense_id = :expenseId",nativeQuery = true)
 	List<Object[]> getExpenseId(Integer expenseId);
 
+	@Query(nativeQuery = true,value="SELECT SUM(expense_amount) FROM expense WHERE MONTH(transaction_date) = MONTH(CURRENT_DATE()) ")
+	BigDecimal getMonthlyExpenses(Integer month);
+	
+	@Query(nativeQuery = true,value="SELECT SUM(expense_amount) FROM expense")
+	BigDecimal getTotalExpenses();
+	
+	@Query(nativeQuery = true,value="SELECT SUM(expense_amount) FROM expense WHERE MONTH(transaction_date) = MONTH(CURRENT_DATE()) and expense.status='UNPAID'")
+	BigDecimal getMonthlyDuePayments(Integer month);
+	
+	@Query(nativeQuery = true,value = "SELECT SUM(expense_amount) FROM expense where MONTH(transaction_date) = 1 ")
+	BigDecimal getTotalJanExpense();
+	
+	@Query(nativeQuery = true,value = "SELECT SUM(expense_amount) FROM expense where MONTH(transaction_date) = 2 ")
+	BigDecimal getTotalFebExpense();
+	
+	@Query(nativeQuery = true,value = "SELECT SUM(expense_amount) FROM expense where MONTH(transaction_date) = 3 ")
+	BigDecimal getTotalMarchExpense();
 }

@@ -1,11 +1,13 @@
 package com.grownited.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.hibernate.type.descriptor.java.LocalDateJavaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -56,7 +58,7 @@ public class SessionController {
 	@PostMapping("saveuser")
 		
 		public String saveuser(UserEntity userEntity, MultipartFile profilePic, Model model) {
-		userEntity.setCreatedAt(new Date());
+		userEntity.setCreatedAt(LocalDate.now());
 		userEntity.setStatus("ACTIVE");
 		userEntity.setRole("USER");
 		

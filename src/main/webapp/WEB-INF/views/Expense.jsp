@@ -31,12 +31,13 @@
 	  <link rel="stylesheet" href="../../plugins/dropzone/min/dropzone.min.css">
 	  <!-- Theme style -->
 	  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+	  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	</head>
 	
 	<body class="hold-transition sidebar-mini">
      <div class="wrapper">
   
-     <jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
+     <jsp:include page="UserHeader.jsp"></jsp:include>
   
   
   <!-- Main Sidebar Container -->
@@ -78,10 +79,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="admindashboard" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="home" class="nav-link">
+              <i class="fa-solid fa-house"></i>
               <p>
-                Home Page
+                Home
                 
               </p>
             </a>
@@ -113,56 +114,6 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link ">
-              <i class="fa-solid fa-layer-group"></i>
-              <p>
-                Category
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="managecategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-rectangle-list"></i>
-              <p>
-                Sub-Category
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="managesubcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Sub-Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listsubcategory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Sub-Category</p>
-                </a>
-              </li>
-              </ul>
-          </li>
-              </ul>
-              
-          </li>
-          
           
            <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
@@ -237,46 +188,7 @@
               </ul>
           </li>
           
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-user-tie"></i>
-              <p>
-                Vendor
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="vendor" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Vendor</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listvendor" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of Vendor</p>
-                </a>
-              </li>
-              </ul>
-          </li>
-          <li class="nav-item">
-            <a href="signup" class="nav-link">
-              <i class="fa-solid fa-user-plus"></i>
-              <p>
-                Sign-Up
-              </p>
-            </a>
-            </li>
-            <li class="nav-item">
-            <a href="login" class="nav-link">
-              <i class="fa-solid fa-circle-user"></i>
-              <p>
-                Sign-In
-                 </p>
-            </a>
-            </li>
+          
        <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
        </ul>
       </nav>
@@ -335,8 +247,8 @@
         
         <div class="form-group mb-3">
             <label class="form-label">Category:</label>
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="categoryId">
-            <option selected="selected">Select Category</option>
+            <select id="category" class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="categoryId" required onchange="getSubcategory();getVendor()"   >
+            <option selected="-1">Select Category</option>
             <c:forEach items="${categoryList}" var="c">
  
  	<option value="${c.categoryId}">${c.categoryTitle }</option>
@@ -348,12 +260,8 @@
         
        <div class="form-group mb-3">
     <label>Vendor:</label>
-     <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="vendorId">
- <option selected="selected" >Select Vendor</option>
- <c:forEach items="${vendorList}" var="v">
- 
- <option value="${v.vendorId}">${v.vendorTitle }</option>
- </c:forEach>
+     <select id = "vendor" class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="vendorId">
+ <option selected="-1" >Select Vendor</option>
  
  </select> 
     </div>    
@@ -380,13 +288,8 @@
 	 <div class="form-group mb-3">      
     
              <label>Sub-Category:</label> 
-             <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="subcategoryId">
-            <option selected="selected">Select Sub-Category</option>
-<c:forEach items="${subcategoryList}" var="s">
- 
- 	<option value="${s.subcategoryId}">${s.subcategoryTitle }</option>
- 																					
- 	</c:forEach>
+             <select id="subcategory" class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="subcategoryId">
+            <option selected="-1">Select Sub-Category</option>
 </select>
         
       </div>  
@@ -591,9 +494,52 @@
   }
   // DropzoneJS Demo Code End
 </script>
-
-  
-  
   <script src="https://kit.fontawesome.com/9d21862bba.js" crossorigin="anonymous"></script>
+ <script type="text/javascript">
+ function getSubcategory(){
+         console.log("category change");
+         let categoryId = document.getElementById("category").value;
+         console.log(categoryId);
+         
+         $.get( "getallsubcategorybycategoryid/"+categoryId, function() {
+        	  //alert( "success" );
+        	})
+        	  .done(function(data) {
+        	    console.log(data);
+        	    $('#subcategory').empty().append('<option selected="selected" value="-1">Select Sub-Category</option>')
+        	;
+        	    for (var i = 0; i < data.length; i++) {
+        	        $('#subcategory').append('<option value="' + data[i].subcategoryId + '">' + data[i].subcategoryTitle + '</option>');
+        	    } 
+        	  })
+        	  .fail(function() {
+        	    alert( "error" );
+        	  })
+        	  
+}
+ 
+ function getVendor(){
+	 console.log("category change");
+     let categoryId = document.getElementById("category").value;
+     console.log(categoryId);
+     
+     $.get( "getallvendorbycategoryid/"+categoryId, function() {
+   	  //alert( "success" );
+   	})
+   	  .done(function(data) {
+   	    console.log(data);
+   	    $('#vendor').empty().append('<option selected="selected" value="-1">Select Vendor</option>')
+   	;
+   	    for (var i = 0; i < data.length; i++) {
+   	        $('#vendor').append('<option value="' + data[i].vendorId + '">' + data[i].vendorTitle + '</option>');
+   	    } 
+   	  })
+   	  .fail(function() {
+   	    alert( "error" );
+   	  })
+     
+}
+ </script>
+ 
 </body>
 </html>  

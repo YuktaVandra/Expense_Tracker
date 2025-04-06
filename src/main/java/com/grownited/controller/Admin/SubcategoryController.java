@@ -1,9 +1,7 @@
-package com.grownited.controller;
+package com.grownited.controller.Admin;
 
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,14 +30,14 @@ public class SubcategoryController {
 	@Autowired
     private SubcategoryRepository subcategoryRepository;
 	
-	@GetMapping("/managesubcategory")
+	@GetMapping("/adminmanagesubcategory")
 	public String manageSubcategory(Model model) {
 		List<CategoryEntity> categoryList =  categoryRepository.findAll();
 		model.addAttribute("categoryList", categoryList);
-		return("Subcategory");
+		return("Admin/Subcategory");
 	}
 	
-	@PostMapping("savesubcategory")
+	@PostMapping("adminsavesubcategory")
 	public String saveSubcategory(SubcategoryEntity subcategoryEntity,HttpSession session) {
 		
 		UserEntity user = (UserEntity) session.getAttribute("user");
@@ -50,62 +48,62 @@ public class SubcategoryController {
 		subcategoryRepository.save(subcategoryEntity);
 		
 		
-		return "redirect:/listsubcategory";
+		return "redirect:/adminlistsubcategory";
 	}
 	
-	@GetMapping("/listsubcategory")
+	@GetMapping("/adminlistsubcategory")
 	public String listsubcategory(Model model) {
 		 
 		 model.addAttribute("subcategoryList", subcategoryRepository.getAll());
-		 return "ListSubcategory";
+		 return "Admin/AdminListSubcategory";
 	}
 	
-	@GetMapping("/viewsubcategory")
+	@GetMapping("/adminviewsubcategory")
 	public String viewsubcategory(Integer subcategoryId, Model model) {
 		
 		
 	    model.addAttribute("subcategory", subcategoryRepository.getBySubcategoryId(subcategoryId));
 	    	
 			
-		return "ViewSubcategory";
+		return "Admin/AdminViewSubcategory";
 	}
 	
-	@GetMapping("/deletesubcategory")
+	@GetMapping("/admindeletesubcategory")
 	public String deletesubcategory(Integer subcategoryId) {
 		subcategoryRepository.deleteById(subcategoryId);
-		return "redirect:/listsubcategory";
+		return "redirect:/adminlistsubcategory";
 	}
 	
-	@GetMapping("editsubcategory")
-	public String editSubCategory(Integer subcategoryId,Model model) {
-		Optional<SubcategoryEntity> op = subcategoryRepository.findById(subcategoryId);
-		if (op.isEmpty()) {
-			return "redirect:/listsubcategory";
-		} else {
-			SubcategoryEntity subcategory = op.get();
-	        model.addAttribute("subcategory", subcategory);
-	       
-			return "EditSubcategory";
-
-		}
-	}
-		
-		@PostMapping("updatesubcategory")
-		public String updatesubcategory(SubcategoryEntity subcategoryEntity) {
-			
-			System.out.println(subcategoryEntity.getSubcategoryId()); 
-
-			Optional<SubcategoryEntity> op = subcategoryRepository.findById(subcategoryEntity.getSubcategoryId());
-			
-			if(op.isPresent())
-			{
-				SubcategoryEntity dbSubcategory = op.get(); 
-				
-				dbSubcategory.setSubcategoryTitle(subcategoryEntity.getSubcategoryTitle()); 
-				subcategoryRepository.save(dbSubcategory);
-			}
-			return "redirect:/listsubcategory";
-		}
-
-	
+//	@GetMapping("editsubcategory")
+//	public String editSubCategory(Integer subcategoryId,Model model) {
+//		Optional<SubcategoryEntity> op = subcategoryRepository.findById(subcategoryId);
+//		if (op.isEmpty()) {
+//			return "redirect:/listsubcategory";
+//		} else {
+//			SubcategoryEntity subcategory = op.get();
+//	        model.addAttribute("subcategory", subcategory);
+//	       
+//			return "EditSubcategory";
+//
+//		}
+//	}
+//		
+//		@PostMapping("updatesubcategory")
+//		public String updatesubcategory(SubcategoryEntity subcategoryEntity) {
+//			
+//			System.out.println(subcategoryEntity.getSubcategoryId()); 
+//
+//			Optional<SubcategoryEntity> op = subcategoryRepository.findById(subcategoryEntity.getSubcategoryId());
+//			
+//			if(op.isPresent())
+//			{
+//				SubcategoryEntity dbSubcategory = op.get(); 
+//				
+//				dbSubcategory.setSubcategoryTitle(subcategoryEntity.getSubcategoryTitle()); 
+//				subcategoryRepository.save(dbSubcategory);
+//			}
+//			return "redirect:/listsubcategory";
+//		}
+//
+//	
 	}

@@ -6,7 +6,7 @@
 	<head>
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <title>Manage Vendor</title>
+	  <title>Manage State</title>
 
 	  <!-- Google Font: Source Sans Pro -->
 	  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -36,10 +36,11 @@
 	<body class="hold-transition sidebar-mini">
 <div class="wrapper">
   
-  <jsp:include page="Admin/AdminHeader.jsp"></jsp:include>
+  <jsp:include page="AdminHeader.jsp"></jsp:include>
   
   
   <!-- Main Sidebar Container -->
+  
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
@@ -52,7 +53,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="${user.profilePicPath}" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
@@ -80,14 +81,31 @@
             <a href="admindashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Home Page
+                Dashboard
                 
               </p>
             </a>
             
           </li>
           
-          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-user"></i>
+              <p>
+                Users
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminlistuser" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of Users</p>
+                </a>
+              </li>
+              </ul>
+          </li>
           <li class="nav-item ">
             <a href="#" class="nav-link ">
               <i class="fa-solid fa-users"></i>
@@ -98,14 +116,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageaccount" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Account</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listaccount" class="nav-link">
+                <a href="adminlistaccount" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Account</p>
                 </a>
@@ -122,14 +135,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="managecategory" class="nav-link">
+               <li class="nav-item">
+                <a href="adminmanagecategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listcategory" class="nav-link">
+                <a href="adminlistcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Category</p>
                 </a>
@@ -145,13 +158,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="managesubcategory" class="nav-link">
+                <a href="adminmanagesubcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Sub-Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listsubcategory" class="nav-link">
+                <a href="adminlistsubcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Sub-Category</p>
                 </a>
@@ -173,14 +186,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageexpense" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Expenses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listexpense" class="nav-link">
+                <a href="adminlistexpense" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Expenses</p>
                 </a>
@@ -197,14 +205,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageincome" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Income</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listincome" class="nav-link">
+                <a href="adminlistincome" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Income</p>
                 </a>
@@ -221,23 +224,41 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
+                <a href="adminlistcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of City</p>
                 </a>
               </li>
               </ul>
           </li>
-          
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <p>
+                State
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item ">
+                <a href="adminnewstate" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add State</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminliststate" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of State</p>
+                </a>
+              </li>
+              </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fa-solid fa-user-tie"></i>
               <p>
                 Vendor
@@ -246,36 +267,21 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="vendor" class="nav-link active">
+               <li class="nav-item">
+                <a href="adminvendor" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Vendor</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listvendor" class="nav-link">
+                <a href="adminlistvendor" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Vendor</p>
                 </a>
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="signup" class="nav-link">
-              <i class="fa-solid fa-user-plus"></i>
-              <p>
-                Sign-Up
-              </p>
-            </a>
-            </li>
-            <li class="nav-item">
-            <a href="login" class="nav-link">
-              <i class="fa-solid fa-circle-user"></i>
-              <p>
-                Sign-In
-                 </p>
-            </a>
-            </li>
+         
        <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
        </ul>
       </nav>
@@ -284,18 +290,19 @@
     <!-- /.sidebar -->
   </aside>
   
+  
   <div class="content-wrapper" style="min-height: 1345.52px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add Vendor</h1>
+            <h1>Add State</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="home">Home</a></li>
-              <li class="breadcrumb-item active">Add Vendor</li>
+              <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
+              <li class="breadcrumb-item active">Add State</li>
             </ol>
           </div>
         </div>
@@ -309,20 +316,20 @@
         <div class="card card-default">
           
           <div class="card-body">
-          <form action="savevendor" method="post" class="mb-4">
+          <form action="adminsavestate" method="post" class="mb-4">
           
           <div class="row">
     <!-- Left Side: Title and Amount -->
     <div class="col-md-6">
-        <div class="mb-3">
-                <label class="form-label">Title:</label>
-                <input type="text" name="vendorTitle" class="form-control" >
-            </div>
+        <div class="form-group mb-3">
+            <label class="form-label">State Name</label>
+            <input class="form-control " style="width: 100%;" type="text" name="stateName">
+        </div>
         
     </div>
 </div>
 
-<button type="submit" class="btn btn-primary">Add Vendor</button>
+<button type="submit" class="btn btn-primary">Add State</button>
 </form>
           
             
@@ -333,7 +340,7 @@
 </div>
 </div>        
 
-<jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
+<jsp:include page="AdminFooter.jsp"></jsp:include>
 
 <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

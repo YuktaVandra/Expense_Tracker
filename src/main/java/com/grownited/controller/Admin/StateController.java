@@ -1,4 +1,4 @@
-package com.grownited.controller;
+package com.grownited.controller.Admin;
 
 
 import java.util.List;
@@ -19,12 +19,12 @@ public class StateController {
 	
 	@Autowired
 	private StateRepository stateRepository;
-	@GetMapping("newstate")
+	@GetMapping("adminnewstate")
 	public String state() {
-		return("NewState");
+		return("Admin/NewState");
 	}
 	
-	@PostMapping("savestate")
+	@PostMapping("adminsavestate")
 		public String savestate(StateEntity entityState) {
 		stateRepository.save(entityState);
 		return "redirect:/adminliststate";

@@ -57,7 +57,12 @@ public class LoginCheckFilter implements Filter {
 					}else {
 						requestHttp.getRequestDispatcher("login").forward(request, response);
 					}
-				} else {
+				} else if (!uri.startsWith("/admin") && user.getRole().equals("ADMIN")) {
+		            requestHttp.getRequestDispatcher("login").forward(request, response);
+		            return;
+		        }
+				
+				else {
 					chain.doFilter(request, response);
 				}
 			}

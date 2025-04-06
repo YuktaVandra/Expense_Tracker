@@ -17,6 +17,8 @@ public class VendorEntity {
 	
 	private Integer userId;
 	
+	private Integer categoryId;
+	
 	private String vendorTitle;
 	public Integer getVendorId() {
 		return vendorId;
@@ -29,6 +31,13 @@ public class VendorEntity {
 	}
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+	
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 	public String getVendorTitle() {
 		return vendorTitle;

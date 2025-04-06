@@ -1,11 +1,6 @@
-package com.grownited.controller;
+package com.grownited.controller.Admin;
 
 
-
-
-
-
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,12 +29,12 @@ public class CategoryController {
     private CategoryRepository categoryRepository;
 	
 	
-	@GetMapping("/managecategory")
+	@GetMapping("/adminmanagecategory")
 	public String category() {
-		return "Category";
+		return "Admin/Category";
 	}
 	
-	@PostMapping("savecategory")
+	@PostMapping("adminsavecategory")
 	public String savecategory(CategoryEntity categoryEntity,HttpSession session) {	
 		
 		
@@ -52,63 +47,63 @@ public class CategoryController {
 		
 		//session.setAttribute("category", categoryEntity);
 		
-		return "redirect:/listcategory";
+		return "redirect:/adminlistcategory";
 	}
 	
-	@GetMapping("/listcategory")
+	@GetMapping("/adminlistcategory")
 	public String listcategory(Model model) {
 		
 		//List<CategoryDto> categoryList = categoryRepository.getAll();
 		model.addAttribute("categoryList",categoryRepository.getAll());
-		return "ListCategory";
+		return "Admin/AdminListCategory";
 	}
 	
-	@GetMapping("/viewcategory")
+	@GetMapping("/adminviewcategory")
 	public String viewcategory(Integer categoryId, Model model,HttpSession session) {
 		
 		
 	    model.addAttribute("category", categoryRepository.getCategoryId(categoryId));
 	   
 		
-		return "ViewCategory";
+		return "Admin/AdminViewCategory";
 	}
 	
-	@GetMapping("/deletecategory")
+	@GetMapping("/admindeletecategory")
 	public String deletecategory(Integer categoryId) {
 		categoryRepository.deleteById(categoryId);
-		return "redirect:/listcategory";
+		return "redirect:/adminlistcategory";
 	}
 	
-	@GetMapping("editcategory")
-	public String editCategory(Integer categoryId,Model model) {
-		Optional<CategoryEntity> op = categoryRepository.findById(categoryId);
-		if (op.isEmpty()) {
-			return "redirect:/listcategory";
-		} else {
-			CategoryEntity category = op.get();
-	        model.addAttribute("category", category);
-	       
-			return "EditCategory";
-
-		}
-	}
-		
-		@PostMapping("updatecategory")
-		public String updatecategory(CategoryEntity categoryEntity) {
-			
-			System.out.println(categoryEntity.getCategoryId()); 
-
-			Optional<CategoryEntity> op = categoryRepository.findById(categoryEntity.getCategoryId());
-			
-			if(op.isPresent())
-			{
-				CategoryEntity dbCategory = op.get(); 
-				
-				dbCategory.setCategoryTitle(categoryEntity.getCategoryTitle()); 
-				categoryRepository.save(dbCategory);
-			}
-			return "redirect:/listcategory";
-		}
-	
-	
+//	@GetMapping("editcategory")
+//	public String editCategory(Integer categoryId,Model model) {
+//		Optional<CategoryEntity> op = categoryRepository.findById(categoryId);
+//		if (op.isEmpty()) {
+//			return "redirect:/listcategory";
+//		} else {
+//			CategoryEntity category = op.get();
+//	        model.addAttribute("category", category);
+//	       
+//			return "EditCategory";
+//
+//		}
+//	}
+//		
+//		@PostMapping("updatecategory")
+//		public String updatecategory(CategoryEntity categoryEntity) {
+//			
+//			System.out.println(categoryEntity.getCategoryId()); 
+//
+//			Optional<CategoryEntity> op = categoryRepository.findById(categoryEntity.getCategoryId());
+//			
+//			if(op.isPresent())
+//			{
+//				CategoryEntity dbCategory = op.get(); 
+//				
+//				dbCategory.setCategoryTitle(categoryEntity.getCategoryTitle()); 
+//				categoryRepository.save(dbCategory);
+//			}
+//			return "redirect:/listcategory";
+//		}
+//	
+//	
 }

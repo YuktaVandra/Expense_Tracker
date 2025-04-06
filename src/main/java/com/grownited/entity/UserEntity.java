@@ -1,6 +1,7 @@
 package com.grownited.entity;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -24,7 +25,7 @@ public class UserEntity {
 	private String contactNo ;
 	private String role;
 	private String status;
-	private Date createdAt;
+	private LocalDate createdAt;
 	private String otp;
 	private String profilePicPath;
 	
@@ -77,10 +78,10 @@ public class UserEntity {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getCreatedAt() {
+	public LocalDate getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
 	}
 	public String getOtp() {
