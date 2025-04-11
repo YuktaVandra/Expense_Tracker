@@ -203,7 +203,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+              <li class="nav-item">
+                <a href="adminnewcity" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add City</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="listcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -260,8 +265,36 @@
               </li>
               </ul>
           </li>
-          
-       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-file-alt"></i>
+              <p>
+                Reports
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminreport1" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminreport2" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminreport3" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 3</p>
+                </a>
+              </li>
+              </ul>
+          </li>
        </ul>
       </nav>
       <!-- /.sidebar-menu -->

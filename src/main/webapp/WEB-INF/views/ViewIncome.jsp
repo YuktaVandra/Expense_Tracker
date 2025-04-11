@@ -147,30 +147,7 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-city"></i>
-              <p>
-                City
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of City</p>
-                </a>
-              </li>
-              </ul>
-          </li>
+          
           
           
        <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
@@ -211,15 +188,14 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                  <th>Income Id</th>
+                 
                     <th>Title</th>
 <th>Amount</th>
 <th>Description</th>
-<th>User Id</th>
-<th>User First Name</th>
-<th>User Last Name</th>
+
+
 <th>User Email </th>
-<th>AccountId</th>
+
 <th>Account</th>
 <th>Status</th>
 <th>Transaction Date</th>                    
@@ -228,15 +204,14 @@
                   <tbody>
                   <c:forEach items="${income}" var="m">
                   <tr>
-                  <td>${m[0] }</td>
+                  
                   <td>${m[3]}</td>
                   <td>${m[4]}</td>
                   <td>${m[5]}</td>
-                  <td>${m[2] }</td>
-				  <td>${m[8]}</td>
-				  <td>${m[9]}</td>
+                  
+				  
 				  <td>${m[10]}</td>
-				  <td>${m[1] }</td>
+				  
 				  <td>${m[11]}</td>
                   <td>${m[6] }</td>
                   <td>${m[7] }</td>

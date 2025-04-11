@@ -2,8 +2,6 @@ package com.grownited.entity;
 
 
 import java.time.LocalDate;
-import java.util.Date;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +26,9 @@ public class UserEntity {
 	private LocalDate createdAt;
 	private String otp;
 	private String profilePicPath;
+	private Integer cityId;
+	private Integer stateId;
+	
 	
 	public Integer getUserId() {
 		return userId;
@@ -96,6 +97,19 @@ public class UserEntity {
 	public void setProfilePicPath(String profilePicPath) {
 		this.profilePicPath = profilePicPath;
 	}
+	public Integer getCityId() {
+		return cityId;
+	}
+	public void setCityId(Integer cityId) {
+		this.cityId = cityId;
+	}
+	public Integer getStateId() {
+		return stateId;
+	}
+	public void setStateId(Integer stateId) {
+		this.stateId = stateId;
+	}
+	
 	
 	
 	

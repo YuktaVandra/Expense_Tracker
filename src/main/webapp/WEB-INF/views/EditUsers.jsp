@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
      pageEncoding="UTF-8"%>
  <!DOCTYPE html>
@@ -164,30 +165,7 @@
                </li>
                </ul>
            </li>
-           <li class="nav-item">
-             <a href="#" class="nav-link">
-               <i class="fa-solid fa-city"></i>
-               <p>
-                 City
-                 <i class="fas fa-angle-left right"></i>
-                 
-               </p>
-             </a>
-             <ul class="nav nav-treeview">
-               <li class="nav-item">
-                 <a href="newcity" class="nav-link">
-                   <i class="far fa-circle nav-icon"></i>
-                   <p>Add City</p>
-                 </a>
-               </li>
-               <li class="nav-item">
-                 <a href="listcity" class="nav-link">
-                   <i class="far fa-circle nav-icon"></i>
-                   <p>List of City</p>
-                 </a>
-               </li>
-               </ul>
-           </li>
+           
            
           
        </nav>

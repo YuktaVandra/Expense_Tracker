@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.grownited.entity.CityEntity;
 import com.grownited.entity.SubcategoryEntity;
 import com.grownited.entity.VendorEntity;
+import com.grownited.repository.CityRepository;
 import com.grownited.repository.SubcategoryRepository;
 import com.grownited.repository.VendorRepository;
 
@@ -20,6 +22,9 @@ public class AjaxController {
 	
 	@Autowired
 	VendorRepository vendorRepository;
+	
+	@Autowired
+	CityRepository cityRepository;
 	
 	@GetMapping("/getallsubcategorybycategoryid/{categoryId}")
 	public List<SubcategoryEntity> getAllSubcategoyByCategoryId(@PathVariable Integer categoryId){
@@ -38,5 +43,16 @@ public class AjaxController {
 		
 		return allVendor ;
 	}
+	
+	@GetMapping("/getcity/{stateId}")
+	public List<CityEntity> getcity(@PathVariable Integer stateId){
+		System.out.println(stateId);
+		List<CityEntity> allCity = cityRepository.findByStateId(stateId);
+		return allCity;
+	}
+	
+	
+	
+
 
 }

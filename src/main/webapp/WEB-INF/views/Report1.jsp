@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>View City</title>
+  <title>Report 1 (This Month's Total Expenses and Income)</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,9 +23,8 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  
+
   <jsp:include page="UserHeader.jsp"></jsp:include>
-  
   
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -38,7 +39,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
@@ -64,7 +65,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="home" class="nav-link">
-              <i class="fa-solid fa-house"></i>  
+              <i class="fa-solid fa-house"></i>
               <p>
                 Home 
                 
@@ -91,7 +92,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listaccount" class="nav-link">
+                <a href="listaccount" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Account</p>
                 </a>
@@ -150,37 +151,43 @@
           </li>
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-              <i class="fa-solid fa-city"></i>
+              <i class="fas fa-file-alt"></i>
               <p>
-                City
+                Reports
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="newcity" class="nav-link">
+                <a href="report1" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
+                  <p>Report 1</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listcity" class="nav-link active">
+                <a href="report2" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List of City</p>
+                  <p>Report 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="report3" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 3</p>
                 </a>
               </li>
               </ul>
           </li>
           
           
-       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
-       </ul>
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+  
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -189,12 +196,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>View City</h1>
+            <h1>This Month's Total Expenses and Income </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="home">Home</a></li>
-              <li class="breadcrumb-item active">View City</li>
+              <li class="breadcrumb-item active">This Month's Total Expenses and Income</li>
             </ol>
           </div>
         </div>
@@ -207,45 +214,37 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
+              
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                     <th>CityId</th>
-                     <th>CityName</th>
-                     <th>StateId</th>
-                     <th>StateName</th>
-                     
-
+                    
+                    <th>Total Expenses</th>
+                    
+					<th>Total Income</th>
+					
                   </tr>
                   </thead>
-                  <tbody>
-                  <c:forEach items="${city}" var="m">
-                  <tr>
-                 <td>${m.cityId}</td>
-                  <td>${m.cityName}</td>
-                  <td>${m.stateId}</td>
-                  <td>${m.stateName}</td>
                   
-                  </tr> 
-                  </c:forEach>  
-                  </tbody>
-                  <tfoot>
+                  <tbody>
+                  
                   <tr>
-                    <th>CityId</th>
-                     <th>CityName</th>
-                     <th>StateId</th>
-                     <th>StateName</th>
-
-                  </tr>
-                  </tfoot>
+                  
+                  <td>${thisMonthExpense}&#x20B9</td>
+                  <td>${thisMonthIncome}&#x20B9</td>
+                  </tr> 
+                  
+                  </tbody>
+                  
+                  
+                  
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
           </div>
           <!-- /.col -->
         </div>
@@ -255,9 +254,9 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
   
- <jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
+  <!-- /.content-wrapper -->
+  <jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -309,4 +308,4 @@
 <script src="https://kit.fontawesome.com/9d21862bba.js" crossorigin="anonymous"></script>
 
 </body>
-</html> 
+</html>

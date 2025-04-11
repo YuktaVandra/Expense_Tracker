@@ -209,7 +209,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+              <li class="nav-item">
+                <a href="adminnewcity" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add City</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="adminlistcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -266,9 +271,37 @@
               </li>
               </ul>
           </li>
-          
-       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
-       </ul>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-file-alt"></i>
+              <p>
+                Reports
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminreport1" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminreport2" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminreport3" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 3</p>
+                </a>
+              </li>
+              </ul>
+          </li>
+         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -308,7 +341,8 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    
+                    <th>City</th>
+                    <th>State</th>
                     <th>Contact No</th>
                     <th>Action</th>
                   </tr>
@@ -316,12 +350,13 @@
                   <tbody>
                   <c:forEach items="${userList}" var="m">
                   <tr>
-                  <td>${m.firstName}</td>
-                  <td>${m.lastName}</td>
-                  <td>${m.email}</td>
-                  
-                  <td>${m.contactNo}</td>
-                  <td> <a href="adminviewuser?userId=${m.userId }"><i class="fas fa-eye"></i></a> | <a href="admindeleteuser?userId=${m.userId }"><i class="fa-solid fa-trash"></i></a> </td>
+                  <td>${m[1]}</td>
+                  <td>${m[2]}</td>
+                  <td>${m[3]}</td>
+                  <td>${m[13] }</td>
+                  <td>${m[14] }</td>
+                  <td>${m[4]}</td>
+                  <td> <a href="adminviewuser?userId=${m[0] }"><i class="fas fa-eye"></i></a> | <a href="admindeleteuser?userId=${m[0] }"><i class="fa-solid fa-trash"></i></a> </td>
                   
                   </tr> 
                   </c:forEach>  
@@ -331,7 +366,8 @@
                     <th>first Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    
+                    <th>City</th>
+                    <th>State</th>
                     <th>Contact No</th>
                     <th>Action</th>
                     

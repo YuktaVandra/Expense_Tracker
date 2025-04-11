@@ -162,31 +162,6 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-city"></i>
-              <p>
-                City
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of City</p>
-                </a>
-              </li>
-              </ul>
-          </li>
-          
           
        <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
        </ul>
@@ -250,7 +225,7 @@
              <label>Account:</label>
  	        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" name="accountId">
  <option>Select Account</option>
- 		<c:forEach items="${accountList}" var="a">
+ 		<c:forEach items="${accounts}" var="a">
  			<option value="${a.accountId}">${a.accountTitle }</option>
  </c:forEach>	
  </select>

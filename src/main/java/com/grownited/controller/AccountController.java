@@ -1,6 +1,7 @@
 package com.grownited.controller;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import com.grownited.Dto.AccountDto;
 import com.grownited.entity.AccountEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.AccountRepository;
@@ -48,11 +49,19 @@ public class AccountController {
 	}
 	
 	@GetMapping("/listaccount")
-	public String listaccount(Model model) {
-		
-		model.addAttribute("accountList", accountRepository.getAll());
-		return("ListAccount");
+	public String listAccount(HttpSession session, Model model) {
+	    UserEntity user = (UserEntity) session.getAttribute("user");
+
+	    if (user == null) {
+	        return "redirect:/login";  
+	    }
+        
+	    List<AccountDto> accountList = accountRepository.getAllByUserId(user.getUserId());
+	    model.addAttribute("accountList", accountList);
+
+	    return "ListAccount";  
 	}
+
 	
 	@GetMapping("/viewaccount")
 	public String viewaccount(Integer accountId, Model model) {

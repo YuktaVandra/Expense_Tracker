@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Of Category</title>
+  <title>Report 1 (This Month's Registered Users)</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,9 +23,8 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  
+
   <jsp:include page="AdminHeader.jsp"></jsp:include>
-  
   
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -38,7 +39,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
@@ -103,15 +104,15 @@
             <ul class="nav nav-treeview">
               
               <li class="nav-item">
-                <a href="adminlistaccount" class="nav-link">
+                <a href="adminlistaccount" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Account</p>
                 </a>
               </li>
               </ul>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fa-solid fa-layer-group"></i>
               <p>
                 Category
@@ -121,13 +122,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="adminmanagecategory" class="nav-link ">
+                <a href="adminmanagecategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="adminlistcategory" class="nav-link active">
+                <a href="adminlistcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Category</p>
                 </a>
@@ -142,7 +143,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-               <li class="nav-item">
+              <li class="nav-item">
                 <a href="adminmanagesubcategory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Sub-Category</p>
@@ -272,8 +273,10 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          
+    
+      <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="fas fa-file-alt"></i>
               <p>
                 Reports
@@ -281,9 +284,10 @@
                 
               </p>
             </a>
-            <ul class="nav nav-treeview">
+      
+      <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="adminreport1" class="nav-link">
+                <a href="adminreport1" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Report 1</p>
                 </a>
@@ -303,12 +307,16 @@
               </ul>
           </li>
           
-        </ul>
+          
+            
+            </ul>
+      
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+  
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -317,12 +325,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Category DataTable</h1>
+            <h1>This Month's Registered Users Report</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
-              <li class="breadcrumb-item active">Category DataTable</li>
+              <li class="breadcrumb-item active">This Month's Registered Users Report</li>
             </ol>
           </div>
         </div>
@@ -335,30 +343,43 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
+              
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>User</th>
-                    <th>Action</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Contact No</th>
+					
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach items="${categoryList}" var="m">
+                  <c:forEach items="${thisMonthUsersCountReport}" var="m">
                   <tr>
-                  <td>${m.categoryTitle}</td>
-                 	<td>${m.firstName}</td>
-                  <td><a href="adminviewcategory?categoryId=${m.categoryId }"><i class="fas fa-eye"></i> </a> | <a href="admindeletecategory?categoryId=${m.categoryId }"><i class="fa-solid fa-trash"></i></a></td>
+                  <td>${m[4]}</td>
+                  <td>${m[5]}</td>
+                  <td>${m[3]}</td>
+                  <td>${m[13] }</td>
+                  <td>${m[14] }</td>
+                  <td>${m[1]}</td>
+				  
                   </tr> 
                   </c:forEach>  
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Title</th>
-					<th>User</th>
-                    <th>Action</th>
+                    <th>first Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Contact No</th>
+                    
                   </tr>
                   </tfoot>
                   
@@ -367,7 +388,6 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
           </div>
           <!-- /.col -->
         </div>
@@ -377,9 +397,9 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
   
- <jsp:include page="AdminFooter.jsp"></jsp:include>
+  <!-- /.content-wrapper -->
+  <jsp:include page="AdminFooter.jsp"></jsp:include>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -431,4 +451,4 @@
 <script src="https://kit.fontawesome.com/9d21862bba.js" crossorigin="anonymous"></script>
 
 </body>
-</html> 
+</html>

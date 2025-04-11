@@ -209,7 +209,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+              <li class="nav-item">
+                <a href="adminnewcity" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add City</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="adminlistcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -266,8 +271,36 @@
               </li>
               </ul>
           </li>
-          
-       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-file-alt"></i>
+              <p>
+                Reports
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminreport1" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminreport2" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminreport3" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 3</p>
+                </a>
+              </li>
+              </ul>
+          </li>
        </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -305,9 +338,14 @@
                 <table id="example2" class="table table-bordered table-hover" >
     <thead>
         <tr>
+        <th>User Id</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
+            <th>City Id</th>
+            <th>City</th>
+            <th>State Id</th>
+            <th>State</th>
             <th>Contact No</th>
             <th>Password</th>
             <th>Status</th>
@@ -318,18 +356,25 @@
         </tr>
     </thead>
     <tbody>
+    <c:forEach items="${users}" var="m">
         <tr>
-            <td>${user.firstName}</td>
-            <td>${user.lastName}</td>
-            <td>${user.email}</td>
-            <td>${user.contactNo}</td>
-            <td style="word-break: break-all;">${user.password}</td> <!-- Prevents overflow -->
-            <td>${user.status}</td>
-            <td>${user.role}</td>
-            <td>${user.createdAt}</td>
-            <td>${user.profilePicPath }</td>
-            <td>${user.otp}</td>
+        <td>${users[0][0]}</td>
+            <td>${users[0][1]}</td>
+            <td>${users[0][2]}</td>
+            <td>${users[0][3]}</td>
+            <td>${users[0][11]}</td>
+            <td>${users[0][13] }</td>
+            <td>${users[0][12]}</td>
+            <td>${users[0][14] }</td>
+            <td>${users[0][4]}</td>
+            <td >${users[0][7]}</td> <!-- Prevents overflow -->
+            <td>${users[0][9]}</td>
+            <td>${users[0][8]}</td>
+            <td>${users[0][5]}</td>
+            <td>${users[0][10] }</td>
+            <td>${users[0][6]}</td>
         </tr>
+        </c:forEach>
     </tbody>
 </table>
                 

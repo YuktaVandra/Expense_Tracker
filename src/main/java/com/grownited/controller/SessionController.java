@@ -2,12 +2,10 @@ package com.grownited.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.hibernate.type.descriptor.java.LocalDateJavaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,7 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.grownited.entity.CityEntity;
+import com.grownited.entity.StateEntity;
 import com.grownited.entity.UserEntity;
+import com.grownited.repository.CityRepository;
+import com.grownited.repository.StateRepository;
 import com.grownited.repository.UserRepository;
 import com.grownited.service.MailService;
 
@@ -42,8 +44,19 @@ public class SessionController {
     @Autowired
     Cloudinary cloudinary;
     
+    @Autowired
+    CityRepository cityRepository;
+    
+    @Autowired
+    StateRepository stateRepository;
+    
 	@GetMapping(value = {"/","signup"})
-	public String signup() {
+	public String signup(Model model) {
+		List<CityEntity> cityList =  cityRepository.findAll();
+		model.addAttribute("cityList", cityList);
+		
+		List<StateEntity> stateList =  stateRepository.findAll();
+		model.addAttribute("stateList", stateList);
 		return("Signup");
 	}
 
@@ -60,7 +73,7 @@ public class SessionController {
 		public String saveuser(UserEntity userEntity, MultipartFile profilePic, Model model) {
 		userEntity.setCreatedAt(LocalDate.now());
 		userEntity.setStatus("ACTIVE");
-		userEntity.setRole("USER");
+		//userEntity.setRole("USER");
 		
 		serviceMail.sendWelcomeMail(userEntity.getEmail(), userEntity.getFirstName());
 		
@@ -91,7 +104,7 @@ public class SessionController {
 		return "Login";
 		}
 	
-	@GetMapping("/listuser")
+@GetMapping("/listuser")
 	public String listuser(Model model) {
 		 List<UserEntity> userList = userRepository.findAll();
 		 model.addAttribute("userList", userList);
@@ -120,7 +133,6 @@ public class SessionController {
 		userRepository.deleteById(userId);
 		return "redirect:/listuser";
 	}
-	
 	
 	@PostMapping("authenticate")
 	public String authenticate(String email, String password, Model model, HttpSession session) {
@@ -240,6 +252,7 @@ if(op.isPresent()) {
 	UserEntity dbUser = op.get(); 
 	dbUser.setFirstName(userEntity.getFirstName());
 	dbUser.setLastName(userEntity.getLastName());
+	dbUser.setEmail(userEntity.getEmail());
 	dbUser.setContactNo(userEntity.getContactNo());
 	dbUser.setProfilePicPath(userEntity.getProfilePicPath());
 	userRepository.save(dbUser);

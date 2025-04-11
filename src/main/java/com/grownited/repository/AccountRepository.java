@@ -20,6 +20,12 @@ public interface AccountRepository extends JpaRepository<AccountEntity, Integer>
 			+ "u.first_name,u.last_name,u.email,u.password,u.contact_no,u.status from users u,account a where u.user_id = a.user_id and a.account_id = :accountId", nativeQuery = true)
 	List<AccountDto> getbyAccountId(Integer accountId);
 
+	@Query(value = "SELECT a.account_id, a.user_id, a.account_title, a.account_amount, a.description, " +
+            "u.first_name, u.last_name, u.email, u.password, u.contact_no, u.status " +
+            "FROM users u, account a " +
+            "WHERE u.user_id = a.user_id AND a.user_id = :userId", nativeQuery = true)
+List<AccountDto> getAllByUserId(@org.springframework.data.repository.query.Param("userId") Integer userId);
+
 	
 	
 

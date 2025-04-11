@@ -5,20 +5,16 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.grownited.entity.UserEntity;
 import com.grownited.repository.AccountRepository;
 import com.grownited.repository.CategoryRepository;
-import com.grownited.repository.CityRepository;
 import com.grownited.repository.ExpenseRepository;
 import com.grownited.repository.IncomeRepository;
-import com.grownited.repository.StateRepository;
 import com.grownited.repository.SubcategoryRepository;
 import com.grownited.repository.UserRepository;
 import com.grownited.repository.VendorRepository;
@@ -42,17 +38,15 @@ public class AdminController {
 	@Autowired
 	IncomeRepository incomeRepository;
 	
-	@Autowired
-	CityRepository cityRepository;
 	
-	@Autowired
-	StateRepository stateRepository;
 	
 	@Autowired
 	UserRepository userRepository;
 	
 	@Autowired
 	VendorRepository vendorRepository;
+
+	
 	
 	@GetMapping("admindashboard")
 	public String adminDashboard(Model model) {
@@ -119,19 +113,11 @@ public String adminlistincome(Model model) {
 	model.addAttribute("incomeList", incomeRepository.getAll());
 	return("Admin/AdminListIncome");
 }
-@GetMapping("/adminlistcity")
-public String adminlistcity(Model model) {
-	
-	model.addAttribute("cityList", cityRepository.getAll());
-	return("Admin/AdminListCity");
-}
-
-
 
 @GetMapping("/adminlistuser")
 public String adminlistuser(Model model) {
-	
-	model.addAttribute("userList", userRepository.findAll());
+	List<Object[]> userList = userRepository.getAll();
+	model.addAttribute("userList",userList );
 	return("Admin/AdminListUser");
 }
 
@@ -149,22 +135,6 @@ public String adminviewaccount(Integer accountId, Model model) {
 public String admindeleteaccount(Integer accountId) {
 	accountRepository.deleteById(accountId);
 	return "redirect:/adminlistaccount";
-}
-
-
-
-@GetMapping("/adminviewcity")
-public String adminviewcity(Integer cityId, Model model) {
-	
-		model.addAttribute("city", cityRepository.getCityId(cityId));
-	
-	return "Admin/AdminViewCity";
-}
-
-@GetMapping("/admindeletecity")
-public String admindeletecity(Integer cityId) {
-	cityRepository.deleteById(cityId);
-	return "redirect:/adminlistcity";
 }
 
 @GetMapping("/adminviewexpense")
@@ -204,13 +174,13 @@ public String adminviewuser(Integer userId, Model model) {
 	
 	System.out.println("id ===> " + userId);
 	
-	Optional<UserEntity> op = userRepository.findById(userId);
+	List<Object[]> op = userRepository.getUserId(userId);
 	
 	if(op.isEmpty()) {
 		//Data not found
 	}else {
-		UserEntity user = op.get();
-		model.addAttribute("user", user);
+	 
+		model.addAttribute("users", op);
 	}
 	
 	return "Admin/AdminViewUser";
@@ -221,6 +191,42 @@ public String admindeleteMember(Integer userId) {
 	userRepository.deleteById(userId);
 	return "redirect:/adminlistuser";
 }
+
+@GetMapping("/adminreport1")
+public String adminreport1(Model model) {
+	LocalDate today = LocalDate.now();
+	int month = today.getMonthValue();
+
+	List<Object[]> thisMonthUsersCountReport = userRepository.getcountThisMonthUsersReport(month);
+	model.addAttribute("thisMonthUsersCountReport", thisMonthUsersCountReport);
+	return "Admin/AdminReport1";
+}
+
+@GetMapping("/adminreport2")
+public String adminreport2(Model model) {
+	LocalDate today = LocalDate.now();
+	int month = today.getMonthValue();
+	
+	BigDecimal thisMonthExpense = expenseRepository.getMonthlyExpenses(month);
+	
+	BigDecimal thisMonthIncome = incomeRepository.getMonthlyIncome(month);
+	
+	BigDecimal thisMonthTotalCount = thisMonthExpense.add(thisMonthIncome) ;
+	
+	model.addAttribute("thisMonthTotalCount", thisMonthTotalCount);
+	
+	return "Admin/AdminReport2";
+}
+
+@GetMapping("/adminreport3")
+public String adminreport3(Model model) {
+	
+	List<Object[]> data = expenseRepository.getThisMonthCategoryWiseExpense();
+	model.addAttribute("data", data);
+	
+	return "Admin/AdminReport3";
+}
+
 
 
 }

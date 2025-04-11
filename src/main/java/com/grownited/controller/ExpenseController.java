@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.Dto.AccountDto;
 import com.grownited.entity.AccountEntity;
 import com.grownited.entity.CategoryEntity;
 import com.grownited.entity.ExpenseEntity;
@@ -45,7 +46,7 @@ public class ExpenseController {
 	ExpenseRepository expenseRepository;
 	
 	@GetMapping("/manageexpense")
-	public String expense(Model model) {
+	public String expense(Model model, HttpSession session) {
 		
 		
 		List<AccountEntity> accountList =  accountRepository.findAll();
@@ -60,6 +61,9 @@ public class ExpenseController {
 		List<VendorEntity> vendorList =  vendorRepository.findAll();
 		model.addAttribute("vendorList", vendorList);
 		
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		List<AccountDto> userAccounts = accountRepository.getAllByUserId(user.getUserId());
+		model.addAttribute("accounts", userAccounts);
 		return("Expense");
 	}
 	
@@ -76,8 +80,14 @@ public class ExpenseController {
 	}
 	
 	@GetMapping("/listexpense")
-	public String listexpense(Model model) {
-		List<Object[]> expenseList = expenseRepository.getAll();
+	public String listexpense(Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+
+	    if (user == null) {
+	        return "redirect:/login";  
+	    }
+        
+		List<Object[]> expenseList = expenseRepository.getAllByUserId(user.getUserId());
 		 model.addAttribute("expenseList", expenseList);
 		 return "ListExpense";
 	}

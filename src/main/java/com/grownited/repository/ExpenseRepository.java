@@ -38,4 +38,23 @@ public interface ExpenseRepository extends JpaRepository<ExpenseEntity, Integer>
 	
 	@Query(nativeQuery = true,value = "SELECT SUM(expense_amount) FROM expense where MONTH(transaction_date) = 3 ")
 	BigDecimal getTotalMarchExpense();
+	
+	@Query(value = "SELECT e.expense_id, e.category_id, e.subcategory_id, e.account_id, e.vendor_id, e.user_id, e.expense_title, e.expense_amount, e.description, e.status, e.transaction_date,"
+			+ " u.first_name,u.last_name, c.category_title, s.subcategory_title , a.account_title, v.vendor_title, a.account_amount FROM expense e, users u, category c, subcategory s, account a, vendor v WHERE e.user_id = u.user_id AND e.category_id = c.category_id AND e.subcategory_id = s.subcategory_id AND e.account_id = a.account_id AND e.vendor_id = v.vendor_id and e.user_id = :userId",nativeQuery = true)
+	List<Object[]> getAllByUserId(@org.springframework.data.repository.query.Param("userId") Integer userId);
+	
+	@Query(nativeQuery = true,value="SELECT SUM(expense_amount) FROM expense WHERE MONTH(transaction_date) = MONTH(CURRENT_DATE()) and  expense.user_id = :userId  ")
+	BigDecimal getMonthlyExpensesByUser(Integer month,@org.springframework.data.repository.query.Param("userId") Integer userId);
+	
+	@Query(value = """
+		    SELECT c.category_title AS category, SUM(e.expense_amount) AS totalAmount 
+		    FROM expense e 
+		    JOIN category c ON e.category_id = c.category_id 
+		    WHERE MONTH(e.transaction_date) = MONTH(CURDATE()) 
+		      AND YEAR(e.transaction_date) = YEAR(CURDATE()) 
+		    GROUP BY e.category_id, c.category_title 
+		    ORDER BY totalAmount DESC
+		    """, nativeQuery = true)
+		List<Object[]> getThisMonthCategoryWiseExpense();
+	
 }

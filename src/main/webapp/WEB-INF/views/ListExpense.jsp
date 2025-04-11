@@ -147,30 +147,7 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-city"></i>
-              <p>
-                City
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of City</p>
-                </a>
-              </li>
-              </ul>
-          </li>
+          
           
           
        <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
@@ -214,8 +191,7 @@
                     <th>Title</th>
 <th>Amount</th>
 <th>Description</th>
-<th>User First Name</th>
-<th>User Last Name</th>
+
 
 <th>Action</th>
                     
@@ -227,8 +203,7 @@
                   <td>${m[6]}</td>
 <td>${m[7]}</td>
 <td>${m[8]}</td>
-<td>${m[11]}</td>
-<td>${m[12]}</td>
+
 <td><a href="viewexpense?expenseId=${m[0] }"><i class="fas fa-eye"></i></a>| <a href="deleteexpense?expenseId=${m[0] }"><i class="fa-solid fa-trash"></i></a> | <a href="editexpense?expenseId=${m[0] }"><i class="fas fa-edit"></i></a></td>
                   
                   </tr> 
@@ -239,8 +214,7 @@
 					<th>Title</th>
 					<th>Amount</th>
 					<th>Description</th>
-					<th>User First Name</th>
-<th>User Last Name</th>
+					
 					
 					<th>Action</th>
                     

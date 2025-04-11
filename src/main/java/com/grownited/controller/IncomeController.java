@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.Dto.AccountDto;
 import com.grownited.entity.AccountEntity;
 import com.grownited.entity.IncomeEntity;
 import com.grownited.entity.UserEntity;
@@ -35,9 +36,13 @@ public class IncomeController {
 	@Autowired
 	private IncomeRepository incomeRepository;
 	@GetMapping("/manageincome")
-	public String expense(Model model) {
+	public String expense(Model model,HttpSession session) {
 		List<AccountEntity> accountList =  accountRepository.findAll();
 		model.addAttribute("accountList", accountList);
+		
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		List<AccountDto> userAccounts = accountRepository.getAllByUserId(user.getUserId());
+		model.addAttribute("accounts", userAccounts);
 		return("Income");
 	} 
 	
@@ -57,9 +62,15 @@ public class IncomeController {
 	}
 	
 	@GetMapping("/listincome")
-	public String listincome(Model model) {
+		public String listexpense(Model model, HttpSession session) {
+			UserEntity user = (UserEntity) session.getAttribute("user");
+
+		    if (user == null) {
+		        return "redirect:/login";  
+		    }
+	        
 		
-		List<Object[]> incomeList = incomeRepository.getAll();
+		List<Object[]> incomeList = incomeRepository.getAllByUserId(user.getUserId());
 
 		 model.addAttribute("incomeList", incomeList);
 		 return "ListIncome";

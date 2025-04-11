@@ -149,30 +149,7 @@
               </li>
               </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-city"></i>
-              <p>
-                City
-                <i class="fas fa-angle-left right"></i>
-                
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add City</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listcity" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List of City</p>
-                </a>
-              </li>
-              </ul>
-          </li>
+          
           
           
        <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
@@ -218,8 +195,9 @@
                     <th>Title</th>
                     <th>Amount</th>
                     <th>Description</th>
-					<th>User</th>
-					<!--<th>Last Name </th>-->
+					
+					<!--<th>User</th>
+					<th>Last Name </th>-->
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -229,7 +207,7 @@
                   <td>${m.accountTitle}</td>
                   <td>${m.accountAmount}</td>
                   <td>${m.description}</td>
-                  <td>${m.firstName }</td>
+                  <!-- <td>${m.firstName }</td> -->
 				  
                   <td><a href="viewaccount?accountId=${m.accountId }"><i class="fas fa-eye"></i> </a> | <a href="deleteaccount?accountId=${m.accountId }"><i class="fa-solid fa-trash"></i></a> |<a href="editaccount?accountId=${m.accountId }"> <i class="fas fa-edit"></i></a></td>
                   </tr> 
@@ -240,7 +218,7 @@
                     <th>Title</th>
                     <th>Amount</th>
                     <th>Description</th>
-					<th>User</th>
+					<!-- <th>User</th> -->
                     <th>Action</th>
                   </tr>
                   </tfoot>

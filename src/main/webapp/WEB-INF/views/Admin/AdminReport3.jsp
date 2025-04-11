@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>List Of City</title>
+  <title>Report 3 (Current Month's Category-wise expense distribution)</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,9 +23,8 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  
-  <jsp:include page="UserHeader.jsp"></jsp:include>
-  
+
+  <jsp:include page="AdminHeader.jsp"></jsp:include>
   
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -38,7 +39,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="${user.profilePicPath }" class="img-circle elevation-2" alt="User Image">
+          <img src="${user.profilePicPath}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
@@ -63,17 +64,34 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="home" class="nav-link">
-              <i class="fa-solid fa-house"></i>
+            <a href="admindashboard" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Home 
+                Dashboard
                 
               </p>
             </a>
             
           </li>
           
-          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-user"></i>
+              <p>
+                Users
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminlistuser" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of Users</p>
+                </a>
+              </li>
+              </ul>
+          </li>
           <li class="nav-item ">
             <a href="#" class="nav-link ">
               <i class="fa-solid fa-users"></i>
@@ -84,19 +102,63 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageaccount" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Account</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listaccount" class="nav-link">
+                <a href="adminlistaccount" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Account</p>
                 </a>
               </li>
               </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-layer-group"></i>
+              <p>
+                Category
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminmanagecategory" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminlistcategory" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-rectangle-list"></i>
+              <p>
+                Sub-Category
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminmanagesubcategory" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Sub-Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminlistsubcategory" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of Sub-Category</p>
+                </a>
+              </li>
+              </ul>
+          </li>
+              </ul>
+              
           </li>
           
           
@@ -110,14 +172,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageexpense" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Expenses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listexpense" class="nav-link">
+                <a href="adminlistexpense" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Expenses</p>
                 </a>
@@ -134,22 +191,17 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="manageincome" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Income</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="listincome" class="nav-link">
+                <a href="adminlistincome" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of Income</p>
                 </a>
               </li>
               </ul>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fa-solid fa-city"></i>
               <p>
                 City
@@ -159,28 +211,111 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="newcity" class="nav-link">
+                <a href="adminnewcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add City</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="listcity" class="nav-link active">
+                <a href="adminlistcity" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List of City</p>
                 </a>
               </li>
               </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <p>
+                State
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminnewstate" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add State</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="adminliststate" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of State</p>
+                </a>
+              </li>
+              </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-user-tie"></i>
+              <p>
+                Vendor
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminvendor" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Vendor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminlistvendor" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List of Vendor</p>
+                </a>
+              </li>
+              </ul>
+          </li>
           
+    
+      <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="fas fa-file-alt"></i>
+              <p>
+                Reports
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+      
+      <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="adminreport1" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminreport2" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="adminreport3" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 3</p>
+                </a>
+              </li>
+              </ul>
+          </li>
           
-       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
-       </ul>
+            
+            </ul>
+      
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+  
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -189,12 +324,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>City DataTable</h1>
+            <h1>Current Month's Category-wise expense distribution</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="home">Home</a></li>
-              <li class="breadcrumb-item active">City DataTable</li>
+              <li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
+              <li class="breadcrumb-item active">Current Month's Category-wise expense distribution</li>
             </ol>
           </div>
         </div>
@@ -207,40 +342,34 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
+              
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                     <th>CityName</th>
-                     <th>StateName</th>
-<th>Action</th>
+                    
+                    <th> Category</th>
+                    <th>Total Amount</th>
+					
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach items="${cityList}" var="m">
-                  <tr>
-                 
-                  <td>${m.cityName}</td>
-                  <td>${m.stateName}</td>
+    <c:forEach var="item" items="${data}">
+      <tr>
+        <td>${item[0]}</td>
+        <td>${item[1]}&#x20B9</td>
+        
+      </tr>
+    </c:forEach>
+  </tbody>
                   
-                  <td><a href="viewcity?cityId=${m.cityId }"><i class="fas fa-eye"></i> </a> | <a href="deletecity?cityId=${m.cityId }"><i class="fa-solid fa-trash"></i></a> | <a href="editcity?cityId=${m.cityId }"><i class="fas fa-edit"></i></a></td>
-                  </tr> 
-                  </c:forEach>  
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>CityName</th>
-                    <th>StateName</th>
-<th>Action</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
           </div>
           <!-- /.col -->
         </div>
@@ -248,11 +377,10 @@
       </div>
       <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
   
- <jsp:include page="Admin/AdminFooter.jsp"></jsp:include>
+  <!-- /.content-wrapper -->
+  <jsp:include page="AdminFooter.jsp"></jsp:include>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -304,4 +432,5 @@
 <script src="https://kit.fontawesome.com/9d21862bba.js" crossorigin="anonymous"></script>
 
 </body>
-</html> 
+</html>
+
