@@ -56,5 +56,9 @@ public interface ExpenseRepository extends JpaRepository<ExpenseEntity, Integer>
 		    ORDER BY totalAmount DESC
 		    """, nativeQuery = true)
 		List<Object[]> getThisMonthCategoryWiseExpense();
+		
+		@Query(nativeQuery = true, value = " SELECT c.category_title, SUM(e.expense_amount) FROM expense e, users u, category c, subcategory s, account a, vendor v WHERE e.user_id = u.user_id AND e.category_id = c.category_id AND e.subcategory_id = s.subcategory_id AND e.account_id = a.account_id AND e.vendor_id = v.vendor_id and e.user_id = :userId  GROUP BY c.category_id, c.category_title")
+			List<Object[]> getCategoryWiseExpense(@org.springframework.data.repository.query.Param("userId") Integer userId);
+
 	
 }
