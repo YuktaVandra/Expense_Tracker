@@ -291,6 +291,8 @@ if(op.isPresent()) {
 	dbUser.setLastName(userEntity.getLastName());
 	dbUser.setEmail(userEntity.getEmail());
 	dbUser.setContactNo(userEntity.getContactNo());
+	dbUser.setCityName(userEntity.getCityName());
+	dbUser.setStateName(userEntity.getStateName());
 	//dbUser.setProfilePicPath(userEntity.getProfilePicPath());
 	userRepository.save(dbUser);
 }

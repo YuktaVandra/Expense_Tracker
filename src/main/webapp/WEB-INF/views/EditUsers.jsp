@@ -360,6 +360,18 @@
                          </div>
                        </div>
                        <div class="form-group row">
+                         <label for="inputEmail" class="col-sm-2 col-form-label">City Name</label>
+                         <div class="col-sm-10">
+                           <input type="text" name="cityName" value="${user.cityName }" class="form-control" id="inputEmail" >
+                         </div>
+                       </div>
+                       <div class="form-group row">
+                         <label for="inputEmail" class="col-sm-2 col-form-label">State Name</label>
+                         <div class="col-sm-10">
+                           <input type="text" name="stateName" value="${user.stateName }" class="form-control" id="inputEmail" >
+                         </div>
+                       </div>
+                       <div class="form-group row">
                          <label for="inputName2" class="col-sm-2 col-form-label">Contact No.</label>
                          <div class="col-sm-10">
                            <input type="text" name="contactNo" value="${user.contactNo }" class="form-control" id="inputName2" >
