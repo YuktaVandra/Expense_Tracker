@@ -180,7 +180,16 @@
               </ul>
           </li>
           
-          
+          <li class="nav-item ">
+		              <a href="calendar" class="nav-link ">
+		                <i class="fa-solid fa-calendar-days"></i>
+		                <p>
+		                  Calendar
+		                  <i class="fas fa-angle-left right"></i>
+		                  
+		                </p>
+		              </a>
+				</li>	
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -218,34 +227,22 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    
-                    <th>Category</th>
-                    <th>Total Expense</th>
-					
-					
-                  </tr>
-                  </thead>
-                  
-                  <tbody>
-                  
-                  
-                  
-                  <c:forEach items="${totalCategoryExpense } " var= "m">
-                  <tr>
-                  <td>${totalCategoryExpense[0][0] }</td>
-                  <td>${totalCategoryExpense[0][1] }&#x20B9</td>
-                  </tr> 
-                  </c:forEach>
-                  
-                  
-                  
-                  </tbody>
-                  
-                  
-                  
-                </table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Total Expense</th>
+    </tr>
+  </thead>
+  <tbody>
+    <c:forEach items="${categoryExpenseData}" var="m">
+      <tr>
+        <td>${m[0]}</td>
+        <td>${m[1]}&#x20B9;</td>
+      </tr>
+    </c:forEach>
+  </tbody>
+</table>
+
               </div>
               <!-- /.card-body -->
             </div>

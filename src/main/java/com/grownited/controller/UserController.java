@@ -30,7 +30,27 @@ public class UserController {
 	AccountRepository accountRepository;
 	
 	@GetMapping("/home")
-	public String home() {
+	public String home(Model model, HttpSession session) {
+UserEntity user = (UserEntity) session.getAttribute("user");
+		
+		LocalDate today = LocalDate.now();
+		int month = today.getMonthValue();
+		
+		BigDecimal thisMonthExpense = expenseRepository.getMonthlyExpensesByUser(month, user.getUserId());
+		BigDecimal thisMonthIncome = incomeRepository.getMonthlyIncomeByUser(month, user.getUserId());
+		BigDecimal thisTotalDuePayments = expenseRepository.getUserTotalDuePayment(user.getUserId());
+		Integer totalDueBills = expenseRepository.getUserPendingExpense(user.getUserId());
+		BigDecimal totalExpense = expenseRepository.getExpensesByUser(user.getUserId());
+		BigDecimal totalIncome = incomeRepository.getIncomeByUser(user.getUserId());
+		BigDecimal currentBalance = (totalIncome != null ? totalIncome : BigDecimal.ZERO).subtract(totalExpense != null ? totalExpense : BigDecimal.ZERO);
+		model.addAttribute("thisMonthExpense", thisMonthExpense);
+		model.addAttribute("thisMonthIncome", thisMonthIncome);
+		model.addAttribute("thisTotalDuePayments", thisTotalDuePayments);
+		model.addAttribute("totalDueBills", totalDueBills);
+		model.addAttribute("currentBalance", currentBalance);
+		model.addAttribute("totalExpense", totalExpense);
+		model.addAttribute("totalIncome", totalIncome);
+		
 		return "Home";
 	}
 	
@@ -88,9 +108,14 @@ public class UserController {
         List<Object[]> categoryExpenseData = expenseRepository.getCategoryWiseExpense(user.getUserId());
 
        
-        model.addAttribute("totalCategoryExpense", categoryExpenseData);
+        model.addAttribute("categoryExpenseData", categoryExpenseData);
 
         return "Report3"; 
     }
+	
+	@GetMapping("/calendar")
+	 public String calendar() {
+		return "Calendar";
+	}
 
 }

@@ -30,5 +30,9 @@ public interface IncomeRepository extends JpaRepository<IncomeEntity, Integer> {
 	
 	@Query(nativeQuery = true,value="SELECT SUM(income_amount) FROM income WHERE MONTH(transaction_date) = MONTH(CURRENT_DATE())  ")
 	BigDecimal getMonthlyIncome(Integer month);
+	
+	@Query(nativeQuery = true,value="SELECT SUM(income_amount) FROM income where income.user_id = :userId ")
+	BigDecimal getIncomeByUser(@org.springframework.data.repository.query.Param("userId") Integer userId);
+	
 
 }

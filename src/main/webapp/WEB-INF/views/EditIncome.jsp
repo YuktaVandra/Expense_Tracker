@@ -165,10 +165,47 @@
               </ul>
           </li>
           
-          
-         
-       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
-       </ul>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-file-alt"></i>
+              <p>
+                Reports
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="report1" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="report2" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="report3" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 3</p>
+                </a>
+              </li>
+              </ul>
+          </li>
+          <li class="nav-item ">
+		              <a href="calendar" class="nav-link ">
+		                <i class="fa-solid fa-calendar-days"></i>
+		                <p>
+		                  Calendar
+		                  <i class="fas fa-angle-left right"></i>
+		                  
+		                </p>
+		              </a>
+				</li>	
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

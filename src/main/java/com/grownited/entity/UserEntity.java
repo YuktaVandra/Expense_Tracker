@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "users")
@@ -28,6 +29,13 @@ public class UserEntity {
 	private String profilePicPath;
 	private Integer cityId;
 	private Integer stateId;
+	
+	@Transient
+	private String cityName;
+
+	@Transient
+	private String stateName;
+
 	
 	
 	public Integer getUserId() {
@@ -108,6 +116,18 @@ public class UserEntity {
 	}
 	public void setStateId(Integer stateId) {
 		this.stateId = stateId;
+	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+	public String getStateName() {
+		return stateName;
+	}
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
 	}
 	
 	

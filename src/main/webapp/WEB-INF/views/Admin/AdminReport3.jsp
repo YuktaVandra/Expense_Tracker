@@ -42,7 +42,7 @@
           <img src="${user.profilePicPath}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
+          <a href="adminedit?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 
@@ -348,9 +348,12 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    
+                    <th>User First Name</th>
+                    <th>User Last Name</th>
+                    <th> User Email</th>
                     <th> Category</th>
                     <th>Total Amount</th>
+                    <th>Category Ratio (%)</th>
 					
                   </tr>
                   </thead>
@@ -358,8 +361,11 @@
     <c:forEach var="item" items="${data}">
       <tr>
         <td>${item[0]}</td>
-        <td>${item[1]}&#x20B9</td>
-        
+        <td>${item[1]}</td>
+        <td>${item[2]}</td>
+        <td>${item[3]}</td>
+        <td>${item[4]}&#x20B9</td>
+        <td>${item[5]}%</td>
       </tr>
     </c:forEach>
   </tbody>

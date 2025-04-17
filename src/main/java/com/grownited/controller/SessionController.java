@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
@@ -228,18 +229,48 @@ public String updatepassword(String email, String password, String otp, Model mo
 	return "Login";
 }
 
+//@GetMapping("/edituser")
+//public String editUser(Integer userId, Model model) {
+//Optional<UserEntity> op = userRepository.findById(userId);
+//if(op.isEmpty()) {
+//	return "redirect:/home";
+//}else {
+//	UserEntity dbUser = op.get();
+//	model.addAttribute("user", dbUser);
+//	
+//	return "EditUsers";
+//}
+//}
+
+
 @GetMapping("/edituser")
-public String editUser(Integer userId, Model model) {
-Optional<UserEntity> op = userRepository.findById(userId);
-if(op.isEmpty()) {
-	return "redirect:/listuser";
-}else {
-	UserEntity dbUser = op.get();
-	model.addAttribute("user", dbUser);
-	
-	return "EditUsers";
+public String editUser(@RequestParam("userId") Integer userId, Model model) {
+    Optional<UserEntity> op = userRepository.findById(userId);
+    
+    if (op.isEmpty()) {
+        return "redirect:/home";
+    } else {
+        UserEntity dbUser = op.get();
+        
+        // Fetch city name
+        if (dbUser.getCityId() != null) {
+            cityRepository.findById(dbUser.getCityId()).ifPresent(city -> {
+                dbUser.setCityName(city.getCityName());
+            });
+        }
+
+        // Fetch state name
+        if (dbUser.getStateId() != null) {
+            stateRepository.findById(dbUser.getStateId()).ifPresent(state -> {
+                dbUser.setStateName(state.getStateName());
+            });
+        }
+
+        model.addAttribute("user", dbUser);
+        return "EditUsers";
+    }
 }
-}
+
 
 @PostMapping("/updateuser")
 public String updateUser(UserEntity userEntity) {
@@ -254,10 +285,10 @@ if(op.isPresent()) {
 	dbUser.setLastName(userEntity.getLastName());
 	dbUser.setEmail(userEntity.getEmail());
 	dbUser.setContactNo(userEntity.getContactNo());
-	dbUser.setProfilePicPath(userEntity.getProfilePicPath());
+	//dbUser.setProfilePicPath(userEntity.getProfilePicPath());
 	userRepository.save(dbUser);
 }
-return "redirect:/listuser";
+return "redirect:/home";
 }
 
 

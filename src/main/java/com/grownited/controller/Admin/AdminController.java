@@ -5,16 +5,22 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.grownited.entity.UserEntity;
 import com.grownited.repository.AccountRepository;
 import com.grownited.repository.CategoryRepository;
+import com.grownited.repository.CityRepository;
 import com.grownited.repository.ExpenseRepository;
 import com.grownited.repository.IncomeRepository;
+import com.grownited.repository.StateRepository;
 import com.grownited.repository.SubcategoryRepository;
 import com.grownited.repository.UserRepository;
 import com.grownited.repository.VendorRepository;
@@ -38,7 +44,11 @@ public class AdminController {
 	@Autowired
 	IncomeRepository incomeRepository;
 	
-	
+	@Autowired
+    CityRepository cityRepository;
+
+	@Autowired
+	StateRepository stateRepository;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -79,7 +89,7 @@ public class AdminController {
 	                .divide(totalExpenses, 2, RoundingMode.HALF_UP); // Keep 2 decimal places
 	    }
 	    
-	    BigDecimal thisMonthDuePayments = expenseRepository.getMonthlyDuePayments(month);;
+	    BigDecimal thisMonthDuePayments = expenseRepository.getMonthlyDuePayments(month);
 		
 		model.addAttribute("totalUsers", totalUsers);
 		model.addAttribute("thisMonthUsersCount", thisMonthUsersCount);
@@ -226,6 +236,67 @@ public String adminreport3(Model model) {
 	
 	return "Admin/AdminReport3";
 }
+
+//@GetMapping("/adminedit")
+//public String editUser(Integer userId, Model model) {
+//Optional<UserEntity> op = userRepository.findById(userId);
+//if(op.isEmpty()) {
+//	return "redirect:/admindasboard";
+//}else {
+//	UserEntity dbUser = op.get();
+//	model.addAttribute("user", dbUser);
+//	
+//	return "Admin/AdminEdit";
+//}
+//}
+
+@GetMapping("/adminedit")
+public String editUser(@RequestParam("userId") Integer userId, Model model) {
+    Optional<UserEntity> op = userRepository.findById(userId);
+    
+    if (op.isEmpty()) {
+        return "redirect:/admindashboard";
+    } else {
+        UserEntity dbUser = op.get();
+        
+        // Fetch city name
+        if (dbUser.getCityId() != null) {
+            cityRepository.findById(dbUser.getCityId()).ifPresent(city -> {
+                dbUser.setCityName(city.getCityName());
+            });
+        }
+
+        // Fetch state name
+        if (dbUser.getStateId() != null) {
+            stateRepository.findById(dbUser.getStateId()).ifPresent(state -> {
+                dbUser.setStateName(state.getStateName());
+            });
+        }
+
+        model.addAttribute("user", dbUser);
+        return "Admin/AdminEdit";
+    }
+}
+
+@PostMapping("/adminupdate")
+public String updateUser(UserEntity userEntity) {
+System.out.println(userEntity.getUserId()); 
+
+Optional<UserEntity> op = userRepository.findById(userEntity.getUserId());
+
+if(op.isPresent()) {
+
+	UserEntity dbUser = op.get(); 
+	dbUser.setFirstName(userEntity.getFirstName());
+	dbUser.setLastName(userEntity.getLastName());
+	dbUser.setEmail(userEntity.getEmail());
+	dbUser.setContactNo(userEntity.getContactNo());
+	//dbUser.setProfilePicPath(userEntity.getProfilePicPath());
+	userRepository.save(dbUser);
+}
+return "redirect:/admindashboard";
+}
+
 
 
 

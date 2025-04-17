@@ -55,7 +55,7 @@
           <img src="${user.profilePicPath}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="edituser?userId=${user.userId }" class="d-block">${user.firstName}</a>
+          <a href="adminedit?userId=${user.userId }" class="d-block">${user.firstName}</a>
         </div>
       </div>
 

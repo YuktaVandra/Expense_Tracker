@@ -18,8 +18,47 @@
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <style>
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d4edda; /* success by default */
+    color: #155724;
+    padding: 15px 25px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    animation: fadeInOut 3s forwards;
+  }
+
+  .popup.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; top: 0px; }
+    10% { opacity: 1; top: 20px; }
+    90% { opacity: 1; top: 20px; }
+    100% { opacity: 0; top: 0px; display: none; }
+  }
+</style>
+  
 </head>
 <body class="hold-transition sidebar-mini">
+<c:if test="${not empty successMessage}">
+    <div class="popup" id="popupMessage">${successMessage}</div>
+</c:if>
+
+<c:if test="${not empty errorMessage}">
+    <div class="popup error" id="popupMessage">${errorMessage}</div>
+</c:if>
 <div class="wrapper">
   
   <jsp:include page="UserHeader.jsp"></jsp:include>
@@ -148,10 +187,48 @@
               </ul>
           </li>
           
-          
-          
-       <a href="logout"><button  style="background-color: red;color: white;border-radius: 10px; width: 100%">Logout</button></a>
-       </ul>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-file-alt"></i>
+              <p>
+                Reports
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="report1" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="report2" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="report3" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report 3</p>
+                </a>
+              </li>
+              </ul>
+          </li>
+          <li class="nav-item ">
+		              <a href="calendar" class="nav-link ">
+		                <i class="fa-solid fa-calendar-days"></i>
+		                <p>
+		                  Calendar
+		                  <i class="fas fa-angle-left right"></i>
+		                  
+		                </p>
+		              </a>
+				</li>	
+				
+				</ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -176,6 +253,11 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+
+
+
+
+
 
     <!-- Main content -->
     <section class="content">
@@ -288,6 +370,17 @@
   });
 </script>
 <script src="https://kit.fontawesome.com/9d21862bba.js" crossorigin="anonymous"></script>
+<script>
+  window.onload = function() {
+    const popup = document.getElementById("popupMessage");
+    if (popup) {
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 5000); // Hides after 3 seconds
+    }
+  }
+</script>
 
 </body>
 </html> 
